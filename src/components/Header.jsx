@@ -2,58 +2,51 @@ import React from "react";
 import headerBackground from "../images/header-background拷貝.png";
 import leftFirstHeader from "../images/FirstLeftHeader.png";
 import leftSecondHeader from "../images/SecondLeftHeader.png";
+import './Header.css';
 
 function Header(props) {
   return (
     <div>
         <div 
-        className="flex justify-between items-center h-32 px-8 py-4 bg-white shadow-md"
-        style={{
-            backgroundImage: `url(${headerBackground})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-        }}
+            className="header-container"
+            style={{
+                backgroundImage: `url(${headerBackground})`,
+            }}
         >
         {/* 左側圖片，點擊回到首頁 */}
-            <div className="flex items-center">
-                <a href="https://example.com" className="inline-flex">
-                    <img
-                        src={leftFirstHeader}
-                        alt="First Header Logo"
-                        style={{
-                        height: "110px", // 調整圖片高度
-                        objectFit: "cover",
-                        }}
-                    />
-                </a>
-                <a href="https://example.com" className="inline-flex">
-                    <img
-                        src={leftSecondHeader}
-                        alt="Second Header Logo"
-                        style={{
-                            width: "100%",  // 調整圖片寬度
-                            height: "150px", // 調整圖片高度
-                            objectFit: "cover",
-                        }}
-                    />
-                </a>
-            </div>
+        <div className="flex items-center">
+            {/* 左側圖片，點擊回到首頁 */}
+            <a href="https://example.com" className="inline-flex">
+                <img
+                src={leftFirstHeader}
+                alt="First Header Logo"
+                className="header-left-logo"
+                />
+            </a>
+            <a href="https://example.com" className="inline-flex">
+                <img
+                src={leftSecondHeader}
+                alt="Second Header Logo"
+                className="header-right-logo"
+                />
+            </a>
+        </div>
         {/* 右側按鈕 */}
-            <div className="flex space-x-4">
-                <a href="#" className="bg-white rounded px-4 py-2 text-black text-sm font-bold">會員申請</a>
-                <a href="#" className="bg-white rounded px-4 py-2 text-black text-sm font-bold">登入</a>
+        <div className="header-buttons">
+            <a href="#" className="header-button">會員申請</a>
+            <a href="#" className="header-button">登入</a>
+        </div>
+        </div>
+         {/* 目錄 */}
+            <div className="menu-container">
+                <ul className="menu-list">
+                <li>首頁</li>
+                <li>好禮活動</li>
+                <li>註冊教學</li>
+                <li>變更經銷商</li>
+                <li>關於我們</li>
+                </ul>
             </div>
-        </div>
-        {/* 目錄 */}
-        <div className="-mt-3.5">
-            <ul className="flex space-x-4 justify-center items-center mx-48  gap-x-16 h-8 rounded-md bg-red-500 text-white text-xl font-bold">
-                <li className="">首頁</li>
-                <li className="">好禮活動</li>
-                <li className="">註冊教學</li>
-                <li className="">變更經銷商</li>
-                <li className="">關於我們</li>
-            </ul>
-        </div>
     </div>
   );
 }
