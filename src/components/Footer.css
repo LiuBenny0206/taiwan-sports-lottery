@@ -1,0 +1,17 @@
+.footer a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .footer a:hover {
+    color: white; /* 滑鼠懸停時改變文字顏色 */
+  }
+  
+  .footer div {
+    font-size: 1.5rem; /* 圖示大小 */
+  }
+  
+  .footer span {
+    font-size: 0.75rem; /* 文字大小 */
+  }
+  

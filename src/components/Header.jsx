@@ -16,14 +16,14 @@ function Header(props) {
         {/* 左側圖片，點擊回到首頁 */}
         <div className="flex items-center">
             {/* 左側圖片，點擊回到首頁 */}
-            <a href="https://example.com" className="inline-flex">
+            <a href="/" className="inline-flex">
                 <img
                 src={leftFirstHeader}
                 alt="First Header Logo"
                 className="header-left-logo"
                 />
             </a>
-            <a href="https://example.com" className="inline-flex">
+            <a href="/" className="inline-flex">
                 <img
                 src={leftSecondHeader}
                 alt="Second Header Logo"
