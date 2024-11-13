@@ -33,14 +33,14 @@ function Header(props) {
         </div>
         {/* 右側按鈕 */}
         <div className="header-buttons">
-            <a href="#" className="header-button">會員申請</a>
-            <a href="#" className="header-button">登入</a>
+            <a href="https://channel.sportslottery.com.tw/zh-tw/register/step1?retailerid=93179171" className="header-button">會員申請</a>
+            <a href="https://member.sportslottery.com.tw/login" className="header-button">登入</a>
         </div>
         </div>
          {/* 目錄 */}
             <div className="menu-container">
                 <ul className="menu-list">
-                <li>首頁</li>
+                <a href="/" >首頁</a>
                 <li>好禮活動</li>
                 <li>註冊教學</li>
                 <li>變更經銷商</li>
