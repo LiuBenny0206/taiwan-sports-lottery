@@ -1,17 +1,45 @@
-.footer a {
-    text-decoration: none;
-    color: black;
-  }
+.footer-icon {
+  height: 24px; /* 設置圖片高度 */
+  margin: 0 auto; /* 圖片居中 */
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+}
+
+
+
+.footer-center {
+  position: relative; /* 用於控制絕對定位 */
+  top: -20px; /* 突出到 Footer 外 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.outline-of-register{
+  background-color: rgba(255, 255, 255, 0.5); /* 白色，50% 透明度 */
+  border-radius: 50%; /* 圓形按鈕 */
+  border: 2px solid  #ff4b4b; /* 白色邊框 */  
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 陰影效果 */
+  width: 95%;
+  height: 130px;
+
+}
+
+.register-icon {
+  width: 100%; /* 調整圖片大小 */
+  height: 100px;
+  position: relative;
+  top: -0.3rem;
+  padding-top: 20px;
+}
+
   
-  .footer a:hover {
-    color: white; /* 滑鼠懸停時改變文字顏色 */
-  }
-  
-  .footer div {
-    font-size: 1.5rem; /* 圖示大小 */
-  }
-  
-  .footer span {
-    font-size: 0.75rem; /* 文字大小 */
-  }
-  
+
