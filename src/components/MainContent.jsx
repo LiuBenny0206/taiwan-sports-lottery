@@ -58,7 +58,7 @@ function Carousel() {
 
 function ContentArea() {
   return (
-    <div className="content flex flex-col md:flex-row justify-between mt-4 w-full">
+    <div className="content flex flex-col md:flex-row justify-between mt-4 w-full ">
       {/* Left Section */}
       <div className="left-content bg-gray-100 p-4 w-1/2">
         左側內容
