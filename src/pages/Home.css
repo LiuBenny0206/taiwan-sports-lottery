@@ -1,0 +1,57 @@
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-inner {
+  margin: 0 auto; /* 水平居中 */
+  width: 100%;
+}
+
+.carousel-item img {
+  width: 100%; /* 讓圖片寬度適應父容器 */
+  height: 80vh; /* 讓圖片高度適應父容器 */
+  object-fit: contain; /* 圖片按比例填滿容器，裁剪多餘部分 */
+}
+
+.left-content {
+  width: 100%;
+  max-width: 600px; /* 最大寬度（根據需要調整） */
+  min-width: 200px;
+}
+
+
+.right-content img {
+  width: 100%; /* 設置寬度為父容器的寬度 */
+  max-width: 550px; /* 最大寬度（根據需要調整） */
+  min-width: 200px;
+  height: auto; /* 高度自動，保持圖片比例 */
+  object-fit: contain; /* 確保圖片內容完整且不裁剪 */
+  margin-bottom: 1rem; /* 圖片之間增加間距 */
+}
+
+
+
+@media (max-width: 1024px) {
+  .carousel-item img {
+   height: 70vh;
+  }
+}
+@media (max-width: 768px) {
+  .carousel-item img {
+   height: 50vh;
+  }
+}
+
+@media (max-width: 425px) {
+  .carousel-item img {
+   height: 25vh;
+  }
+}
+
+
+@media (max-width: 320px) {
+  .carousel-item img {
+   height: 20vh;
+  }
+}

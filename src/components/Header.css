@@ -169,8 +169,8 @@
         object-fit: cover;
       }
     .menu-container {
-        margin-left: 4rem;
-        margin-right: 4rem;
+        margin-left: 2.5rem;
+        margin-right: 2.5rem;
       }
     .menu-list {
         gap: 1.5rem; /* 相當於 gap-x-16 */
@@ -233,7 +233,7 @@
 
     }
     .menu-list {
-        font-size: 0.65rem; /* Tailwind 的 text-xl */
+        font-size: 0.75rem; /* Tailwind 的 text-xl */
         gap: 1rem; /* 相當於 gap-x-16 */
     }
   }
@@ -264,7 +264,7 @@
         margin-right: 2rem;
     }
     .menu-list {
-        font-size: 0.55rem; /* Tailwind 的 text-xl */
+        font-size: 0.75rem; /* Tailwind 的 text-xl */
         gap: 1rem; /* 相當於 gap-x-16 */
     }
   }
