@@ -1,301 +1,184 @@
+/* Header 容器 */
 .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 8rem; /* Tailwind 中的 h-32 相當於 8rem */
-    padding: 1rem 2rem; /* Tailwind 的 px-8 和 py-4 分別為 2rem 和 1rem */
-    background-color: white;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    background-size: cover;
-    background-position: center;
-  }
-
-.header-left-logo {
-    height: 110px;
-    object-fit: cover;
-  }
-  
-.header-right-logo {
-    height: 150px;
-    width: auto; /* 保持圖片寬度自適應 */
-    object-fit: cover;
-  }
-
-.header-buttons {
-    display: flex;
-    gap: 1rem; /* 這相當於 Tailwind 的 space-x-4 */
-  }
-  
-.header-button {
-    background-color: white;
-    border-radius: 4px;
-    padding: 0.5rem 1rem; /* Tailwind 的 px-4 py-2 */
-    color: black;
-    font-size: 0.875rem; /* Tailwind 的 text-sm */
-    font-weight: bold;
-    text-decoration: none;
-  }
-
-  /* 目錄容器 */
-.menu-container {
-    margin-top: -0.875rem; /* Tailwind 的 -mt-3.5 */
-    margin-left: 12rem;
-    margin-right: 12rem;
-  }
-  
-  /* 目錄列表 */
-.menu-list {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 2rem; /* Tailwind 的 h-8 */
-    border-radius: 0.375rem; /* Tailwind 的 rounded-md */
-    background-color: #ff4b4b; /* Tailwind 的 bg-red-500 */
-    color: white;
-    font-size: 1.25rem; /* Tailwind 的 text-xl */
-    font-weight: bold;
-    gap: 4rem; /* 相當於 gap-x-16 */
-  }
-  
-  /* 列表項目 */
-.menu-list li {
-    list-style: none;
-    /* 可以根據需要添加其他樣式 */
-  }
-
-
-
-
-@media (max-width: 1025px) {
-    .menu-list {
-        gap: 3rem; /* 相當於 gap-x-16 */
-    }
-  }
-
-@media (max-width: 960px) {
-    .menu-container {
-        margin-top: -1.2rem; /* Tailwind 的 -mt-3.5 */
-        margin-left: 6rem;
-        margin-right: 6rem;
-      }
-    .menu-list {
-        gap: 3rem; /* 相當於 gap-x-16 */
-        height: 2rem; /* Tailwind 的 h-8 */
-    }
-  }
-
-@media (max-width: 800px) {
-    .menu-container {
-        margin-top: -1.2rem; /* Tailwind 的 -mt-3.5 */
-        margin-left: 3rem;
-        margin-right: 3rem;
-      }
-  }
-
-@media (max-width: 690px) {
-    .header-left-logo {
-        height: 90px;
-        object-fit: cover;
-      }
-      
-    .header-right-logo {
-        height: 120px;
-        width: auto; /* 保持圖片寬度自適應 */
-        object-fit: cover;
-      }
-    .menu-container {
-        margin-left: 3rem;
-        margin-right: 3rem;
-      }
-    .menu-list {
-        gap: 2rem; /* 相當於 gap-x-16 */
-        height: 2rem; /* Tailwind 的 h-8 */
-    }
-  }
-@media (max-width: 605px) {
-    .header-left-logo {
-        height: 90px;
-        object-fit: cover;
-      }
-      
-    .header-right-logo {
-        height: 120px;
-        width: auto; /* 保持圖片寬度自適應 */
-        object-fit: cover;
-      }
-    .header-button {
-        padding: 0.4rem 0.8rem; /* Tailwind 的 px-4 py-2 */
-    }
-    .menu-container {
-        margin-left: 1rem;
-        margin-right: 1rem;
-      }
-    .menu-list {
-        gap: 2rem; /* 相當於 gap-x-16 */
-        height: 2rem; /* Tailwind 的 h-8 */
-        font-size: 1rem; /* Tailwind 的 text-xl */
-
-    }
-  }
-@media (max-width: 500px) {
-    .header-left-logo {
-        height: 70px;
-        object-fit: cover;
-      }
-      
-    .header-right-logo {
-        height: 90px;
-        width: auto; /* 保持圖片寬度自適應 */
-        object-fit: cover;
-      }
-    
-    .header-button{
-        font-size: 0.675rem; /* Tailwind 的 text-sm */
-    }
-    .menu-list {
-        font-size: 1rem; /* Tailwind 的 text-xl */
-        gap: 1.8rem; /* 相當於 gap-x-16 */
-    }
-  }
-
-  @media (max-width: 490px) {
-    .header-left-logo {
-        height: 60px;
-        object-fit: cover;
-      }
-    .header-right-logo {
-        height: 90px;
-        width: auto; /* 保持圖片寬度自適應 */
-        object-fit: cover;
-      }
-    .menu-container {
-        margin-left: 2.5rem;
-        margin-right: 2.5rem;
-      }
-    .menu-list {
-        gap: 1.5rem; /* 相當於 gap-x-16 */
-        font-size: 0.8rem; /* Tailwind 的 text-xl */
-    }
-  }
-@media (max-width: 470px) {
-    .menu-list {
-        gap: 1.2rem; /* 相當於 gap-x-16 */
-        font-size: 0.8rem; /* Tailwind 的 text-xl */
-    }
+  position: fixed; /* 固定在页面顶部 */
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 7rem;
+  width: 100%; /* 占满宽度 */
+  padding: 1rem 2rem;
+  background-color: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  background-size: cover;
+  background-position: center;
+  transition: background-color 0.3s ease-in-out;
 }
-  /* 針對 425px 到 470px 之間的樣式 */
-  @media (min-width: 426px) and (max-width: 469px) {
-    .header-left-logo {
-      height: 70px;
-      object-fit: cover;
-    }
-    
-    .header-right-logo {
-      height: 100px;
-      width: auto;
-      object-fit: cover;
-    }
-    
-    .header-buttons {
-      gap: 0.7rem; /* 調整按鈕間距 */
-    }
-    
-    .header-button {
-      padding: 0.3rem 0.4rem;
-      font-size: 0.6rem;
-    }
-    
-    .menu-list {
-      font-size: 0.75rem;
-      gap: 1.2rem;
-    }
+
+/* LOGO */
+.header-left-logo {
+  height: 130px;
+  object-fit: cover;
+}
+
+/* 按钮区域 */
+.header-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-button {
+  font-size: 18px;
+  font-weight: 900;
+  font-family: 'Roboto', sans-serif;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.1);
+  text-shadow: 0 0 1px black;
+  transition: all 0.3s ease;
+}
+
+.header-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: rgb(233, 70, 70);
+}
+
+/* 按钮之间的分隔线 */
+.divider {
+  border-left: 1px solid white;
+  height: 20px;
+  margin: 0 5px;
+}
+
+/* 图标间距 */
+.icon {
+  margin-right: 5px;
+}
+
+/* 菜单容器 */
+.menu-container {
+  position: fixed;
+  top: 7rem;
+  z-index: 999;
+  background-color: #ff3535;
+  color: white;
+  width: 100%;
+  max-height: 500px; /* 最大高度，足够显示所有内容 */
+  overflow: hidden; /* 防止溢出 */
+  transition: max-height 0.5s ease, opacity 0.5s ease; /* 添加动画 */
+  opacity: 1; /* 默认完全可见 */
+}
+
+.menu-container.hidden {
+  max-height: 0; /* 收缩到 0 高度 */
+  opacity: 0; /* 渐变透明 */
+}
+
+.menu-container.visible {
+  max-height: 500px; /* 恢复最大高度 */
+  opacity: 1; /* 完全可见 */
+}
+
+/* 菜单列表样式 */
+.menu-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  gap: 4rem;
+  padding: 1.5rem 0;
+}
+
+.menu-list li {
+  list-style: none;
+}
+
+.menu-item {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.menu-item:hover {
+  color: yellow;
+}
+
+/* 漢堡按鈕樣式 */
+.mobile-menu-toggle {
+  display: none; /* 默認隱藏 */
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: black; /* 可自定義顏色 */
+}
+
+/* 按鈕組 (桌面端可見) */
+.header-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 響應式設計：小於 765px */
+@media (max-width: 765px) {
+  /* Header 容器調整 */
+  .header-container {
+    height: auto; /* 自適應高度 */
+    flex-direction: column; /* 改為垂直排列 */
+    justify-content: center; /* 垂直置中 */
+    align-items: center; /* 水平置中 */
+    padding: 1rem; /* 添加內邊距 */
+    text-align: center; /* 文字居中對齊 */
   }
 
-@media (max-width: 425px) {
-    .header-container {
-        padding: 0.5rem 1.8rem; /* Tailwind 的 px-8 和 py-4 分別為 2rem 和 1rem */
-    }
-    .header-left-logo {
-        height: 60px;
-        object-fit: cover;
-      }
-    .header-right-logo {
-        height: 85px;
-        width: auto; /* 保持圖片寬度自適應 */
-        object-fit: cover;
-      }
-    .header-buttons {
-        gap: 0.4rem;
-    }
-    .header-button {
-        padding: 0.3rem 0.6rem; 
-        font-size: 0.50rem; 
-
-    }
-    .menu-list {
-        font-size: 0.75rem; /* Tailwind 的 text-xl */
-        gap: 1rem; /* 相當於 gap-x-16 */
-    }
+  /* LOGO 大小調整 */
+  .header-left-logo {
+    height: 80px; /* 調整 LOGO 尺寸 */
   }
 
-  @media (max-width: 375px) {
-    .header-container {
-        padding: 0.2rem 1rem; /* Tailwind 的 px-8 和 py-4 分別為 2rem 和 1rem */
-    }
-    .header-left-logo {
-        height: 50px;
-        object-fit: cover;
-      }
-    .header-right-logo {
-        height: 65px;
-        width: auto; /* 保持圖片寬度自適應 */
-        object-fit: cover;
-      }
-    .header-buttons {
-        gap: 0.4rem;
-    }
-    .header-button {
-        padding: 0.2rem 0.5rem; 
-        font-size: 0.45rem; 
-
-    }
-    .menu-container {
-        margin-left: 2rem;
-        margin-right: 2rem;
-    }
-    .menu-list {
-        font-size: 0.75rem; /* Tailwind 的 text-xl */
-        gap: 1rem; /* 相當於 gap-x-16 */
-    }
+  /* 隱藏按鈕組 */
+  .header-buttons {
+    display: none; /* 隱藏桌面按鈕 */
   }
 
-@media (max-width: 320px) {
-    .header-container {
-        padding: 0.2rem 1rem; /* Tailwind 的 px-8 和 py-4 分別為 2rem 和 1rem */
-    }
-    .header-left-logo {
-        height: 50px;
-        object-fit: cover;
-      }
-    .header-right-logo {
-        height: 65px;
-        width: auto; /* 保持圖片寬度自適應 */
-        object-fit: cover;
-      }
-    .header-buttons {
-        gap: 0.5rem;
-    }
-    .header-button {
-        padding: 0.2rem 0.5rem; 
-        font-size: 0.45rem; 
-
-    }
-    .menu-container {
-        margin-left: 2rem;
-        margin-right: 2rem;
-    }
-    .menu-list {
-        font-size: 0.55rem; /* Tailwind 的 text-xl */
-        gap: 1rem; /* 相當於 gap-x-16 */
-    }
+  /* 顯示漢堡按鈕 */
+  .mobile-menu-toggle {
+    display: block; /* 顯示漢堡按鈕 */
   }
+
+  /* 菜單樣式調整 */
+  .menu-container {
+    display: none; /* 預設隱藏選單 */
+    position: absolute;
+    top: 7rem;
+    left: 0;
+    width: 100%;
+    background-color: #ff3535;
+    color: white;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+    z-index: 1000;
+  }
+
+  /* 展開選單時 */
+  .menu-container.visible {
+    display: block; /* 漢堡菜單展開時顯示 */
+  }
+
+  /* 調整選單項目 */
+  .menu-list {
+    flex-direction: column; /* 垂直排列 */
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    font-size: 1rem; /* 減小字體大小 */
+  }
+}
