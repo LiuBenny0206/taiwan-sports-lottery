@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import headerBackground from "../images/header-background拷貝.png";
 import leftFirstHeader from "../images/FirstLeftHeader.png";
-import './Header.css';
+import "./Header.css";
 
 const menuItems = [
   { label: "首頁", path: "/" },
@@ -15,79 +15,57 @@ const menuItems = [
 function Header() {
   const [isMenuVisible, setIsMenuVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const menuRef = useRef(null); // 用于获取菜单高度
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const menuRef = useRef(null);
   const [menuHeight, setMenuHeight] = useState(0);
 
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
-
-    if (currentScrollY > lastScrollY && currentScrollY > 100) {
-      setIsMenuVisible(false); // 隐藏菜单
-    } else if (currentScrollY < lastScrollY || currentScrollY <= 100) {
-      setIsMenuVisible(true); // 显示菜单
-    }
-
+    setIsMenuVisible(currentScrollY < lastScrollY || currentScrollY <= 0);
     setLastScrollY(currentScrollY);
   };
 
-  useEffect(() => {
-    // 监听滚动事件
-    window.addEventListener("scroll", handleScroll);
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen((prev) => !prev);
+  };
 
-    // 获取菜单实际高度
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
     if (menuRef.current) {
       setMenuHeight(menuRef.current.scrollHeight);
     }
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
   return (
-    <div>
-      {/* Header 上半部分 */}
+    <>
+      {/* Header 容器 */}
       <div
-        className="header-container"
-        style={{
-          backgroundImage: `url(${headerBackground})`,
-        }}
+        className={`header-container ${!isMenuVisible ? "hidden" : ""}`}
+        style={{ backgroundImage: `url(${headerBackground})` }}
       >
-        <div className="flex items-center">
-          <Link to="/" className="inline-flex">
-            <img
-              src={leftFirstHeader}
-              alt="First Header Logo"
-              className="header-left-logo"
-            />
-          </Link>
-        </div>
+        <Link to="/" className="header-left-logo">
+          <img src={leftFirstHeader} alt="Header Logo" />
+        </Link>
 
+        {/* 桌面版按鈕 */}
         <div className="header-buttons">
-          <a
-            href="https://channel.sportslottery.com.tw/zh-tw/register/step1?retailerid=93179171"
-            className="header-button"
-          >
-            會員註冊
-          </a>
+          <a href="#" className="header-button">會員註冊</a>
           <div className="divider"></div>
-          <a
-            href="https://member.sportslottery.com.tw/login"
-            className="header-button"
-          >
-            會員登入
-          </a>
+          <a href="#" className="header-button">會員登入</a>
           <div className="divider"></div>
-          <a
-            href="https://member.sportslottery.com.tw/login"
-            className="header-button"
-          >
+          <a href="#" className="header-button">
             <span className="icon">👤</span> APP會員專區
           </a>
         </div>
+
+        {/* 漢堡按鈕 */}
+        <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
+          ☰
+        </button>
       </div>
 
-      {/* Header 菜单部分 */}
+      {/* 桌面版菜單 */}
       <div
         ref={menuRef}
         className="menu-container"
@@ -108,7 +86,29 @@ function Header() {
           ))}
         </ul>
       </div>
-    </div>
+
+      {/* 手機版菜單 */}
+      <div className={`mobile-menu ${isMobileMenuOpen ? "open" : ""}`}>
+        <button className="close-mobile-menu" onClick={toggleMobileMenu}>
+          ×
+        </button>
+        <ul className="menu-list">
+          {menuItems.map((item, index) => (
+            <li key={index}>
+              <Link to={item.path} className="menu-item" onClick={toggleMobileMenu}>
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        {/* 新增手機會員註冊與登入按鈕 */}
+        <div className="mobile-menu-footer">
+          <a href="#" className="mobile-menu-button">會員註冊</a>
+          <a href="#" className="mobile-menu-button">會員登入</a>
+        </div>
+      </div>
+    </>
   );
 }
 

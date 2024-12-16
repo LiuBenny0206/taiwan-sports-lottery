@@ -1,32 +1,28 @@
 /* Header 容器 */
 .header-container {
-  position: fixed; /* 固定在页面顶部 */
+  position: fixed;
   top: 0;
   z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 7rem;
-  width: 100%; /* 占满宽度 */
-  padding: 1rem 2rem;
+  width: 100%;
+  padding: 0 2rem;
   background-color: white;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   background-size: cover;
-  background-position: center;
-  transition: background-color 0.3s ease-in-out;
 }
 
 /* LOGO */
-.header-left-logo {
-  height: 130px;
+.header-left-logo img {
+  height: 110px;
   object-fit: cover;
 }
 
-/* 按钮区域 */
+/* 桌面版按鈕 */
 .header-buttons {
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
   gap: 10px;
 }
 
@@ -55,45 +51,29 @@
   margin: 0 5px;
 }
 
-/* 图标间距 */
-.icon {
-  margin-right: 5px;
-}
-
-/* 菜单容器 */
+/* 菜单容器 (桌面版) */
 .menu-container {
-  position: fixed;
-  top: 7rem;
-  z-index: 999;
+  margin-top: 7rem;
   background-color: #ff3535;
   color: white;
-  width: 100%;
-  max-height: 500px; /* 最大高度，足够显示所有内容 */
-  overflow: hidden; /* 防止溢出 */
-  transition: max-height 0.5s ease, opacity 0.5s ease; /* 添加动画 */
-  opacity: 1; /* 默认完全可见 */
+  overflow: hidden;
+  max-height: 500px;
+  opacity: 1;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
 }
 
 .menu-container.hidden {
-  max-height: 0; /* 收缩到 0 高度 */
-  opacity: 0; /* 渐变透明 */
+  max-height: 0;
+  opacity: 0;
 }
 
-.menu-container.visible {
-  max-height: 500px; /* 恢复最大高度 */
-  opacity: 1; /* 完全可见 */
-}
-
-/* 菜单列表样式 */
 .menu-list {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 2rem;
+  gap: 4rem;
+  padding: 0.5rem;
   font-size: 1.25rem;
   font-weight: bold;
-  gap: 4rem;
-  padding: 1.5rem 0;
 }
 
 .menu-list li {
@@ -103,82 +83,144 @@
 .menu-item {
   color: white;
   text-decoration: none;
-  transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease;
 }
 
 .menu-item:hover {
   color: yellow;
 }
 
-/* 漢堡按鈕樣式 */
+/* 手機版漢堡按鈕 */
 .mobile-menu-toggle {
-  display: none; /* 默認隱藏 */
+  display: none;
   background: none;
   border: none;
   font-size: 2rem;
   cursor: pointer;
-  color: black; /* 可自定義顏色 */
+  color: black;
+  z-index: 1001;
 }
 
-/* 按鈕組 (桌面端可見) */
-.header-buttons {
+/* 手機版菜單 */
+.mobile-menu {
+  position: fixed;
+  top: 7rem; /* 從 Header 下方開始 */
+  right: -100%; /* 預設隱藏在右側 */
+  width: 100%;
+  height: calc(100% - 7rem); /* 扣掉 Header 高度 */
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  padding: 2rem 1.5rem;
+  transition: right 0.3s ease-in-out;
+  z-index: 999; /* 確保在 Header 下方 */
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.3);
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mobile-menu.open {
+  right: 0; /* 滑入畫面 */
+}
+
+.mobile-menu .menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 700; /* 字體加粗 */
+  margin-top: 1rem;
+}
+
+.mobile-menu .menu-item {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.mobile-menu .menu-list li {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1); /* 添加分隔線 */
+  padding-bottom: 0.5rem;
+}
+
+.mobile-menu .menu-list li:last-child {
+  border-bottom: none; /* 移除最後一個的分隔線 */
+}
+
+.mobile-menu .menu-item:hover {
+  color: yellow;
+  background-color: rgba(255, 0, 0, 0.1); /* 添加背景顏色 */
+  border-radius: 5px;
+  padding: 0.5rem;
+  transition: all 0.3s ease; /* 平滑過渡 */
+}
+
+.mobile-menu .close-mobile-menu {
+  font-size: 2rem;
+  background: none;
+  color: rgb(255, 255, 255);
+  border: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
+
+/* 手機版底部按鈕 */
+.mobile-menu-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mobile-menu-button {
+  display: block;
+  text-align: center;
+  color: white;
+  font-size: 1.2rem;
+  padding: 1rem 0;
+  background: linear-gradient(to right, #ff3535, #e60000); /* 漸變背景 */
+  border: 1px solid #e60000;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* 陰影效果 */
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-button:hover {
+  background: #ff4d4d;
+  color: rgb(255, 255, 255);
+  transform: translateY(-2px); /* 按鈕輕微向上移動 */
 }
 
 /* 響應式設計：小於 765px */
 @media (max-width: 765px) {
-  /* Header 容器調整 */
   .header-container {
-    height: auto; /* 自適應高度 */
-    flex-direction: column; /* 改為垂直排列 */
-    justify-content: center; /* 垂直置中 */
-    align-items: center; /* 水平置中 */
-    padding: 1rem; /* 添加內邊距 */
-    text-align: center; /* 文字居中對齊 */
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
   }
 
-  /* LOGO 大小調整 */
-  .header-left-logo {
-    height: 80px; /* 調整 LOGO 尺寸 */
+  .header-left-logo img {
+    height: 80px;
   }
 
-  /* 隱藏按鈕組 */
   .header-buttons {
-    display: none; /* 隱藏桌面按鈕 */
+    display: none; /* 隱藏桌面版按鈕 */
   }
 
-  /* 顯示漢堡按鈕 */
   .mobile-menu-toggle {
     display: block; /* 顯示漢堡按鈕 */
-  }
-
-  /* 菜單樣式調整 */
-  .menu-container {
-    display: none; /* 預設隱藏選單 */
     position: absolute;
-    top: 7rem;
-    left: 0;
-    width: 100%;
-    background-color: #ff3535;
-    color: white;
-    transition: max-height 0.5s ease, opacity 0.5s ease;
-    z-index: 1000;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
   }
 
-  /* 展開選單時 */
-  .menu-container.visible {
-    display: block; /* 漢堡菜單展開時顯示 */
-  }
-
-  /* 調整選單項目 */
-  .menu-list {
-    flex-direction: column; /* 垂直排列 */
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1rem;
-    font-size: 1rem; /* 減小字體大小 */
+  /* 隱藏桌面版菜單 */
+  .menu-container {
+    display: none;
   }
 }
