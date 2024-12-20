@@ -9,9 +9,8 @@
   height: 7rem;
   width: 100%;
   padding: 0 2rem;
-  background-color: white;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  background-size: cover;
+  background: linear-gradient(to top, #f1e209, #ffd900);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 向下的輕柔陰影 */
 }
 
 /* LOGO */
@@ -54,12 +53,16 @@
 /* 菜单容器 (桌面版) */
 .menu-container {
   margin-top: 7rem;
-  background-color: #ff3535;
+  background: linear-gradient(to top, #fa5959, #fa4747);
   color: white;
   overflow: hidden;
   max-height: 500px;
   opacity: 1;
   transition: max-height 0.5s ease, opacity 0.5s ease;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-radius: 20px;
+
 }
 
 .menu-container.hidden {

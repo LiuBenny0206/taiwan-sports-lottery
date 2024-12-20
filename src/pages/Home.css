@@ -1,58 +1,124 @@
-.carousel-container {
-  width: 100%;
-  overflow: hidden;
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem auto;
+  padding: 1rem;
+  gap: 2rem;
 }
 
-.carousel-inner {
-  margin: 0 auto; /* 水平居中 */
+/* 顶部区域 */
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   width: 100%;
+  max-width: 1200px;
+  gap: 1rem;
+}
+
+/* Carousel 区域 */
+.carousel-section {
+  flex: 2; /* 占2/3的宽度 */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-inner img {
+  width: 100%; /* 保持宽度适应容器 */
+  height: auto; /* 自动调整高度 */
+  max-height: 60vh; /* 最大高度限制 */
+  object-fit: contain; /* 按比例缩放图片，显示完整内容 */
   border-radius: 10px;
 }
 
-.carousel-item img {
-  width: 100%; /* 讓圖片寬度適應父容器 */
-  height: 80vh; /* 讓圖片高度適應父容器 */
-  object-fit: contain; /* 圖片按比例填滿容器，裁剪多餘部分 */
+/* 粉紅色區域 */
+.pink-section {
+  flex: 1; /* 占1/3的宽度 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(to top, #fadc7a, #ffcd82);
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
 }
 
-.left-content {
+/* 底部区域 */
+.bottom-section {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* 自动换行 */
   width: 100%;
-  max-width: 600px; /* 最大寬度（根據需要調整） */
-  min-width: 200px;
+  max-width: 1200px;
+  gap: 1rem; /* 添加间距 */
 }
 
-
-.right-content img {
-  width: 100%; /* 設置寬度為父容器的寬度 */
-  max-width: 550px; /* 最大寬度（根據需要調整） */
-  min-width: 200px;
-  height: auto; /* 高度自動，保持圖片比例 */
-  object-fit: contain; /* 確保圖片內容完整且不裁剪 */
-  margin-bottom: 1rem; /* 圖片之間增加間距 */
+.small-image {
+  flex: 1 1 calc(33.33% - 1rem); /* 三等分 */
+  max-width: calc(33.33% - 1rem);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-
-
-@media (max-width: 1024px) {
-  .carousel-item img {
-   height: 70vh;
-  }
+.small-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.small-image img:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 响应式设计 */
 @media (max-width: 768px) {
-  .carousel-item img {
-   height: 50vh;
+  .top-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .carousel-section,
+  .pink-section {
+    width: 100%;
+  }
+
+  .carousel-inner {
+    margin-top: 50px;
+  }
+
+  .carousel-inner img {
+    height: 45vh; /* 调整高度 */
+  }
+
+  .bottom-section {
+    gap: 0.5rem;
+  }
+
+  .small-image {
+    flex: 1 1 calc(50% - 0.5rem); /* 两等分 */
+    max-width: calc(50% - 0.5rem);
   }
 }
 
-@media (max-width: 425px) {
-  .carousel-item img {
-   height: 25vh;
+@media (max-width: 480px) {
+  .small-image {
+    flex: 1 1 100%; /* 单列 */
+    max-width: 100%;
   }
-}
 
+  .carousel-inner {
+    margin-top: 50px;
+  }
 
-@media (max-width: 320px) {
-  .carousel-item img {
-   height: 20vh;
+  .carousel-inner img {
+    height: 30vh;
   }
 }

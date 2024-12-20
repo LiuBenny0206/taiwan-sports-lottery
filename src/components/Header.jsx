@@ -42,7 +42,6 @@ function Header() {
       {/* Header 容器 */}
       <div
         className={`header-container ${!isMenuVisible ? "hidden" : ""}`}
-        style={{ backgroundImage: `url(${headerBackground})` }}
       >
         <Link to="/" className="header-left-logo">
           <img src={leftFirstHeader} alt="Header Logo" />
