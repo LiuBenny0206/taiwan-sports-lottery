@@ -4,6 +4,7 @@
   align-items: center;
   padding: 1rem;
   gap: 2rem;
+  background: linear-gradient(180deg,#fcf8cc 0,#ffeb83);
 }
 
 /* 顶部区域 */
@@ -21,7 +22,6 @@
   flex: 2; /* 占2/3的宽度 */
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .carousel-inner img {
@@ -38,14 +38,14 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: linear-gradient(to top, #fadc7a, #ffcd82);
+  background: linear-gradient(to top, #0859f0, #ffcd82);
   border-radius: 10px;
   padding: 1.5rem;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   color: white;
   font-size: 1.2rem;
   font-weight: bold;
   text-align: center;
+  height: 20rem;
 }
 
 /* 底部区域 */
@@ -74,7 +74,6 @@
 
 .small-image img:hover {
   transform: scale(1.05);
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* 响应式设计 */

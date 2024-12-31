@@ -46,7 +46,7 @@ function Carousel() {
 function PinkBox() {
   return (
     <div className="pink-box">
-      <h2>粉紅色內容區</h2>
+      <h2>藍色內容區</h2>
       {/* 在這裡填充具體內容 */}
     </div>
   );
