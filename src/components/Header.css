@@ -59,7 +59,6 @@
   padding: 0 4.5rem;
   transition: max-height 0.5s ease, opacity 0.5s ease;
   box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
-  z-index: 1000; /* 確保比 home-container 高 */
   position: relative; /* 為了讓 z-index 生效，需設置 position */
 }
 
@@ -75,10 +74,12 @@
   font-size: 1.25rem;
   font-weight: bold;
   text-shadow: 0 0 1px black;
+
 }
 
 .menu-list li {
   list-style: none;
+
 }
 
 .menu-item {
@@ -194,8 +195,8 @@
   transform: translateY(-2px); /* 按鈕輕微向上移動 */
 }
 
-/* 響應式設計：小於 765px */
-@media (max-width: 765px) {
+/* 響應式設計：小於 768px */
+@media (max-width: 768px) {
   .header-container {
     height: auto;
     justify-content: center;
@@ -214,7 +215,7 @@
     display: block; /* 顯示漢堡按鈕 */
     position: absolute;
     top: 50%;
-    right: 1rem;
+    right: 2.5rem;
     transform: translateY(-50%);
   }
 

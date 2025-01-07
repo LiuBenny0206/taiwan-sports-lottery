@@ -19,23 +19,29 @@ function Header() {
   const menuRef = useRef(null);
   const [menuHeight, setMenuHeight] = useState(0);
 
-  const handleScroll = () => {
-    const currentScrollY = window.scrollY;
-    setIsMenuVisible(currentScrollY < lastScrollY || currentScrollY <= 0);
-    setLastScrollY(currentScrollY);
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (Math.abs(currentScrollY - lastScrollY) > 50) {
+        setIsMenuVisible(currentScrollY < lastScrollY || currentScrollY <= 0);
+        setLastScrollY(currentScrollY);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    if (menuRef.current) {
+      setMenuHeight(menuRef.current.scrollHeight);
+    }
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((prev) => !prev);
   };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    if (menuRef.current) {
-      setMenuHeight(menuRef.current.scrollHeight);
-    }
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
 
   return (
     <>

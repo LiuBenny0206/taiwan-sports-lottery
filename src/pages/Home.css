@@ -1,43 +1,59 @@
+/* Home 主容器 */
 .home-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 1rem;
-  gap: 2rem;
-  background: linear-gradient(180deg,#fcf8cc 0,#ffeb83);
+  gap: 1.5rem; /* 減少 gap */
+  background: linear-gradient(180deg, #fcf8cc 0, #ffeb83);
 }
 
-/* 顶部区域 */
+/* 區域通用樣式 */
+section {
+  width: 100%;
+  max-width: 1350px; /* 限制最大寬度 */
+  margin: 0 auto;
+  padding: 1.5rem; /* 減少 padding */
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  background: white;
+}
+
+/* 第一區域 */
 .top-section {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  width: 100%;
-  max-width: 1200px;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
-/* Carousel 区域 */
 .carousel-section {
-  flex: 2; /* 占2/3的宽度 */
+  flex: 2;
   border-radius: 10px;
   overflow: hidden;
 }
 
 .carousel-inner img {
-  width: 100%; /* 保持宽度适应容器 */
-  height: auto; /* 自动调整高度 */
-  max-height: 60vh; /* 最大高度限制 */
-  object-fit: contain; /* 按比例缩放图片，显示完整内容 */
+  width: 100%;
+  height: auto;
+  max-height: 60vh;
+  object-fit: contain;
   border-radius: 10px;
 }
 
 /* 粉紅色區域 */
 .pink-section {
-  flex: 1; /* 占1/3的宽度 */
+  width: 100%;
+  max-width: 400px; /* 跟隨粉紅區塊一致 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pink-box {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   background: linear-gradient(to top, #0859f0, #ffcd82);
   border-radius: 10px;
   padding: 1.5rem;
@@ -45,21 +61,73 @@
   font-size: 1.2rem;
   font-weight: bold;
   text-align: center;
-  height: 20rem;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 400px; /* 限制最大寬度 */  height: 375px;
+
 }
 
-/* 底部区域 */
-.bottom-section {
+.fb-page {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.two-column-buttons {
+  width: 100%; /* 跟隨父容器 */
+  max-width: 400px; /* 限制最大寬度與粉紅區塊一致 */
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap; /* 自动换行 */
-  width: 100%;
-  max-width: 1200px;
-  gap: 1rem; /* 添加间距 */
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.column-button {
+  flex: 1;
+  padding: 0.8rem;
+  font-size: 1rem;
+  color: rgb(0, 0, 0);
+  font-weight: 900; /* 設置為最粗字重 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* 陰影效果 */
+  background: linear-gradient(135deg, #ff9a3c, #ff6a00);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+}
+
+.column-button:hover {
+  background: linear-gradient(135deg, #ffb347, #ff8008);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.column-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.column-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 138, 0, 0.5);
+}
+/* 第二區域 (小圖片 - 單行排列) */
+.bottom-section {
+  gap: 2rem; /* 元素間距 */
+}
+
+.small-images {
+  display: flex;
+  gap: 2rem; /* 元素間距 */
 }
 
 .small-image {
-  flex: 1 1 calc(33.33% - 1rem); /* 三等分 */
   max-width: calc(33.33% - 1rem);
   border-radius: 10px;
   overflow: hidden;
@@ -76,7 +144,33 @@
   transform: scale(1.05);
 }
 
-/* 响应式设计 */
+/* 第三區域 (新增區域樣板) */
+.extended-section {
+  background: linear-gradient(180deg, #ffffff, #e6e6e6);
+  text-align: center;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.extended-section h2 {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.extended-section p {
+  color: #666;
+  font-size: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .pink-box {
+    height: 245px;
+  }
+
+}
+
 @media (max-width: 768px) {
   .top-section {
     flex-direction: column;
@@ -84,39 +178,152 @@
   }
 
   .carousel-section,
-  .pink-section {
+  .pink-box {
     width: 100%;
   }
 
-  .carousel-inner {
-    margin-top: 50px;
+  .carousel-inner img {
+    margin-top: 10px;
+    border-radius: 10px;
   }
 
-  .carousel-inner img {
-    height: 45vh; /* 调整高度 */
+  .pink-box {
+    padding: 1rem;
+    font-size: 1rem;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+  .fb-page {
+    width: 100%; /* 跟隨父容器寬度 */
+    height: 300px; /* 固定高度 */
+    max-width: 100%; /* 確保不受其他 max-width 限制 */
+    margin: 0; /* 去除額外的水平邊距 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px; /* 保持一致的圓角樣式 */
+    overflow: hidden;
   }
 
   .bottom-section {
-    gap: 0.5rem;
+    flex-direction: column;
+    gap: 1rem;
   }
 
   .small-image {
-    flex: 1 1 calc(50% - 0.5rem); /* 两等分 */
-    max-width: calc(50% - 0.5rem);
+    flex: 1 1 100%;
+  }
+
+  .small-image img {
+    border-radius: 8px;
+  }
+
+  .extended-section {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .extended-section h2 {
+    font-size: 1rem;
+  }
+
+  .extended-section p {
+    font-size: 0.8rem;
   }
 }
-
-@media (max-width: 480px) {
-  .small-image {
-    flex: 1 1 100%; /* 单列 */
-    max-width: 100%;
+/* 平板響應式設計 */
+@media (max-width: 768px) {
+  .top-section {
+    flex-direction: column; /* 改為垂直排列 */
+    align-items: center;
+    gap: 1.5rem; /* 增加間距 */
   }
 
-  .carousel-inner {
-    margin-top: 50px;
+  .carousel-section,
+  .pink-box {
+    width: 100%; /* 佔滿寬度 */
   }
 
   .carousel-inner img {
-    height: 30vh;
+    height: 50vh; /* 調整高度 */
+    border-radius: 10px;
+  }
+
+  .bottom-section {
+    flex-direction: column; /* 改為垂直排列 */
+    gap: 1rem; /* 縮小間距 */
+  }
+
+  .small-image {
+    flex: 1 1 100%; /* 每張圖片占滿一行 */
+    max-width: 100%;
+  }
+
+  .small-image img {
+    border-radius: 10px;
+  }
+
+  .extended-section {
+    padding: 1.5rem; /* 減少內邊距 */
+  }
+
+  .extended-section h2 {
+    font-size: 1.2rem; /* 縮小標題字體 */
+  }
+
+  .extended-section p {
+    font-size: 0.9rem; /* 縮小段落字體 */
+  }
+}
+
+/* 手機響應式設計 */
+@media (max-width: 480px) {
+  .top-section {
+    gap: 1rem; /* 減少間距 */
+  }
+
+  .carousel-inner img {
+    height: 35vh; /* 提高圖片高度以占用更多畫面 */
+    object-fit: contain; /* 確保圖片完整性 */
+  }
+
+  .pink-box {
+    padding: 1rem; /* 減少內邊距 */
+    font-size: 1rem; /* 縮小字體大小 */
+    text-align: center;
+    height: auto; /* 自適應高度 */
+    padding: 0.5rem;
+    margin-bottom: 0.5rem; /* 減少與下方區域的距離 */
+  }
+
+  .fb-page {
+    max-width: 100%; /* 佔滿寬度 */
+    height: 300px; /* 限制高度 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 減少陰影 */
+  }
+
+  .small-images {
+    flex-direction: column;
+    gap: 1rem; /* 增加間距 */
+  }
+
+  .small-image {
+    flex: 1 1 100%; /* 每張圖片占滿一行 */
+  }
+
+  .small-image img {
+    border-radius: 8px; /* 更小的圓角 */
+  }
+
+  .extended-section {
+    padding: 1rem; /* 減少內邊距 */
+    text-align: center;
+  }
+
+  .extended-section h2 {
+    font-size: 1rem; /* 縮小標題字體 */
+  }
+
+  .extended-section p {
+    font-size: 0.8rem; /* 縮小段落字體 */
   }
 }
