@@ -54,7 +54,7 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to top, #0859f0, #ffcd82);
+  background: linear-gradient(to top, #0859f0, #298eec);
   border-radius: 10px;
   padding: 1.5rem;
   color: white;
@@ -84,16 +84,18 @@ section {
   flex-direction: column;
   gap: 1rem;
   margin-top: 1rem;
+  font-weight: 900; /* 設置為最粗字重 */
 }
 
 .column-button {
+  text-shadow: 0 0 1px black;
   flex: 1;
   padding: 0.8rem;
   font-size: 1rem;
   color: rgb(0, 0, 0);
   font-weight: 900; /* 設置為最粗字重 */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* 陰影效果 */
-  background: linear-gradient(135deg, #ff9a3c, #ff6a00);
+  background: linear-gradient(135deg, #ffb347, #ff8008);
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -103,7 +105,7 @@ section {
 }
 
 .column-button:hover {
-  background: linear-gradient(135deg, #ffb347, #ff8008);
+  background: linear-gradient(135deg, #fc3838, #fa6f6f);
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.08);
   transform: translateY(-2px);
 }
@@ -119,6 +121,7 @@ section {
 }
 /* 第二區域 (小圖片 - 單行排列) */
 .bottom-section {
+  background: linear-gradient(180deg, #ffffff, #ffffff);
   gap: 2rem; /* 元素間距 */
 }
 
@@ -146,7 +149,7 @@ section {
 
 /* 第三區域 (新增區域樣板) */
 .extended-section {
-  background: linear-gradient(180deg, #ffffff, #e6e6e6);
+  background: linear-gradient(180deg, #ffffff, #ffffff);
   text-align: center;
   padding: 2rem;
   border-radius: 10px;
@@ -154,9 +157,11 @@ section {
 }
 
 .extended-section h2 {
+  font-weight: 900;
   color: #333;
   font-size: 1.5rem;
   margin-bottom: 1rem;
+  text-shadow: 0 0 1px black;
 }
 
 .extended-section p {

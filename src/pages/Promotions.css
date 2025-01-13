@@ -1,0 +1,46 @@
+/* File: Promotions.css */
+.promotions-container {
+  text-align: center;
+  background: linear-gradient(to bottom, #fff9db, #ffe77d);    
+  padding: 40px;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 3rem;
+  font-family: "Noto Sans TC", serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+  transform: matrix(1, 0, -0.09, 1, 0, 0); /* 模擬斜體效果 */
+}
+
+.animated-text-container {
+  position: relative;
+  overflow: hidden;
+  height: 8rem; /* 增加高度以適應更大的文字 */
+}
+
+.animated-text {
+  font-size: 5rem; /* 調整文字大小為更大 */
+  font-weight: 900; /* 設置文字為粗體 */
+  color: #ffffff;
+  font-family: "Jersey 15", serif;
+  font-weight: 400;
+  font-style: normal;
+  white-space: nowrap;
+  position: absolute;
+  animation: scrollText 12s linear infinite;
+  left: 0; /* 從最左開始 */
+  margin-top: 30px;
+}
+
+/* 動畫：文字從左側滑到右側 */
+@keyframes scrollText {
+  0% {
+    transform: translateX(-100%); /* 從畫面左側外部開始 */
+  }
+  100% {
+    transform: translateX(180%); /* 滑到畫面右側外部結束 */
+  }
+}
