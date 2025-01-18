@@ -1,47 +1,91 @@
-/* File: Promotions.css */
+/* 主容器樣式 */
 .registration-container {
-    text-align: center;
-    background: linear-gradient(to bottom, #fff9db, #ffe77d);    
-    padding: 40px;
-    overflow: hidden;
+  text-align: center;
+  background: url("../images/wave_1.png") no-repeat bottom center; /* 使用背景圖 */
+  background-size: contain; /* 讓背景圖覆蓋整個容器 */
+  font-family: "Noto Sans TC", serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 標題樣式 */
+.title {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+/* 滾動文字 */
+.animated-text-container {
+  position: relative;
+  overflow: hidden;
+  height: 8rem;
+  display: flex;
+  align-items: center;
+}
+
+.animated-text {
+  font-size: 2rem;
+  color: #ffffff;
+  font-weight: 700;
+  white-space: nowrap;
+  position: absolute;
+  animation: scrollText 12s linear infinite;
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(-100%);
   }
-  
-  .title {
-    font-size: 3rem;
-    font-family: "Noto Sans TC", serif;
-    font-optical-sizing: auto;
-    font-weight: 900;
-    font-style: normal;
-    transform: matrix(1, 0, -0.09, 1, 0, 0); /* 模擬斜體效果 */
+  100% {
+    transform: translateX(200%);
   }
-  
-  .animated-text-container {
-    position: relative;
-    overflow: hidden;
-    height: 8rem; /* 增加高度以適應更大的文字 */
-  }
-  
-  .animated-text {
-    font-size: 5rem; /* 調整文字大小為更大 */
-    font-weight: 900; /* 設置文字為粗體 */
-    color: #ffffff;
-    font-family: "Jersey 15", serif;
-    font-weight: 400;
-    font-style: normal;
-    white-space: nowrap;
-    position: absolute;
-    animation: scrollText 12s linear infinite;
-    left: 0; /* 從最左開始 */
-    margin-top: 30px;
-  }
-  
-  /* 動畫：文字從左側滑到右側 */
-  @keyframes scrollText {
-    0% {
-      transform: translateX(-100%); /* 從畫面左側外部開始 */
-    }
-    100% {
-      transform: translateX(200%); /* 滑到畫面右側外部結束 */
-    }
-  }
-  
+}
+
+/* 步驟容器樣式 */
+.steps-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 40px;
+  padding-bottom: 60px; /* 增加步驟區塊與背景的間距 */
+}
+
+/* 單步驟樣式 */
+.step {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 20px;
+  width: 660px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.step-image {
+  width: 100%;
+  height: 580px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.step-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.step-description {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.4;
+}

@@ -1,10 +1,13 @@
 /* File: Promotions.css */
 .change-container {
-    text-align: center;
-    background: linear-gradient(to bottom, #fff9db, #ffe77d);    
-    padding: 40px;
-    overflow: hidden;
+  text-align: center;
+  background: linear-gradient(to bottom, #fff9db, #ffe77d);
+  padding: 40px;
+  overflow: hidden;
+  width: 100%; /* 確保父容器寬度充滿畫面 */
+  box-sizing: border-box; /* 包含內邊距 */
   }
+
   
   .title {
     font-size: 3rem;
@@ -18,8 +21,10 @@
   .animated-text-container {
     position: relative;
     overflow: hidden;
-    height: 8rem; /* 增加高度以適應更大的文字 */
+    height: 8rem; /* 高度保持不變 */
+    width: 100%; /* 設置寬度為 100% */
   }
+  
   
   .animated-text {
     font-size: 5rem; /* 調整文字大小為更大 */

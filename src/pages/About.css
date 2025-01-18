@@ -1,46 +1,140 @@
+/* 全局容器樣式 */
 .about-container {
-    text-align: center;
-    background: linear-gradient(to bottom, #fff9db, #ffe77d);    
-    padding: 40px;
-    overflow: hidden;
+  text-align: center;
+  overflow: hidden;
+  font-family: "Noto Sans TC", serif;
+}
+
+/* 頂部標題區塊樣式 */
+.header-section {
+  margin-bottom: 40px;
+  background: linear-gradient(to bottom, #fff9db, #ffe77d);
+}
+
+.title {
+  padding-top: 40px;
+  font-size: 3rem;
+  font-weight: 900;
+  color: #000;
+  transform: matrix(1, 0, -0.09, 1, 0, 0); /* 模擬斜體效果 */
+  margin-bottom: 20px;
+}
+
+.animated-text-container {
+  position: relative;
+  overflow: hidden;
+  height: 8rem;
+  display: flex;
+  align-items: center; /* 垂直居中 */
+}
+
+.animated-text {
+  font-size: 5rem;
+  color: #000000;
+  font-family: "Jersey 15", serif;
+  white-space: nowrap;
+  position: absolute;
+  animation: scrollText 10s linear infinite;
+}
+
+/* 滾動文字動畫 */
+@keyframes scrollText {
+  0% {
+    transform: translateX(-100%);
   }
-  
-  .title {
-    font-size: 3rem;
-    font-family: "Noto Sans TC", serif;
-    font-optical-sizing: auto;
-    font-weight: 900;
-    font-style: normal;
-    transform: matrix(1, 0, -0.09, 1, 0, 0); /* 模擬斜體效果 */
+  100% {
+    transform: translateX(400%);
   }
-  
-  .animated-text-container {
-    position: relative;
-    overflow: hidden;
-    height: 8rem; /* 增加高度以適應更大的文字 */
-  }
-  
-  .animated-text {
-    font-size: 5rem; /* 調整文字大小為更大 */
-    font-weight: 900; /* 設置文字為粗體 */
-    color: #ffffff;
-    font-family: "Jersey 15", serif;
-    font-weight: 400;
-    font-style: normal;
-    white-space: nowrap;
-    position: absolute;
-    animation: scrollText 8s linear infinite;
-    left: 0; /* 從最左開始 */
-    margin-top: 30px;
-  }
-  
-  /* 動畫：文字從左側滑到右側 */
-  @keyframes scrollText {
-    0% {
-      transform: translateX(-100%); /* 從畫面左側外部開始 */
-    }
-    100% {
-      transform: translateX(150%); /* 滑到畫面右側外部結束 */
-    }
-  }
-  
+}
+
+
+/* 圖片排列區塊樣式 */
+.gallery-section {
+  margin: 40px auto;
+  padding: 20px 0;
+}
+
+.gallery-grid {
+  display: flex;
+  gap: 80px; /* 圖片之間的間距 */
+  justify-content: center;
+  flex-wrap: wrap; /* 支持多行排列 */
+}
+
+.gallery-photo {
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  transform: rotate(0deg); /* 默認角度 */
+}
+
+/* 利用 nth-child() 為每張圖片設定不同的傾斜角度 */
+.gallery-photo:nth-child(1) {
+  transform: rotate(-5deg) translateY(10px);
+}
+.gallery-photo:nth-child(2) {
+  transform: rotate(3deg) translateY(-15px);
+}
+.gallery-photo:nth-child(3) {
+  transform: rotate(-2deg) translateY(20px);
+}
+.gallery-photo:nth-child(4) {
+  transform: rotate(4deg) translateY(-10px);
+}
+.gallery-photo:nth-child(5) {
+  transform: rotate(-3deg) translateY(5px);
+}
+
+/* 鼠標懸停效果保持原有 */
+.gallery-photo:hover {
+  transform: scale(1.05); /* 放大效果，覆蓋旋轉 */
+}
+
+
+
+
+
+/* 主要內容區塊樣式 */
+.new-section {
+  background: #ffffff;
+  padding: 40px;
+  margin: 40px auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  background: linear-gradient(to bottom, #fff9db, #ffe77d);
+}
+
+.new-title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.new-content {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* 波浪效果區塊樣式 */
+.wave-section {
+  margin-top: 40px;
+}
+
+.wave-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.wave-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
