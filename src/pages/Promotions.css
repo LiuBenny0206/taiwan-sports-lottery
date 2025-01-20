@@ -1,46 +1,262 @@
-/* File: Promotions.css */
 .promotions-container {
-  text-align: center;
-  background: linear-gradient(to bottom, #fff9db, #ffe77d);    
-  padding: 40px;
-  overflow: hidden;
-}
-
-.title {
-  font-size: 3rem;
-  font-family: "Noto Sans TC", serif;
-  font-optical-sizing: auto;
-  font-weight: 900;
-  font-style: normal;
-  transform: matrix(1, 0, -0.09, 1, 0, 0); /* 模擬斜體效果 */
-}
-
-.animated-text-container {
   position: relative;
-  overflow: hidden;
-  height: 8rem; /* 增加高度以適應更大的文字 */
+  background: linear-gradient(to right, #fff2aa, #ffeb60); /* 背景渐变 */
+  padding: 60px 20px;
+  text-align: center;
+  font-family: "Noto Sans TC", serif;
+  overflow: hidden; /* 防止装饰元素溢出 */
 }
 
-.animated-text {
-  font-size: 5rem; /* 調整文字大小為更大 */
-  font-weight: 900; /* 設置文字為粗體 */
-  color: #ffffff;
-  font-family: "Jersey 15", serif;
-  font-weight: 400;
-  font-style: normal;
-  white-space: nowrap;
+/* 添加背景装饰的伪元素 */
+.promotions-container::before {
+  content: ""; /* 用伪元素生成背景 */
   position: absolute;
-  animation: scrollText 12s linear infinite;
-  left: 0; /* 從最左開始 */
-  margin-top: 30px;
+  top: 20%;
+  left: 10%;
+  width: 600px;
+  height: 1200px;
+  background-color: #ffefa9; /* 浅肤色半圆 */
+  border-radius: 50%; /* 生成圆形 */
+  z-index: 0; /* 保证背景不覆盖内容 */
+  transform: translate(-50%, -50%) scale(2, 1); /* 缩放生成半圆效果 */
 }
 
-/* 動畫：文字從左側滑到右側 */
-@keyframes scrollText {
-  0% {
-    transform: translateX(-100%); /* 從畫面左側外部開始 */
+/* 第一颗星星 */
+.promotions-container::after {
+  content: "★"; /* 用伪元素生成星星 */
+  position: absolute;
+  top: 15%; /* 距离顶部 */
+  left: 30%; /* 距离左侧 */
+  font-size: 3.5rem;
+  color: #fff; /* 白色星星 */
+  z-index: 0; /* 确保星星在背景中 */
+  animation: twinkle 3s infinite ease-in-out;
+}
+
+/* 新增容器控制额外的星星 */
+.promotions-container .additional-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.promotions-container .additional-stars span {
+  position: absolute;
+  color: #fff;
+  font-size: 2.5rem;
+  animation: twinkle 4s infinite ease-in-out;
+}
+
+/* 第二颗星星 */
+.promotions-container .additional-stars .star-1 {
+  top: 50%;
+  left: 90%;
+  font-size: 2.8rem;
+}
+
+/* 第三颗星星 */
+.promotions-container .additional-stars .star-2 {
+  top: 70%;
+  left: 40%;
+  font-size: 3rem;
+}
+
+/* 新增星星容器 */
+.promotions-container .additional-stars .star-3 {
+  top: 25%; /* 距离顶部 */
+  left: 60%; /* 距离左侧 */
+  font-size: 2.5rem; /* 星星大小 */
+  animation: twinkle 4.5s infinite ease-in-out; /* 动画延迟 */
+}
+
+.promotions-container .additional-stars .star-4 {
+  top: 85%; /* 距离顶部 */
+  left: 10%; /* 距离左侧 */
+  font-size: 3.5rem; /* 星星大小 */
+  animation: twinkle 5s infinite ease-in-out;
+}
+
+/* 动画效果 */
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
   }
-  100% {
-    transform: translateX(180%); /* 滑到畫面右側外部結束 */
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
   }
+}
+
+.promotions-content {
+  position: relative;
+  height: 500px; /* 固定高度用於動畫效果 */
+  overflow: hidden; /* 隱藏超出的部分 */
+}
+
+/* 卡片樣式 */
+.promo-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* 減少字和圖片之間的間距 */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 0 20px; /* 給卡片增加左右內邊距，讓內容不至於太靠邊 */
+}
+
+.promo-text {
+  max-width: 500px;
+  text-align: left;
+  margin-right: 10px; /* 確保文字和圖片保持一致的間距 */
+}
+
+.promo-title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.promo-description {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.promo-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 900;
+  color: #ff8000; /* 字體顏色改為橘色 */
+  background-color: transparent; /* 按鈕背景設為透明 */
+  border: 2px solid #ff8000; /* 邊框設定為橘色 */
+  background-color: #fff;
+  border-radius: 6px; /* 邊框圓角減少，改為矩形 */
+  cursor: pointer;
+  transition: all 0.3s ease; /* 增加平滑過渡效果 */
+}
+
+.promo-button:hover {
+  background-color: #ff8000; /* 懸停時背景設為橘色 */
+  color: #fff; /* 懸停時字體設為白色 */
+}
+
+.promo-button a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 確保圖片容器存在 */
+.promo-image-wrapper {
+  position: relative; /* 確保背景可以絕對定位 */
+  display: inline-block; /* 適應內容大小 */
+  width: fit-content; /* 自動根據圖片大小調整 */
+}
+
+/* 倒 L 型白色背景 */
+
+.promo-image-wrapper::before {
+  content: ""; /* 使用伺服元素生成背景 */
+  position: absolute; /* 絕對定位，放置在圖片下方 */
+  bottom: -30px; /* 控制白色背景下方露出 */
+  left: 20px; /* 控制白色背景左方露出 */
+  width: calc(100% + 16px); /* 確保背景比圖片寬一點 */
+  height: calc(100% + 16px); /* 確保背景比圖片高一點 */
+  background-color: #fff; /* 白色背景色 */
+  border-radius: 20px; /* 圓角與圖片一致 */
+  z-index: 0; /* 背景放在圖片下方 */
+}
+
+/* 圖片樣式 */
+.promo-image {
+  position: relative; /* 圖片相對定位 */
+  display: block; /* 圖片作為塊級元素顯示 */
+  z-index: 1; /* 圖片在背景上方 */
+  max-width: 550px; /* 設置圖片最大寬度 */
+  height: auto; /* 確保圖片自適應比例 */
+  border-radius: 15px; /* 圖片圓角與背景保持一致 */
+}
+
+
+/* 動畫效果 */
+.slide-up-enter {
+  transform: translateY(100%);
+  opacity: 0;
+}
+.slide-up-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.slide-up-exit {
+  transform: translateY(0);
+  opacity: 1;
+}
+.slide-up-exit-active {
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.slide-down-enter {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+.slide-down-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.slide-down-exit {
+  transform: translateY(0);
+  opacity: 1;
+}
+.slide-down-exit-active {
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* 下方導航按鈕 */
+.promotions-nav {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* 減少按鈕和指示器的間距 */
+}
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; /* 圓形按鈕的寬度和高度 */
+  height: 36px;
+  background-color: #00764e; /* 深綠色背景 */
+  color: #fff;
+  border: none;
+  border-radius: 50%; /* 圓形 */
+  font-size: 1.2rem; /* 圖標大小 */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加按鈕陰影 */
+}
+
+.nav-button:hover {
+  background-color: #005f3f; /* 懸停時變深 */
+  transform: scale(1.1); /* 懸停時放大 */
+}
+
+.nav-indicator {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #00764e;
+  margin: 0 8px; /* 控制數字和按鈕的間距 */
 }
