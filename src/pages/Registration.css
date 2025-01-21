@@ -28,7 +28,6 @@
 .animated-text {
   font-size: 2rem;
   color: #ffffff;
-  font-weight: 700;
   white-space: nowrap;
   position: absolute;
   animation: scrollText 12s linear infinite;

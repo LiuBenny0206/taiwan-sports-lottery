@@ -1,52 +1,88 @@
-/* File: Promotions.css */
+/* 整体容器样式 */
 .change-container {
-  text-align: center;
+  font-family: "Noto Sans TC", serif;
   background: linear-gradient(to bottom, #fff9db, #ffe77d);
-  padding: 40px;
-  overflow: hidden;
-  width: 100%; /* 確保父容器寬度充滿畫面 */
-  box-sizing: border-box; /* 包含內邊距 */
-  }
+  text-align: center;
+  color: #333;
+}
 
-  
-  .title {
-    font-size: 3rem;
-    font-family: "Noto Sans TC", serif;
-    font-optical-sizing: auto;
-    font-weight: 900;
-    font-style: normal;
-    transform: matrix(1, 0, -0.09, 1, 0, 0); /* 模擬斜體效果 */
-  }
-  
-  .animated-text-container {
-    position: relative;
-    overflow: hidden;
-    height: 8rem; /* 高度保持不變 */
-    width: 100%; /* 設置寬度為 100% */
-  }
-  
-  
-  .animated-text {
-    font-size: 5rem; /* 調整文字大小為更大 */
-    font-weight: 900; /* 設置文字為粗體 */
-    color: #ffffff;
-    font-family: "Jersey 15", serif;
-    font-weight: 400;
-    font-style: normal;
-    white-space: nowrap;
-    position: absolute;
-    animation: scrollText 12s linear infinite;
-    left: 0; /* 從最左開始 */
-    margin-top: 30px;
-  }
-  
-  /* 動畫：文字從左側滑到右側 */
-  @keyframes scrollText {
-    0% {
-      transform: translateX(-100%); /* 從畫面左側外部開始 */
-    }
-    100% {
-      transform: translateX(200%); /* 滑到畫面右側外部結束 */
-    }
-  }
-  
+/* 标题栏样式 */
+.header {
+  background: linear-gradient(to right, #fff2aa, #ffe264);
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.main-title {
+  font-size: 3rem;
+  font-weight: 900;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.6);
+  margin-top: 10px;
+}
+
+/* 标签导航栏 */
+.nav-tabs {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 10px;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #666;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-button:hover {
+  background: #ffe77d;
+  color: #333;
+}
+
+.tab-button.active {
+  background: #ffbe72;
+  color: #333;
+  border: 2px solid #ffa261;
+}
+
+/* 内容区域 */
+.content-section {
+  padding: 20px;
+}
+
+.content-card {
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 800px;
+  text-align: left;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-bottom: 20px;
+  color: #00764e;
+}
+
+.content-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  color: #333;
+}
