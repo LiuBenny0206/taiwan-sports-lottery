@@ -3,63 +3,98 @@ import "./ChangeRetailer.css";
 
 function ChangeRetailer() {
   // 定义当前激活的标签状态
-  const [activeTab, setActiveTab] = useState("csr"); // 默认激活 "企業社會責任"
+  const [activeTab, setActiveTab] = useState("intro"); // 默认激活 "企業社會責任"
 
   // 标签内容映射
   const tabContent = {
     intro: (
+      <div>
+      {/* 企业社会责任内容 */}
       <div className="content-card">
-        <h2 className="section-title">認識台灣彩券</h2>
+        <h2 className="section-title">變更經銷商方法</h2>
         <p className="content-text">
-          台灣彩券是全台唯一合法的公益彩券發行商，致力於透過公益投注為社會帶來更多正能量。
+          提醒您：如有設定服務的運動彩券經銷商，須於六個月期滿後才可變更服務的經銷商
         </p>
+        <ul className="content-list">
+          <li>
+            1.請至會員變更資料申請網頁
+            <a
+              href="https://modify.sportslottery.com.tw/zh-tw/Update/step1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="content-link"
+            >
+              （點選申請）
+            </a>
+            。
+          </li>
+          <li>2.輸入會員代碼及完成手機簡訊驗證。</li>
+          <li>
+            3.點選變更項目:「推薦您入會之經銷商證號」或「第三人使用個人資料同意事項」，完成後即變更。
+          </li>
+        </ul>
       </div>
+    </div>
     ),
     public: (
       <div className="content-card">
-        <h2 className="section-title">認識公益彩券</h2>
-        <p className="content-text">
-          每購買一張彩券，您不僅參與投注，還貢獻了公益基金，資助許多社會福利計劃。
-        </p>
-        <img
-          src="https://example.com/public-welfare.jpg"
-          alt="公益彩券"
-          className="tab-image"
-        />
+        <h2 className="section-title">變更行動電話門號</h2>
+        <ul className="content-list">
+          <li>
+            請於左側選單下載列印「台灣運動彩券線上通路會員入會暨資料異動申請書」並勾選「資料異動」。
+          </li>
+          <li>填寫紅框內相關資料並親筆簽名，請務必本人親簽。</li>
+          <li>
+            掃描/拍照以傳真：02-27151941，或 E-MAIL：
+            <a href="mailto:service@sportslottery.com.tw" className="content-link">
+              service@sportslottery.com.tw
+            </a>
+            ，或郵寄到本公司客服中心，我們將於收到您的申請資料後，盡快與您聯絡。
+          </li>
+        </ul>
       </div>
     ),
     concept: (
       <div className="content-card">
-        <h2 className="section-title">品牌理念</h2>
-        <p className="content-text">
-          台灣彩券的品牌理念是「讓每一分投注，成為社會更多幸福的可能」。
-        </p>
+       <h2 className="section-title">變更電子郵件信箱</h2>
+       <ul className="content-list">
+        <li>
+          請於左側選單下載列印「台灣運動彩券線上通路會員入會暨資料異動申請書」並勾選「資料異動」。
+        </li>
+        <li>填寫紅框內相關資料並親筆簽名，請務必本人親簽。</li>
+        <li>
+          掃描/拍照以傳真：02-27151941，或 E-MAIL：
+          <a href="mailto:service@sportslottery.com.tw" className="content-link">
+            service@sportslottery.com.tw
+          </a>
+          ，或郵寄到本公司客服中心，收件後約 7 個營業日完成。
+        </li>
+       </ul>
       </div>
     ),
     csr: (
       <div>
         {/* 企业社会责任内容 */}
         <div className="content-card">
-          <h2 className="section-title">Environmental 環境</h2>
-          <p className="content-text">
-            通過ISO 14064-1、ISO 14001與ISO 50001三大國際環境標準驗證
-          </p>
-          <p className="content-text">
-            台灣彩券公司於2018年通過ISO 14064-1溫室氣體盤查驗證，並於2019年度盤查據點至6個分公司，同時總公司亦通過ISO
-            14001環境管理系統與ISO 50001能源管理系統標準，於2020年拓展盤查據點至6個分公司。
-          </p>
-        </div>
-
-        <div className="content-card">
-          <h2 className="section-title">
-            推出「台灣彩券」APP服務，減少紙張使用及碳排放
-          </h2>
-          <p className="content-text">
-            台灣彩券於2014年1月1日推出「台彩行動選號」APP，其「電子發票」功能以APP建構無紙化機票投注，取代傳統紙本選號單。
-          </p>
-          <p className="content-text">
-            2023年底至12月止，全台透過APP投注的業績總量累積超過2,643.6萬筆，約節省881.2萬張紙（A4尺寸），有效減少碳排放。
-          </p>
+          <h2 className="section-title">變更姓名</h2>
+          <ul className="content-list">
+            <li>
+              請於左側選單下載列印「台灣運動彩券線上通路會員入會暨資料異動申請書」並勾選「資料異動」。
+            </li>
+            <li>
+              填寫紅框內相關資料並親筆簽名（更改後的「正確姓名」），請務必本人親簽。
+            </li>
+            <li>
+              黏貼身分證正/反面影本或附上戶籍謄本（須有記事欄位）。
+            </li>
+            <li>
+              掃描/拍照以傳真：02-27151941，或 E-MAIL：
+              <a href="mailto:service@sportslottery.com.tw" className="content-link">
+                service@sportslottery.com.tw
+              </a>
+              ，或郵寄到本公司客服中心，我們將於收到您的申請資料後，盡快與您聯絡。
+            </li>
+          </ul>
         </div>
       </div>
     ),
@@ -79,25 +114,25 @@ function ChangeRetailer() {
           className={`tab-button ${activeTab === "intro" ? "active" : ""}`}
           onClick={() => setActiveTab("intro")}
         >
-          認識台灣彩券
+          變更經銷商
         </button>
         <button
           className={`tab-button ${activeTab === "public" ? "active" : ""}`}
           onClick={() => setActiveTab("public")}
         >
-          認識公益彩券
+          變更電話
         </button>
         <button
           className={`tab-button ${activeTab === "concept" ? "active" : ""}`}
           onClick={() => setActiveTab("concept")}
         >
-          品牌理念
+          變更信箱
         </button>
         <button
           className={`tab-button ${activeTab === "csr" ? "active" : ""}`}
           onClick={() => setActiveTab("csr")}
         >
-          企業社會責任
+          變更姓名
         </button>
       </div>
 

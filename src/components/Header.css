@@ -1,6 +1,6 @@
 /* Header 容器 */
 .header-container {
-  position: fixed;
+  position: sticky;
   top: 0;
   z-index: 1000;
   display: flex;
@@ -11,6 +11,7 @@
   padding: 0 2rem;
   background: linear-gradient(to top, #f5e618, #ffd900);
 }
+
 
 /* LOGO */
 .header-left-logo img {
@@ -52,7 +53,6 @@
 
 /* 菜单容器 (桌面版) */
 .menu-container {
-  margin-top: 5rem;
   color: white;
   overflow: hidden;
   opacity: 1;
