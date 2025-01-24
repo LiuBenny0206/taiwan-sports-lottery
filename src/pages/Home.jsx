@@ -66,8 +66,8 @@ function PinkBox() {
 function TwoColumnButtons() {
   return (
     <div className="two-column-buttons">
-      <button className="column-button">申請成為會員</button>
-      <button className="column-button">二轉三屆會員</button>
+      <a href="https://channel.sportslottery.com.tw/zh-tw/register/step1?retailerid=93179171" className="column-button">申請成為會員</a>
+      <a href="https://transfer.sportslottery.com.tw/zh-tw/transfer/step1?thirdrid=93179171" className="column-button">二轉三屆會員</a>
     </div>
   );
 }

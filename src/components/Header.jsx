@@ -55,12 +55,12 @@ function Header() {
 
         {/* 桌面版按鈕 */}
         <div className="header-buttons">
-          <a href="#" className="header-button">會員註冊</a>
+          <a href="https://channel.sportslottery.com.tw/zh-tw/register/step1?retailerid=93179171" className="header-button">會員註冊</a>
           <div className="divider"></div>
-          <a href="#" className="header-button">會員登入</a>
+          <a href="https://member.sportslottery.com.tw/login" className="header-button">會員登入</a>
           <div className="divider"></div>
-          <a href="#" className="header-button">
-            <span className="icon">👤</span> APP會員專區
+          <a href="https://line.me/R/ti/p/@900vgrkj?oat_content=qr" className="header-button">
+            <span className="icon">📱</span> LINE會員專區
           </a>
         </div>
 
@@ -109,8 +109,8 @@ function Header() {
 
         {/* 新增手機會員註冊與登入按鈕 */}
         <div className="mobile-menu-footer">
-          <a href="#" className="mobile-menu-button">會員註冊</a>
-          <a href="#" className="mobile-menu-button">會員登入</a>
+          <a href="https://channel.sportslottery.com.tw/zh-tw/register/step1?retailerid=93179171" className="mobile-menu-button">會員註冊</a>
+          <a href="https://member.sportslottery.com.tw/login" className="mobile-menu-button">會員登入</a>
         </div>
       </div>
     </>
