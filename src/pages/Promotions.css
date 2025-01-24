@@ -22,17 +22,6 @@
   transform: translate(-50%, -50%) scale(2, 1); /* 缩放生成半圆效果 */
 }
 
-/* 第一颗星星 */
-.promotions-container::after {
-  content: "★"; /* 用伪元素生成星星 */
-  position: absolute;
-  z-index: 10;
-  top: 55%; /* 距离顶部 */
-  left: 40%; /* 距离左侧 */
-  font-size: 3.5rem;
-  color: #fff; /* 白色星星 */
-  animation: twinkle 3s infinite ease-in-out;
-}
 
 /* 新增容器控制额外的星星 */
 .promotions-container .additional-stars {
