@@ -2,7 +2,7 @@
   --font-family-primary: "Noto Sans TC", serif;
   --font-family-secondary: "Jersey 15", serif;
   --color-primary: #000000;
-  --color-secondary: #ffa053;
+  --color-secondary: #ffffff;
   --color-accent: #ffe77d;
   --color-light: #fff9db;
   --font-size-title: 3rem;
@@ -131,7 +131,7 @@
 .new-content {
   font-size: var(--font-size-content);
   line-height: var(--line-height-content);
-  color: var(--color-secondary);
+  color: var(--color-primary);
   margin-bottom: var(--spacing-small);
 }
 

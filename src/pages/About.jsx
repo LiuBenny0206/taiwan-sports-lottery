@@ -20,7 +20,7 @@ function About() {
       <HeaderSection />
       <GallerySection images={galleryImages} />
       <MainContentSection
-        title="樂穎彩卷行"
+        title="富比多彩券行"
         content={`台灣彩券公司於民國95年7月10日成立，為中國信託金控旗下公司，
           中國信託銀行得財政部認可，自第3屆起履行公益彩券發行業務的責任。
           台灣彩券致力於公益彩券的經營和推廣，透過專業的彩券銷售管理及社會大眾的參與，

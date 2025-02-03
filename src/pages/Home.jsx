@@ -93,8 +93,7 @@ function GoogleMap() {
     <div className="google-map">
       <iframe
         title="樂穎彩券行位置"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.104287571669!2d120.69335017534878!3d24.1680750783877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346917e598a54943%3A0xf82f442ecc5519a2!2z5qiC56mO5b2p5Yi46KGM!5e0!3m2!1szh-TW!2stw!4v1736490855574!5m2!1szh-TW!2stw"
-        width="100%"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.167955096296!2d120.7004771!3d24.1658418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346917e4cb56b453%3A0x5e9d44239426e393!2z5a-M5q-U5aSa5p2x5YWJ5bqX!5e0!3m2!1szh-TW!2stw!4v1738571339417!5m2!1szh-TW!2stw"        width="100%"
         height="400"
         style={{ border: 0 }}
         allowFullScreen=""
