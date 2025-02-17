@@ -80,7 +80,7 @@
 }
 
 .gallery-photo {
-  width: 300px;
+  width: 250px;
   height: 400px;
   object-fit: cover;
   border-radius: var(--radius-base);

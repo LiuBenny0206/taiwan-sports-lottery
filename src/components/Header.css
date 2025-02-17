@@ -9,7 +9,7 @@
   height: 5rem;
   width: 100%;
   padding: 0 2rem;
-  background: linear-gradient(to top, #f5e618, #ffd900);
+  background: linear-gradient(to bottom, #ffe03c, #ffe03c)
 }
 
 
@@ -109,7 +109,7 @@
   top: 5rem; /* 從 Header 下方開始 */
   right: -100%; /* 預設隱藏在右側 */
   width: 100%;
-  height: calc(100% - 7rem); /* 扣掉 Header 高度 */
+  height: calc(100% - 5rem); /* 扣掉 Header 高度 */
   background-color: #ffffff;
   color: rgb(0, 0, 0);
   padding: 2rem 1.5rem;
