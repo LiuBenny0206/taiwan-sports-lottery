@@ -1,10 +1,13 @@
 import React from "react";
+import { motion } from "framer-motion";
 import "./Registration.css";
 import step1 from "../images/sample1.png";
 import step2 from "../images/sample2.png";
 import step3 from "../images/sample3.png";
-import step4 from "../images/sample4.png"; // 新增的圖片
+import step4 from "../images/sample4.png";
 import wavebg from "../images/wave_1.png";
+
+
 
 function Registration() {
   const steps = [
@@ -32,7 +35,6 @@ function Registration() {
 
   return (
     <div className="registration-container">
-      {/* 頂部標題和滾動文字 */}
       <div className="header-section">
         <h1 className="title">註冊教學</h1>
         <div className="animated-text-container">
@@ -40,19 +42,22 @@ function Registration() {
         </div>
       </div>
 
-      {/* 教學步驟區塊 */}
       <div className="steps-container">
         {steps.map((step, index) => (
-          <div key={index} className="step">
+          <motion.div
+            key={index}
+            className="step"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.2 }}
+            whileHover={{ scale: 1.05 }}
+          >
             <img src={step.img} alt={step.title} className="step-image" />
             <h2 className="step-title">{step.title}</h2>
             <p className="step-description">{step.description}</p>
-          </div>
+          </motion.div>
         ))}
       </div>
-
-      {/* 波浪背景 */}
-
     </div>
   );
 }

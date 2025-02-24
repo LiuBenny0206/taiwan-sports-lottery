@@ -26,6 +26,7 @@
 
 /* 頂部標題區塊樣式 */
 .header-section {
+  padding-bottom: var(--spacing-small);
   margin-bottom: var(--spacing-medium);
   background: linear-gradient(to bottom, var(--color-light), var(--color-accent));
 }
@@ -39,21 +40,10 @@
   margin-bottom: var(--spacing-small);
 }
 
-.animated-text-container {
-  position: relative;
-  overflow: hidden;
-  height: 8rem;
-  display: flex;
-  align-items: center;
-}
-
-.animated-text {
-  font-size: 5rem;
-  color: var(--color-primary);
-  font-family: var(--font-family-secondary);
-  white-space: nowrap;
-  position: absolute;
-  animation: scrollText 10s linear infinite;
+.subtitle {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 20px;
 }
 
 /* 滾動文字動畫 */
@@ -136,18 +126,23 @@
 }
 
 /* 波浪效果區塊樣式 */
-.wave-section {
-  margin-top: var(--spacing-medium);
-}
-
 .wave-container {
   position: relative;
   width: 100%;
-  height: auto;
+  overflow: hidden;
 }
 
 .wave-svg {
   display: block;
   width: 100%;
   height: auto;
+}
+
+.wave-svg path:nth-child(1) {
+  z-index: 1;
+}
+
+.wave-svg path:nth-child(2) {
+  z-index: 2;
+  position: relative;
 }

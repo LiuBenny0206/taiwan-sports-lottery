@@ -28,7 +28,7 @@
 
 /* 標題欄 */
 .header {
-  background: linear-gradient(to right, #fff2aa, #ffe264);
+  background: linear-gradient(to right, #fff2aa, #ffa966);
   padding: var(--spacing-large) var(--spacing-base);
 }
 
@@ -42,7 +42,8 @@
   font-size: var(--font-size-medium);
   font-weight: bold;
   color: rgba(0, 0, 0, 0.6);
-  margin-top: var(--spacing-small);
+  margin-bottom: var(--spacing-smallB);
+
 }
 
 /* 標籤導航欄 */
