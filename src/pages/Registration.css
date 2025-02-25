@@ -1,107 +1,201 @@
+/* 引入 Google Fonts Poppins：
+   在你的 index.html <head> 中加入：
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+*/
+
 :root {
-  --font-family-primary: "Noto Sans TC", serif;
-  --color-primary: #000;
-  --color-secondary: #333;
-  --color-light: #ffffff;
-  --color-accent: #666;
-  --box-shadow-base: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --box-shadow-hover: 0 6px 10px rgba(0, 0, 0, 0.2);
-  --font-size-title: 3rem;
-  --font-size-step-title: 1.5rem;
-  --font-size-step-description: 1rem;
-  --line-height-description: 1.4;
-  --radius-base: 10px;
-  --spacing-small: 15px;
-  --spacing-medium: 20px;
-  --spacing-large: 40px;
-  --spacing-extra-large: 60px;
-  --transition-base: transform 0.3s ease, box-shadow 0.3s ease;
+  --font-family: 'Poppins', sans-serif;
+  --primary-color: #2f2f2f;
+  --secondary-color: #666666;
+  --accent-color: #845ec2; /* 可依需求更換 */
+  
+  /* 依需求調整這兩個顏色來對應你參考頁面的背景 */
+  --bg-gradient-start: #fff7d1; 
+  --bg-gradient-end: #ffe0ac;
+
+  --card-bg: #ffffff;
+  --card-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  --transition-duration: 0.3s;
 }
 
-/* 主容器樣式 */
-.registration-container {
-  text-align: center;
-  background: url("../images/wave_11.png") no-repeat bottom center;
-  background-size: contain;
-  font-family: var(--font-family-primary);
-  overflow: hidden;
-  position: relative;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background-color: #fffce8; /* 淡淡的背景底色，可依喜好調整 */
 }
 
-/* 標題樣式 */
-.title {
-  font-size: var(--font-size-title);
-  font-weight: 900;
-  margin-bottom: var(--spacing-medium);
-  color: var(--color-primary);
-}
-
-/* 滾動文字 */
-.animated-text-container {
-  position: relative;
-  overflow: hidden;
-  height: 8rem;
+.modern-registration {
+  position: relative; /* 重要：讓絕對定位的 blob 以此為定位基準 */
+  min-height: 118vh;
+  background: radial-gradient(circle at 30% 30%, var(--bg-gradient-start), var(--bg-gradient-end));
+  padding: 3rem 2rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  overflow: hidden; /* 若圖案超出容器，需裁切可加這行 */
 }
 
-.animated-text {
-  font-size: 2rem;
-  color: var(--color-light);
-  white-space: nowrap;
+/* ★ 背景容器：讓 blob 佔滿整個父層 */
+.background-blobs {
   position: absolute;
-  animation: scrollText 12s linear infinite;
-}
-
-@keyframes scrollText {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(200%);
-  }
-}
-
-/* 步驟容器樣式 */
-.steps-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: var(--spacing-large);
-  margin-top: var(--spacing-large);
-  padding-bottom: var(--spacing-extra-large);
-}
-
-/* 單步驟樣式 */
-.step {
-  border-radius: var(--radius-base);
-  box-shadow: var(--box-shadow-base);
-  text-align: center;
-  padding: var(--spacing-medium);
-  width: 660px;
-  transition: var(--transition-base);
-}
-
-.step:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--box-shadow-hover);
-}
-
-.step-image {
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 580px;
-  object-fit: contain;
-  border-radius: var(--radius-base);
-  margin-bottom: var(--spacing-small);
+  height: 100%;
+  pointer-events: none; /* 避免 blob 擋住點擊 */
+  z-index: 0; /* 在主內容下層 */
 }
 
-.step-title {
-  font-size: var(--font-size-step-title);
-  font-weight: 700;
-  margin-bottom: var(--spacing-small);
+/* ★ 每個 blob 都要 position: absolute; 才能獨立分散位置 */
+.blob {
+  position: absolute;
+  opacity: 0.5; /* 視需要調整透明度 */
 }
 
-.step-description {
-  font-size: var(--font-size-step-description);
-  line-height: var(--line-height-description);
+/* blob1, blob2, blob3 可分別指定大小、顏色、位置與 border-radius 來做不規則形狀 */
+.blob1 {
+  width: 350px;
+  height: 350px;
+  background: #ffa709;
+  border-radius: 50% 40% 65% 35% / 45% 60% 40% 55%;
+  top: -100px;
+  right: -150px;
+}
+
+.blob2 {
+  width: 450px;
+  height: 450px;
+  background: #ffa343;
+  border-radius: 55% 45% 30% 70% / 60% 30% 70% 40%;
+  bottom: -50px;
+  left: 15%;
+}
+
+.blob3 {
+  width: 600px;
+  height: 600px;
+  background: #e76100;
+  border-radius: 40% 60% 50% 50% / 60% 40% 60% 40%;
+  top: 40%;
+  left: -150px;
+}
+
+/* 右上角的淡色圓形裝飾 (若需要保留) */
+.modern-registration::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 200px;
+  height: 200px;
+  background: rgb(255 167 9);
+  border-radius: 50%;
+  z-index: 0; 
+}
+
+/* 底部的波浪圖案 (若需要保留) */
+.modern-registration::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background-size: cover;
+  z-index: 0;
+}
+
+/* 頁面標題區 */
+.modern-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--primary-color);
+  z-index: 1; /* 讓標題在 blob 上方 */
+}
+
+.modern-header h1 {
+  font-size: 3rem;
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.modern-header p {
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+  margin-top: 1rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 步驟卡片排版 */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1; /* 卡片在 blob 上方 */
+}
+
+/* 單張卡片 */
+.step-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform var(--transition-duration) ease,
+    box-shadow var(--transition-duration) ease;
+}
+
+/* 卡片懸停效果 */
+.step-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* 圖片區塊 */
+.card-image {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+/* 圖片懸停縮放 */
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.step-card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+/* 文字區塊 */
+.card-content {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.card-content h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.card-content p {
+  font-size: 1rem;
+  color: var(--secondary-color);
+  line-height: 1.6;
+  margin-bottom: 0;
 }

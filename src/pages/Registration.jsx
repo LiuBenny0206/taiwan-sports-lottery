@@ -5,11 +5,8 @@ import step1 from "../images/sample1.png";
 import step2 from "../images/sample2.png";
 import step3 from "../images/sample3.png";
 import step4 from "../images/sample4.png";
-import wavebg from "../images/wave_1.png";
 
-
-
-function Registration() {
+function RegistrationModern() {
   const steps = [
     {
       img: step1,
@@ -34,27 +31,34 @@ function Registration() {
   ];
 
   return (
-    <div className="registration-container">
-      <div className="header-section">
-        <h1 className="title">註冊教學</h1>
-        <div className="animated-text-container">
-          <p className="animated-text">Follow the Steps Below</p>
-        </div>
+    <div className="modern-registration">
+        {/* 背景不規則形狀容器 */}
+        <div className="background-blobs">
+        <div className="blob blob1"></div>
+        <div className="blob blob2"></div>
+        <div className="blob blob3"></div>
       </div>
+      <header className="modern-header">
+        <h1>註冊教學</h1>
+        <p>跟著步驟，輕鬆完成註冊</p>
+      </header>
 
-      <div className="steps-container">
+      <div className="steps-grid">
         {steps.map((step, index) => (
           <motion.div
             key={index}
-            className="step"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.2 }}
-            whileHover={{ scale: 1.05 }}
+            className="step-card"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4, delay: index * 0.2 }}
           >
-            <img src={step.img} alt={step.title} className="step-image" />
-            <h2 className="step-title">{step.title}</h2>
-            <p className="step-description">{step.description}</p>
+            <div className="card-image">
+              <img src={step.img} alt={step.title} />
+            </div>
+            <div className="card-content">
+              <h2>{step.title}</h2>
+              <p>{step.description}</p>
+            </div>
           </motion.div>
         ))}
       </div>
@@ -62,4 +66,4 @@ function Registration() {
   );
 }
 
-export default Registration;
+export default RegistrationModern;

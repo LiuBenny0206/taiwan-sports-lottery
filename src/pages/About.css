@@ -24,11 +24,13 @@
   font-family: var(--font-family-primary);
 }
 
+
+
 /* 頂部標題區塊樣式 */
 .header-section {
   padding-bottom: var(--spacing-small);
   margin-bottom: var(--spacing-medium);
-  background: linear-gradient(to bottom, var(--color-light), var(--color-accent));
+  background: linear-gradient(to bottom, #ffe6ab, #fdda65);
 }
 
 .title {
@@ -70,7 +72,7 @@
 }
 
 .gallery-photo {
-  width: 250px;
+  width: 280px;
   height: 400px;
   object-fit: cover;
   border-radius: var(--radius-base);
@@ -78,6 +80,12 @@
   transition: var(--transition-base);
   transform: rotate(0deg); /* 默認角度 */
 }
+
+.gallery-photo:hover {
+  transform: scale(1.5) rotate(5deg);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+}
+
 
 /* 利用 nth-child() 為每張圖片設定不同的傾斜角度 */
 .gallery-photo:nth-child(1) {
@@ -98,14 +106,16 @@
 
 /* 鼠標懸停效果保持原有 */
 .gallery-photo:hover {
-  transform: scale(1.05); /* 放大效果，覆蓋旋轉 */
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
+
 
 /* 主要內容區塊樣式 */
 .new-section {
-  background: linear-gradient(to bottom, var(--color-light), var(--color-accent));
+  background: linear-gradient(to bottom, #ffe6ab, #fdda65);
   padding: var(--spacing-medium);
-  margin: var(--spacing-medium) auto;
+  margin-top: 100px;
   border-radius: var(--radius-base);
   box-shadow: var(--box-shadow-base);
   text-align: left;
@@ -123,6 +133,7 @@
   line-height: var(--line-height-content);
   color: var(--color-primary);
   margin-bottom: var(--spacing-small);
+  
 }
 
 /* 波浪效果區塊樣式 */
@@ -146,3 +157,4 @@
   z-index: 2;
   position: relative;
 }
+

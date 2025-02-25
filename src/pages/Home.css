@@ -93,10 +93,8 @@ section {
   flex: 1;
   padding: 0.8rem;
   font-size: 1rem;
-  color: rgb(0, 0, 0);
   font-weight: 900; /* 設置為最粗字重 */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* 陰影效果 */
-  background: linear-gradient(135deg, #ffb347, #ff8008);
+  background: linear-gradient(to bottom, #f7d179, #fdae5a);
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -106,8 +104,7 @@ section {
 }
 
 .column-button:hover {
-  background: linear-gradient(135deg, #fc3838, #fa6f6f);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.08);
+  background: linear-gradient(135deg, #ffe692, #ffc919);
   transform: translateY(-2px);
 }
 
