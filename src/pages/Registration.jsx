@@ -11,22 +11,22 @@ function RegistrationModern() {
     {
       img: step1,
       title: "Step 1",
-      description: "輸入你的基本資訊並提交表單。",
+      description: "填寫基本資料",
     },
     {
       img: step2,
       title: "Step 2",
-      description: "檢查電子郵件並完成帳號驗證。",
+      description: "手機簡訊驗證",
     },
     {
       img: step3,
       title: "Step 3",
-      description: "登入帳號並開始使用服務！",
+      description: "身分認證作業",
     },
     {
       img: step4,
       title: "Step 4",
-      description: "設定你的個人偏好和帳號安全選項。",
+      description: "續填其它資料",
     },
   ];
 

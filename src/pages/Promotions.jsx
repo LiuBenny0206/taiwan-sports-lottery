@@ -7,25 +7,56 @@ import promoImage3 from "../images/sample3.png";
 
 const promotions = [
   {
-    title: "善良公式",
-    description: "公益彩券x您的愛心=無限的善良，每張公益彩券讓善良兌現！",
-    details: "善良的力量無遠弗屆，讓我們一起點燃希望，支持公益彩券！",
+    title: "下注滿額，免費飛日本",
+    description: (
+      <>
+        ✨活動期間限定，立即點擊瞭解詳細規則！<br />
+        ✨別錯過機會，讓運氣帶你飛向日本！
+      </>
+    ),
+    details: (
+      <>
+        現在只要在台灣運彩下注滿指定金額，即可免費獲得日本機票！<br />
+        暢遊東京、大阪、京都，體驗櫻花美景、美食佳餚及熱情文化。<br />
+        ❗機票價格以平日計算
+      </>
+    ),
     image: promoImage1,
-    link: "https://youtu.be/Lvurxb0iSZM",
+    link: "https://youtu.be/6F7jRD2rOLw",
   },
   {
-    title: "行．而善",
-    description: "台灣彩券全新品牌影片，看見臺灣獨有的「特別能力」。",
-    details: "這支影片講述了台灣人獨特的善行文化，以及公益彩券如何改變世界。",
+    title: "豪氣加入，下注拿黃金紅包",
+    description: (
+      <>
+      🧧數量有限，立即加入領取專屬黃金好禮！
+      </>
+    ),
+    details: (
+      <>
+        即日起申請加入萬豪運彩會員，並首次成功下注不限金額，即刻獲得純金黃金紅包，限量30名！
+        <br/>
+        🧨好運財神到，黃金福氣送給你，新會員專屬福利，錯過再等一年！
+      </>
+    ),
     image: promoImage2,
     link: "https://youtu.be/6F7jRD2rOLw",
   },
   {
-    title: "台彩樂Now事",
-    description: "你的正能量已送達，即刻按讚收藏！台彩粉絲團，歡樂持續放送！",
-    details: "加入我們的粉絲團，掌握最新優惠與活動資訊！",
+    title: "輕鬆下注，送600$全聯禮券",
+    description: (
+      <>
+      🔷立即完成步驟領取屬於你的全聯禮券！
+      </>
+    ),
+    details: (
+      <>
+        只要完成簡單四步驟，立即加入台灣運彩會員，並成功下注滿3次，即可免費獲得價值600元的全聯禮券卡！
+        <br/>
+        💎日常購物更划算，輕鬆享受好禮不間斷。
+      </>
+    ),
     image: promoImage3,
-    link: "https://www.facebook.com/tlcformal",
+    link: "https://youtu.be/6F7jRD2rOLw",
   },
 ];
 
