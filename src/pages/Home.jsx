@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import "./Home.css";
+import { motion } from "framer-motion";
 import Sample1 from "../images/sample1.png";
 import Sample2 from "../images/sample2.png";
 import Sample3 from "../images/sample3.png";
 import SmallSample1 from "../images/smallsample1.png";
 import SmallSample2 from "../images/smallsample2.png";
 import SmallSample3 from "../images/smallsample3.png";
+import Warning from "../images/warning.jpg";
 
 function Carousel() {
   return (
@@ -126,6 +128,17 @@ export default function Home() {
       <section className="extended-section">
         <h2>快來找我們試試手氣！</h2>
         <GoogleMap />
+      </section>
+      {/* 第四個 Section (警告區塊) */}
+      <section className="extended-section warning-section">
+        <motion.div
+          className="warning-content"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <img src={Warning} alt="警告圖示" className="warning-img" />
+        </motion.div>
       </section>
     </div>
   );
