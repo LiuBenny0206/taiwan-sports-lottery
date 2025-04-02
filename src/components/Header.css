@@ -9,9 +9,13 @@
   height: 5rem;
   width: 100%;
   padding: 0 2rem;
-  background: linear-gradient(to bottom, #ffe03c, #ffe03c)
+  background: linear-gradient(to bottom, #ffe03c, #ffe03c);
+  /* 加入 GPU 加速提示 */
+  backface-visibility: hidden;
+  will-change: transform;
+  transform: translateZ(0);
+  
 }
-
 
 /* LOGO */
 .header-left-logo img {
@@ -35,8 +39,8 @@
   border-radius: 8px;
   background-color: rgba(0, 0, 0, 0.1);
   text-shadow: 0 0 1px black;
-  transition: all 0.3s ease;
-  
+  /* 只過渡需要變化的屬性 */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .header-button:hover {
@@ -73,12 +77,10 @@
   padding: 1rem;
   font-size: 1.25rem;
   font-weight: bold;
-
 }
 
 .menu-list li {
   list-style: none;
-
 }
 
 .menu-item {

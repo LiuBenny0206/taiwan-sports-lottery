@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import "./Registration.css";
 import step1 from "../images/sample1.png";
@@ -30,10 +30,20 @@ function RegistrationModern() {
     },
   ];
 
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleImageClick = (imgSrc) => {
+    setSelectedImage(imgSrc);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
+
   return (
     <div className="modern-registration">
-        {/* 背景不規則形狀容器 */}
-        <div className="background-blobs">
+      {/* 背景不規則形狀容器 */}
+      <div className="background-blobs">
         <div className="blob blob1"></div>
         <div className="blob blob2"></div>
         <div className="blob blob3"></div>
@@ -52,7 +62,8 @@ function RegistrationModern() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, delay: index * 0.2 }}
           >
-            <div className="card-image">
+            {/* 加上 onClick 事件 */}
+            <div className="card-image" onClick={() => handleImageClick(step.img)}>
               <img src={step.img} alt={step.title} />
             </div>
             <div className="card-content">
@@ -62,6 +73,18 @@ function RegistrationModern() {
           </motion.div>
         ))}
       </div>
+
+      {/* Modal */}
+      {selectedImage && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <img src={selectedImage} alt="Enlarged" />
+            <button className="modal-close" onClick={closeModal}>
+              X
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

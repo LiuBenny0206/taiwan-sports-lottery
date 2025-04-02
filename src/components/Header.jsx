@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import headerBackground from "../images/header-background拷貝.png";
 import leftFirstHeader from "../images/FirstLeftHeader.png";
 import "./Header.css";
 
@@ -17,22 +16,17 @@ function Header() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const menuRef = useRef(null);
-  const [menuHeight, setMenuHeight] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      if (Math.abs(currentScrollY - lastScrollY) > 50) {
+      if (Math.abs(currentScrollY - lastScrollY) > 80) {
         setIsMenuVisible(currentScrollY < lastScrollY || currentScrollY <= 0);
         setLastScrollY(currentScrollY);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
-
-    if (menuRef.current) {
-      setMenuHeight(menuRef.current.scrollHeight);
-    }
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -46,20 +40,31 @@ function Header() {
   return (
     <>
       {/* Header 容器 */}
-      <div
-        className={`header-container ${!isMenuVisible ? "hidden" : ""}`}
-      >
+      <div className={`header-container ${!isMenuVisible ? "hidden" : ""}`}>
         <Link to="/" className="header-left-logo">
           <img src={leftFirstHeader} alt="Header Logo" />
         </Link>
 
         {/* 桌面版按鈕 */}
         <div className="header-buttons">
-          <a href="https://channel.sportslottery.com.tw/zh-tw/register/step1?retailerid=93179171" className="header-button">會員註冊</a>
+          <a
+            href="https://channel.sportslottery.com.tw/zh-tw/register/step1?retailerid=93179171"
+            className="header-button"
+          >
+            會員註冊
+          </a>
           <div className="divider"></div>
-          <a href="https://member.sportslottery.com.tw/login" className="header-button">會員登入</a>
+          <a
+            href="https://member.sportslottery.com.tw/login"
+            className="header-button"
+          >
+            會員登入
+          </a>
           <div className="divider"></div>
-          <a href="https://line.me/R/ti/p/@900vgrkj?oat_content=qr" className="header-button">
+          <a
+            href="https://line.me/R/ti/p/@900vgrkj?oat_content=qr"
+            className="header-button"
+          >
             <span className="icon">📱</span> LINE會員專區
           </a>
         </div>
@@ -70,15 +75,15 @@ function Header() {
         </button>
       </div>
 
-      {/* 桌面版菜單 */}
+      {/* 桌面版菜單：使用 slide down 動畫 */}
       <div
         ref={menuRef}
         className="menu-container"
         style={{
-          maxHeight: isMenuVisible ? `${menuHeight}px` : "0",
+          transform: isMenuVisible ? "translateY(0)" : "translateY(-100%)",
           opacity: isMenuVisible ? "1" : "0",
+          transition: "transform 0.5s ease, opacity 0.5s ease",
           overflow: "hidden",
-          transition: "max-height 0.5s ease, opacity 0.5s ease",
         }}
       >
         <ul className="menu-list">
@@ -100,17 +105,31 @@ function Header() {
         <ul className="menu-list">
           {menuItems.map((item, index) => (
             <li key={index}>
-              <Link to={item.path} className="menu-item" onClick={toggleMobileMenu}>
+              <Link
+                to={item.path}
+                className="menu-item"
+                onClick={toggleMobileMenu}
+              >
                 {item.label}
               </Link>
             </li>
           ))}
         </ul>
 
-        {/* 新增手機會員註冊與登入按鈕 */}
+        {/* 手機版會員註冊與登入按鈕 */}
         <div className="mobile-menu-footer">
-          <a href="https://channel.sportslottery.com.tw/zh-tw/register/step1?retailerid=93179171" className="mobile-menu-button">會員註冊</a>
-          <a href="https://member.sportslottery.com.tw/login" className="mobile-menu-button">會員登入</a>
+          <a
+            href="https://channel.sportslottery.com.tw/zh-tw/register/step1?retailerid=93179171"
+            className="mobile-menu-button"
+          >
+            會員註冊
+          </a>
+          <a
+            href="https://member.sportslottery.com.tw/login"
+            className="mobile-menu-button"
+          >
+            會員登入
+          </a>
         </div>
       </div>
     </>

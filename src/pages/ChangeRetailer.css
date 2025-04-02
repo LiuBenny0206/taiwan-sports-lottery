@@ -74,7 +74,6 @@
 }
 
 .tab-button.active {
-  background: var(--color-secondary);
   color: var(--color-dark);
   border: 2px solid #ffa261;
 }
