@@ -1,119 +1,130 @@
-/* 請在 index.html 中引入字體，例如：
-   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
-*/
-
-:root {
-  --font-family: 'Noto Sans TC', sans-serif;
-  --accent-color: #fdae5a;
-  --primary-color: #333;
-  --secondary-color: #777;
-  --accent-color: #fdae5a;
-  --hero-bg: #ffe0b2;
-  --spacing-small: 20px;
-  --spacing-medium: 40px;
-  --spacing-large: 80px;
-  --radius-base: 10px;
-  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: var(--font-family);
-  background: #fffce8;
-  color: var(--primary-color);
-}
-
-.about-page {
-  width: 100%;
-  overflow-x: hidden;
-}
-
-/* =========================
-   1. Hero 區塊
-   ========================= */
-/* Hero 區塊 */
-.hero-section {
-  position: relative;
-  background: var(--hero-bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  height: 40vh;
-  overflow: hidden; /* 控制超出部分是否顯示 */
-}
-
-/* 第一個正方形裝飾，位於右上角 */
-.hero-section::before {
-  content: "";
-  position: absolute;
-  width: 180px;
-  height: 180px;
-  background: #f25f32; /* 可調整顏色 */
-  top: -50px;
-  right: -50px;
-  transform: rotate(20deg);
-  opacity: 0.4;
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* 第二個正方形裝飾，位於左下角 */
-.hero-section::after {
-  content: "";
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  background: #e07422; /* 與背景漸層呼應的顏色 */
-  bottom: -40px;
-  left: -40px;
-  transform: rotate(-15deg);
-  opacity: 0.35;
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* Hero 內容覆蓋區 */
-.hero-overlay {
-  padding: var(--spacing-medium);
-  position: relative;
-  z-index: 1;
-}
-
-.hero-overlay h1 {
-  font-size: 3rem;
-  margin-bottom: var(--spacing-small);
-  color: var(--primary-color);
-}
-
-.hero-overlay p {
-  font-size: 1.5rem;
-  color: var(--secondary-color);
-}
-
-/* =========================
-   2. 圖片展示區 (Gallery)
-   ========================= */
-   .gallery-section {
-    position: relative;  /* 讓內部的絕對定位元素定位於此 */
-    background: #fdedd6;  /* 背景色 */
+/* ==========================================================================
+   1. 全域 CSS 變數設定
+   定義字型、顏色、間距、圓角與陰影等基本屬性，方便全站統一調整主題樣式
+   ========================================================================== */
+   :root {
+    --font-family: 'Noto Sans TC', sans-serif;
+    --accent-color: #fdae5a;        /* 強調色 (同時重複定義會覆蓋) */
+    --primary-color: #333;          /* 主要文字顏色 */
+    --secondary-color: #777;        /* 次要文字顏色 */
+    --hero-bg: #ffe0b2;             /* Hero 區塊背景色 */
+    --spacing-small: 20px;          /* 小間距 */
+    --spacing-medium: 40px;         /* 中間距 */
+    --spacing-large: 80px;          /* 大間距 */
+    --radius-base: 10px;            /* 基本圓角 */
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 陰影 */
+  }
+  
+  /* ==========================================================================
+     2. Body 與主頁面基本設定
+     ========================================================================== */
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    background: #fffce8;
+    color: var(--primary-color);
+  }
+  
+  /* 應用頁面主要容器 */
+  .about-page {
+    width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* ==========================================================================
+     3. Hero 區塊
+     用來顯示頁面頂部的吸引視覺效果與主要標題
+     ========================================================================== */
+  
+  /* Hero 區塊主容器 */
+  .hero-section {
+    position: relative;
+    background: linear-gradient(180deg, #fcf8cc 0, #ffeb83);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 40vh;
+    overflow: hidden; /* 控制超出部分是否顯示 */
+  }
+  
+  /* 裝飾：右上角的正方形 (使用 ::before 產生) */
+  .hero-section::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background: #f25f32;  /* 裝飾色，可依需求調整 */
+    top: -50px;
+    right: -50px;
+    transform: rotate(20deg);
+    opacity: 0.4;
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  /* 裝飾：左下角的正方形 (使用 ::after 產生) */
+  .hero-section::after {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: #e07422;  /* 與背景漸層呼應的顏色 */
+    bottom: -40px;
+    left: -40px;
+    transform: rotate(-15deg);
+    opacity: 0.35;
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  /* Hero 內容覆蓋區，確保文字與內容置於裝飾之上 */
+  .hero-overlay {
+    padding: var(--spacing-medium);
+    position: relative;
+    z-index: 1;
+  }
+  
+  .hero-overlay h1 {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-small);
+    color: var(--primary-color);
+  }
+  
+  .hero-overlay p {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+  }
+  
+  /* ==========================================================================
+     4. 圖片展示區 (Gallery)
+     用於展示圖片，搭配網格佈局與三角形裝飾元素
+     ========================================================================== */
+  
+  /* Gallery 主容器 */
+  .gallery-section {
+    position: relative; /* 使內部絕對定位元素參考此容器 */
+    background: #fdedd6;
     padding: var(--spacing-large) var(--spacing-small);
     text-align: center;
   }
   
+  /* Gallery 標題 */
   .gallery-title {
     font-size: 2rem;
     margin-bottom: var(--spacing-small);
     color: var(--primary-color);
   }
   
+  /* Gallery 副標題 */
   .gallery-subtitle {
     font-size: 1rem;
     color: var(--secondary-color);
     margin-bottom: var(--spacing-medium);
   }
   
+  /* Gallery 圖片網格：利用 CSS Grid 自動調整每列圖片數量 */
   .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -122,6 +133,7 @@ body {
     margin: 0 auto;
   }
   
+  /* Gallery 單張圖片 */
   .gallery-photo {
     width: 100%;
     aspect-ratio: 4 / 3;
@@ -131,18 +143,19 @@ body {
     transition: transform 0.3s ease;
   }
   
+  /* 圖片懸停時放大效果 */
   .gallery-photo:hover {
     transform: scale(1.05);
   }
   
-  /* 新增：三角形裝飾 */
+  /* 三角形裝飾設定 */
   .triangle {
     position: absolute;
     z-index: 0;
     opacity: 0.5;
   }
   
- /* 第一個三角形：右上角 */
+  /* 第一個三角形：右上角 */
   .triangle1 {
     top: 10px;
     right: 10px;
@@ -153,7 +166,7 @@ body {
     border-bottom: 90px solid var(--accent-color);
     transform: rotate(15deg); /* 旋轉 15 度 */
   }
-
+  
   /* 第二個三角形：左下角 */
   .triangle2 {
     bottom: 20px;
@@ -165,44 +178,49 @@ body {
     border-top: 75px solid var(--accent-color);
     transform: rotate(-10deg); /* 旋轉 -10 度 */
   }
-
+  
   /* 第三個三角形：中央稍偏上 */
   .triangle3 {
     top: 70%;
     left: 80%;
-    transform: translate(-50%, -50%) rotate(30deg); /* 旋轉 30 度 */
+    transform: translate(-50%, -50%) rotate(30deg); /* 移動與旋轉 */
     width: 0;
     height: 0;
     border-left: 70px solid transparent;
     border-right: 70px solid transparent;
     border-bottom: 100px solid var(--accent-color);
   }
-/* =========================
-   Info 區塊
-   ========================= */
-   .info-section {
-    position: relative;  /* 讓偽元素能絕對定位於此 */
+  
+  /* ==========================================================================
+     5. Info 區塊
+     用於展示詳細資訊，搭配半圓形背景裝飾
+     ========================================================================== */
+  
+  /* Info 區塊主容器 */
+  .info-section {
+    position: relative;  /* 讓偽元素能絕對定位 */
     background: #fffaf3;
     padding: var(--spacing-large) var(--spacing-small);
-    overflow: hidden; /* 若你希望超出部分隱藏，可以保留；若要露出圓形，請移除 */
+    overflow: hidden; /* 隱藏超出部分，若需要露出可移除此屬性 */
   }
   
-  /* ★ 關鍵：在 info-section 背景加上半圓裝飾 */
+  /* Info 區塊背景裝飾：半圓形 */
   .info-section::before {
     content: "";
     position: absolute;
-    width: 750px;       /* 圓形寬度，可自行調整 */
-    height: 1000px;      /* 圓形高度，同寬度保持為正方形 */
-    background: #ff6e00;/* 圓形顏色，可改 */
-    border-radius: 50%; /* 做出圓形 */
-    left: -250px;       /* 使一半超出容器，形成半圓視覺 */
+    width: 750px;       /* 裝飾寬度 */
+    height: 1000px;     /* 裝飾高度，保持正方形後做圓形 */
+    background: #ff6e00;/* 裝飾色 */
+    border-radius: 50%; /* 生成圓形 */
+    left: -250px;       /* 左側偏移，形成半圓視覺 */
     top: 50%;
     transform: translateY(-50%);
     z-index: 0;
-    opacity: 0.4;       /* 透明度，可自行調整 */
-    pointer-events: none; /* 避免影響滑鼠事件 */
+    opacity: 0.4;       /* 透明度調整 */
+    pointer-events: none;
   }
   
+  /* Info 區塊內容，包含文字與圖片 */
   .info-content {
     display: flex;
     flex-wrap: wrap;
@@ -210,10 +228,11 @@ body {
     max-width: 1000px;
     margin: 0 auto;
     gap: var(--spacing-medium);
-    position: relative;  /* 讓裡面文字、圖片在半圓上方 */
+    position: relative;  /* 使內容置於半圓裝飾之上 */
     z-index: 1;
   }
   
+  /* 文字內容 */
   .info-text {
     flex: 1 1 400px;
   }
@@ -232,6 +251,7 @@ body {
     color: var(--secondary-color);
   }
   
+  /* 圖片內容 */
   .info-image {
     flex: 1 1 400px;
   }
@@ -243,6 +263,8 @@ body {
     transition: transform 0.3s ease;
   }
   
+  /* 圖片懸停放大效果 */
   .info-image img:hover {
     transform: scale(1.05);
   }
+  

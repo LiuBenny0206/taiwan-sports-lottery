@@ -1,356 +1,375 @@
-.promotions-container {
-  position: relative;
-  background: linear-gradient(to right, #f2f2f2, #ffeda9);
-  padding: 60px 20px;
-  text-align: center;
-  font-family: "Noto Sans TC", serif;
-  overflow: hidden; /* 防止装饰元素溢出 */
-  min-height: 80vh; /* 最小高度，避免內容被裁剪 */
-}
-
-/* 添加背景装饰的伪元素 */
-.promotions-container::before {
-  content: ""; /* 用伪元素生成背景 */
-  position: absolute;
-  top: 20%;
-  left: 10%;
-  width: 600px;
-  height: 1200px;
-  background-color: #ffefa9; /* 浅肤色半圆 */
-  border-radius: 50%; /* 生成圆形 */
-  z-index: 1; /* 保证背景不覆盖内容 */
-  transform: translate(-50%, -50%) scale(2, 1); /* 缩放生成半圆效果 */
-}
-
-
-/* 新增容器控制额外的星星 */
-.promotions-container .additional-stars {
-  z-index: 10; /* 保证背景不覆盖内容 */
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.promotions-container .additional-stars span {
-  position: absolute;
-  color: #fff;
-  font-size: 2.5rem;
-  animation: twinkle 4s infinite ease-in-out;
-}
-
-/* 第二颗星星 */
-.promotions-container .additional-stars .star-1 {
-  top: 50%;
-  left: 90%;
-  font-size: 2.8rem;
-}
-
-/* 第三颗星星 */
-.promotions-container .additional-stars .star-2 {
-  top: 50%;
-  left: 3%;
-  font-size: 3rem;
-}
-
-/* 第四颗星星 */
-.promotions-container .additional-stars .star-3 {
-  top: 25%; /* 距离顶部 */
-  left: 60%; /* 距离左侧 */
-  font-size: 2.5rem; /* 星星大小 */
-  animation: twinkle 4.5s infinite ease-in-out; /* 动画延迟 */
-}
-
-.promotions-container .additional-stars .star-4 {
-  top: 85%; /* 距离顶部 */
-  left: 10%; /* 距离左侧 */
-  font-size: 3.5rem; /* 星星大小 */
-  animation: twinkle 5s infinite ease-in-out;
-}
-
-/* 动画效果 */
-@keyframes twinkle {
-  0%, 100% {
-    opacity: 0.8;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.2);
-  }
-}
-
-.promotions-content {
-  position: relative;
-  overflow: hidden; /* 隱藏溢出的內容 */
-  height: 500px; /* 固定高度，根據設計需求調整 */
-  transition: height 0.3s ease; /* 確保高度變化平滑 */
-}
-
-/* 卡片樣式 */
-.promo-card {
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  position: relative;
-  width: 100%;
-  height: auto;
-  padding: 0 20px;
-  flex-direction: row;
-}
-
-.promo-text {
-  max-width: 500px;
-  text-align: left;
-  margin-right: 70px;
-  word-break: break-word; /* 防止文字溢出 */
-}
-
-.promo-title {
-  font-size: 2.5rem;
-  font-weight: 900;
-  color: #000;
-  margin-bottom: 20px;
-}
-
-.promo-description {
-  font-size: 1.2rem;
-  color: #555;
-  margin-bottom: 30px;
-  line-height: 1.6;
-}
-
-.promo-button {
-  padding: 10px 20px;
-  font-size: 1rem;
-  font-weight: 900;
-  color: #ff8000;
-  background-color: transparent;
-  border: 2px solid #ff8000;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.promo-button:hover {
-  background-color: #ff8000;
-  color: #fff;
-}
-
-.promo-button a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.promo-image-wrapper {
-  position: relative;
-  display: inline-block;
-  width: 600px; /* 增大圖片寬度 */
-  height: 450px; /* 增大圖片高度 */
-  margin-bottom: 15px;
-  overflow: hidden; /* 確保內容不溢出 */
-}
-
-.promo-image {
-  position: relative;
-  display: block;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* 保持圖片比例並填滿容器 */
-  border-radius: 15px;
-}
-
-/* 上下切換動畫 */
-.slide-up-enter {
-  transform: translateY(100%);
-  opacity: 0;
-}
-.slide-up-enter-active {
-  transform: translateY(0);
-  opacity: 1;
-  transition: transform 0.5s ease, opacity 0.5s ease;
-}
-.slide-up-exit {
-  transform: translateY(0);
-  opacity: 1;
-}
-.slide-up-exit-active {
-  transform: translateY(-100%);
-  opacity: 0;
-  transition: transform 0.5s ease, opacity 0.5s ease;
-}
-
-.slide-down-enter {
-  transform: translateY(-100%);
-  opacity: 0;
-}
-.slide-down-enter-active {
-  transform: translateY(0);
-  opacity: 1;
-  transition: transform 0.5s ease, opacity 0.5s ease;
-}
-.slide-down-exit {
-  transform: translateY(0);
-  opacity: 1;
-}
-.slide-down-exit-active {
-  transform: translateY(100%);
-  opacity: 0;
-  transition: transform 0.5s ease, opacity 0.5s ease;
-}
-
-/* 下方導航按鈕 */
-.promotions-nav {
-  position: relative;
-  z-index: 100;
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.nav-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px; /* 圓形按鈕的寬度和高度 */
-  height: 36px;
-  background-color: #00764e; /* 深綠色背景 */
-  color: #fff;
-  border: none;
-  border-radius: 50%; /* 圓形 */
-  font-size: 1.2rem; /* 圖標大小 */
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加按鈕陰影 */
-}
-
-.nav-button:hover {
-  background-color: #005f3f; /* 懸停時變深 */
-  transform: scale(1.1); /* 懸停時放大 */
-}
-
-.nav-indicator {
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #00764e;
-  margin: 0 8px; /* 控制數字和按鈕的間距 */
-}
-
-/* 模態視窗背景 */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-/* 模態視窗內容 */
-.modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 800px;
-  width: 90%;
-  text-align: center;
-  position: relative;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-/* 關閉按鈕 */
-.modal-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-/* 模態視窗圖片 */
-.modal-image {
-  width: 100%;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-
-/* 模態視窗標題 */
-.modal-title {
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-/* 模態視窗詳細資訊 */
-.modal-details {
-  font-size: 1rem;
-  color: #555;
-  line-height: 1.5;
-}
-
-/* 響應式設計調整 */
-@media (max-width: 768px) {
-  .promo-card {
-    flex-direction: column-reverse;
-    align-items: center;
-  }
-  .promotions-content{
-    overflow: visible;
-  }
-  .promo-text {
+/* ======================================================================
+   促銷容器 (promotions-container)
+   ====================================================================== */
+   .promotions-container {
+    position: relative;
+    background: linear-gradient(to right, #f2f2f2, #ffeda9); /* 淡灰到淡黃色漸層背景 */
+    padding: 60px 20px;
     text-align: center;
-    margin: 10px 0;
-  }
-
-  .promotions-nav{
-    margin-top:250px
-  }
-
-  .promo-title {
-    font-size: 2rem;
-  }
-
-  .promo-description {
-    font-size: 1rem;
-    line-height: 1.4;
-  }
-
-  .promo-button {
-    margin-top: 10px;
-    font-size: 1rem;
-    padding: 10px 20px;
-  }
-
-  .promo-image-wrapper {
-    width: 100%;
-    height: auto;
-  }
-}
-
-@media (max-width: 425px) {
-  .promo-card{
-    padding: 0 0px;
+    font-family: "Noto Sans TC", serif;
+    overflow: hidden; /* 防止裝飾元素溢出 */
+    min-height: 80vh; /* 設定最小高度，避免內容被裁剪 */
   }
   
-  .promo-image{
-    width: 800px;
-    height: 300px;
+  /* 背景裝飾的偽元素，產生半圓效果 */
+  .promotions-container::before {
+    content: "";
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 600px;
+    height: 1200px;
+    background-color: #ffefa9; /* 淺膚色半圓 */
+    border-radius: 50%; /* 生成圓形 */
+    z-index: 1; /* 置於內容層之下 */
+    transform: translate(-50%, -50%) scale(2, 1); /* 調整位置與比例，產生半圓效果 */
   }
-
-  .promotions-nav{
-    margin-top:50px
+  
+  /* ======================================================================
+     額外裝飾：背景星星
+     ====================================================================== */
+  .promotions-container .additional-stars {
+    z-index: 10; /* 保證星星位於其他背景元素之上 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* 遮罩層不影響使用者操作 */
   }
-}
+  
+  .promotions-container .additional-stars span {
+    position: absolute;
+    color: #fff;
+    font-size: 2.5rem;
+    animation: twinkle 4s infinite ease-in-out; /* 星星閃爍動畫 */
+  }
+  
+  /* 依序設定各顆星星的位置與大小 */
+  .promotions-container .additional-stars .star-1 {
+    top: 50%;
+    left: 90%;
+    font-size: 2.8rem;
+  }
+  
+  .promotions-container .additional-stars .star-2 {
+    top: 50%;
+    left: 3%;
+    font-size: 3rem;
+  }
+  
+  .promotions-container .additional-stars .star-3 {
+    top: 25%; /* 離頂部距離 */
+    left: 60%; /* 離左側距離 */
+    font-size: 2.5rem;
+    animation: twinkle 4.5s infinite ease-in-out; /* 動畫時間稍微延長 */
+  }
+  
+  .promotions-container .additional-stars .star-4 {
+    top: 85%; /* 離頂部距離 */
+    left: 10%; /* 離左側距離 */
+    font-size: 3.5rem;
+    animation: twinkle 5s infinite ease-in-out;
+  }
+  
+  /* 星星閃爍動畫定義 */
+  @keyframes twinkle {
+    0%, 100% {
+      opacity: 0.8;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+  
+  /* ======================================================================
+     促銷內容區域
+     ====================================================================== */
+  .promotions-content {
+    position: relative;
+    overflow: hidden; /* 隱藏超出容器的內容 */
+    height: 500px; /* 固定高度，依照設計需求調整 */
+    transition: height 0.3s ease; /* 高度變化過渡效果 */
+  }
+  
+  /* 促銷卡片 (promo-card) 基本樣式 */
+  .promo-card {
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 0 20px;
+    flex-direction: row;
+  }
+  
+  /* 卡片內的文字區塊 */
+  .promo-text {
+    max-width: 500px;
+    text-align: left;
+    margin-right: 70px;
+    word-break: break-word; /* 避免文字超出容器 */
+  }
+  
+  /* 卡片標題 */
+  .promo-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #000;
+    margin-bottom: 20px;
+  }
+  
+  /* 卡片描述 */
+  .promo-description {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+  
+  /* 卡片按鈕樣式 */
+  .promo-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 900;
+    color: #ff8000;
+    background-color: transparent;
+    border: 2px solid #ff8000;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .promo-button:hover {
+    background-color: #ff8000;
+    color: #fff;
+  }
+  
+  /* 確保按鈕內部連結繼承按鈕樣式 */
+  .promo-button a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  /* 圖片容器：調整圖片尺寸與邊界 */
+  .promo-image-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 600px; /* 根據設計增大圖片寬度 */
+    height: 450px; /* 根據設計增大圖片高度 */
+    margin-bottom: 15px;
+    overflow: hidden;
+  }
+  
+  /* 圖片樣式：保持圖片比例並填滿容器 */
+  .promo-image {
+    position: relative;
+    display: block;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+  
+  /* ======================================================================
+     上下切換動畫效果
+     ====================================================================== */
+  /* 從下方進入，上方離場 */
+  .slide-up-enter {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  .slide-up-enter-active {
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+  .slide-up-exit {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .slide-up-exit-active {
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+  
+  /* 從上方進入，下方離場 */
+  .slide-down-enter {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  .slide-down-enter-active {
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+  .slide-down-exit {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .slide-down-exit-active {
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+  
+  /* ======================================================================
+     下方導航區域
+     ====================================================================== */
+  .promotions-nav {
+    position: relative;
+    z-index: 100;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  /* 導航按鈕：圓形設計與懸停效果 */
+  .nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: #00764e; /* 深綠色背景 */
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 按鈕陰影 */
+  }
+  
+  .nav-button:hover {
+    background-color: #005f3f; /* 懸停時變深 */
+    transform: scale(1.1); /* 懸停時放大 */
+  }
+  
+  /* 導航指示：顯示當前頁數 */
+  .nav-indicator {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #00764e;
+    margin: 0 8px;
+  }
+  
+  /* ======================================================================
+     模態視窗樣式
+     ====================================================================== */
+  /* 模態視窗背景遮罩 */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* 模態視窗內容區 */
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* 模態視窗關閉按鈕 */
+  .modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  /* 模態視窗圖片 */
+  .modal-image {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  /* 模態視窗標題 */
+  .modal-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* 模態視窗詳細內容 */
+  .modal-details {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+  }
+  
+  /* ======================================================================
+     響應式設計：調整不同解析度下的版面配置
+     ====================================================================== */
+  @media (max-width: 768px) {
+    .promo-card {
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+    .promotions-content {
+      overflow: visible;
+    }
+    .promo-text {
+      text-align: center;
+      margin: 10px 0;
+    }
+    .promotions-nav {
+      margin-top: 250px;
+    }
+    .promo-title {
+      font-size: 2rem;
+    }
+    .promo-description {
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+    .promo-button {
+      margin-top: 10px;
+      font-size: 1rem;
+      padding: 10px 20px;
+    }
+    .promo-image-wrapper {
+      width: 100%;
+      height: auto;
+    }
+  }
+  
+  @media (max-width: 425px) {
+    .promo-card {
+      padding: 0;
+    }
+    .promo-image {
+      width: 800px;
+      height: 300px;
+    }
+    .promotions-nav {
+      margin-top: 50px;
+    }
+  }
+  
