@@ -51,7 +51,7 @@ function PinkBox() {
     <div className="pink-box">
       <div
         className="fb-page"
-        data-href="https://www.facebook.com/profile.php?id=100063820583160"
+        data-href="https://www.facebook.com/profile.php?id=61571410902468"
         data-tabs="timeline"
         data-width="500"
         data-height="400"

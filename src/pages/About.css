@@ -4,7 +4,7 @@
    ========================================================================== */
    :root {
     --font-family: 'Noto Sans TC', sans-serif;
-    --accent-color: #fdae5a;        /* 強調色 (同時重複定義會覆蓋) */
+    --accent-color: #ffa709;        /* 強調色 (同時重複定義會覆蓋) */
     --primary-color: #333;          /* 主要文字顏色 */
     --secondary-color: #777;        /* 次要文字顏色 */
     --hero-bg: #ffe0b2;             /* Hero 區塊背景色 */
@@ -40,7 +40,7 @@
   /* Hero 區塊主容器 */
   .hero-section {
     position: relative;
-    background: linear-gradient(180deg, #fcf8cc 0, #ffeb83);
+    background: radial-gradient(circle at 30% 30%, var(--bg-gradient-start), var(--bg-gradient-end));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -50,34 +50,7 @@
   }
   
   /* 裝飾：右上角的正方形 (使用 ::before 產生) */
-  .hero-section::before {
-    content: "";
-    position: absolute;
-    width: 180px;
-    height: 180px;
-    background: #f25f32;  /* 裝飾色，可依需求調整 */
-    top: -50px;
-    right: -50px;
-    transform: rotate(20deg);
-    opacity: 0.4;
-    z-index: 0;
-    pointer-events: none;
-  }
-  
-  /* 裝飾：左下角的正方形 (使用 ::after 產生) */
-  .hero-section::after {
-    content: "";
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    background: #e07422;  /* 與背景漸層呼應的顏色 */
-    bottom: -40px;
-    left: -40px;
-    transform: rotate(-15deg);
-    opacity: 0.35;
-    z-index: 0;
-    pointer-events: none;
-  }
+
   
   /* Hero 內容覆蓋區，確保文字與內容置於裝飾之上 */
   .hero-overlay {
@@ -104,8 +77,8 @@
   
   /* Gallery 主容器 */
   .gallery-section {
+
     position: relative; /* 使內部絕對定位元素參考此容器 */
-    background: #fdedd6;
     padding: var(--spacing-large) var(--spacing-small);
     text-align: center;
   }
@@ -183,12 +156,13 @@
   .triangle3 {
     top: 70%;
     left: 80%;
-    transform: translate(-50%, -50%) rotate(30deg); /* 移動與旋轉 */
+    transform: translate(-50%, -50%) rotate(30deg);
     width: 0;
     height: 0;
-    border-left: 70px solid transparent;
-    border-right: 70px solid transparent;
-    border-bottom: 100px solid var(--accent-color);
+    border-left: 400px solid transparent;
+    border-right: 450px solid transparent;
+    border-bottom: 800px solid var(--accent-color);
+    z-index: -1;
   }
   
   /* ==========================================================================
@@ -198,8 +172,9 @@
   
   /* Info 區塊主容器 */
   .info-section {
+    background: radial-gradient(circle at 30% 30%, var(--bg-gradient-start), var(--bg-gradient-end));
     position: relative;  /* 讓偽元素能絕對定位 */
-    background: #fffaf3;
+    background: #fffbe5;
     padding: var(--spacing-large) var(--spacing-small);
     overflow: hidden; /* 隱藏超出部分，若需要露出可移除此屬性 */
   }
@@ -208,12 +183,12 @@
   .info-section::before {
     content: "";
     position: absolute;
-    width: 750px;       /* 裝飾寬度 */
+    width: 950px;       /* 裝飾寬度 */
     height: 1000px;     /* 裝飾高度，保持正方形後做圓形 */
-    background: #ff6e00;/* 裝飾色 */
+    background: #ffd800;/* 裝飾色 */
     border-radius: 50%; /* 生成圓形 */
-    left: -250px;       /* 左側偏移，形成半圓視覺 */
-    top: 50%;
+    left: 70px;       /* 左側偏移，形成半圓視覺 */
+    top: 70%;
     transform: translateY(-50%);
     z-index: 0;
     opacity: 0.4;       /* 透明度調整 */
