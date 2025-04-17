@@ -6,7 +6,7 @@ import "./Registration.css";
 import step1 from "../images/sample1.png";
 import step2 from "../images/sample2.png";
 import step3 from "../images/sample3.png";
-import step4 from "../images/sample4.png";
+import step4 from "../images/storepic4.png";
 
 /**
  * RegistrationModern Component

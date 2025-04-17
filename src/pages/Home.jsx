@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import "./Home.css";
-
 import Sample1 from "../images/sample1.png";
 import Sample2 from "../images/sample2.png";
 import Sample3 from "../images/sample3.png";
