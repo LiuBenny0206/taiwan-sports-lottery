@@ -2,23 +2,13 @@ import React from "react";
 import { motion } from "framer-motion";
 import "./About.css";
 
-// 載入店面圖片資源
 import storepic1 from "../images/storepic1.png";
 import storepic2 from "../images/storepic2.png";
 import storepic3 from "../images/storepic3.png";
 import storepic4 from "../images/storepic4.png";
 import storepic5 from "../images/storepic5.png";
 
-/**
- * About Component
- * ----------------
- * 此組件展示「關於我們」頁面內容，包含：
- * - Hero 區塊：以動畫呈現頁面標題與副標題
- * - Gallery 區塊：展示店面風采圖片，搭配三角形裝飾與淡入放大動畫
- * - Info 區塊：說明企業介紹，利用左右滑入動畫呈現文字與圖片
- */
 function About() {
-  // 店面圖片資料，包含圖片來源與替代文字
   const galleryImages = [
     { src: storepic1, alt: "Store Image 1" },
     { src: storepic2, alt: "Store Image 2" },
@@ -29,11 +19,7 @@ function About() {
 
   return (
     <div className="about-page">
-      {/* =====================
-           Hero 區塊
-           ---------------------
-           顯示頁面頂部的主標題與副標題，並以 Framer Motion 添加淡入與垂直移動動畫
-      ===================== */}
+      {/* --- Hero 區塊 --- */}
       <div className="hero-section">
         <div className="hero-overlay">
           <motion.h1
@@ -53,76 +39,90 @@ function About() {
         </div>
       </div>
 
-      {/* =====================
-           Gallery 區塊
-           ---------------------
-           展示店面風采，包含三角形裝飾以及使用 Framer Motion 對圖片做淡入與縮放動畫
-      ===================== */}
+      {/* --- 店面風采 --- */}
       <div className="gallery-section">
-        {/* 三角形裝飾：三個不同位置的三角形 */}
         <div className="triangle triangle1"></div>
         <div className="triangle triangle2"></div>
-        <div className="triangle triangle3"></div>
 
         <h2 className="gallery-title">店面風采</h2>
         <p className="gallery-subtitle">
           歡迎來到富比多彩券行，這裡是我們的店面與環境
         </p>
 
-        <div className="gallery-grid">
-          {galleryImages.map((image, index) => (
-            <motion.img
-              key={index}
-              src={image.src}
-              alt={image.alt}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="gallery-photo"
-              loading="lazy"
-            />
-          ))}
+        <div className="scroll-gallery">
+          {galleryImages.map((image, index) => {
+            const tilt = (Math.random() * 4 - 2).toFixed(2) + "deg";
+            return (
+              <motion.div
+                key={index}
+                className="gallery-card"
+                style={{ "--tilt": tilt }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+              >
+                <img src={image.src} alt={image.alt} className="gallery-photo" />
+              </motion.div>
+            );
+          })}
         </div>
       </div>
 
-      {/* =====================
-           Info 區塊
-           ---------------------
-           說明企業介紹，採用左右滑入動畫分別呈現文字與圖片
-      ===================== */}
-      <div className="info-section">
-        <div className="info-content">
-          {/* 文字內容：從左側滑入 */}
-          <div className="info-text">
-            <motion.h2
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1 }}
-            >
-              富比多彩券行
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.3 }}
-            >
-              台灣彩券公司於民國95年7月10日成立，為中國信託金控旗下公司，
-              中國信託銀行得財政部認可，自第3屆起履行公益彩券發行業務的責任。
-              台灣彩券致力於公益彩券的經營和推廣，透過專業的彩券銷售管理及社會大眾的參與，
-              協助充實政府公益彩券盈餘並推動公益彩券產業健全化。
-            </motion.p>
-          </div>
-          {/* 圖片內容：從右側滑入 */}
-          <div className="info-image">
-            <motion.img
-              src={storepic1}
-              alt="Info"
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.5 }}
-            />
-          </div>
+      {/* --- 左圖＋右白框 --- */}
+      <div className="rectangle-section">
+        <div className="rect-image">
+          <motion.img
+            src={storepic1}
+            alt="活動照片"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+          />
         </div>
+        <div className="white-box">
+          <motion.p
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.3 }}
+          >
+            本店自第一屆彩券開賣起，便投入台灣彩券的銷售行列，
+            率先採用 <strong>複合式經營模式</strong>，
+            結合便利商店與彩券銷售，讓顧客在日常生活中也能輕鬆參與公益。
+            <br /><br />
+            隨著制度日漸成熟，富比多彩券行也同步轉型為
+            <strong>正式彩券行</strong>，不僅販售多元彩券產品，
+            亦提供專業彩券相關資訊與中獎查詢協助，成為社區民眾信賴的好鄰居。
+            <br /><br />
+            我們始終相信，
+            <strong>彩券不只是希望的開端，更是凝聚社區力量的一種方式。</strong>
+          </motion.p>
+        </div>
+      </div>
+
+      {/* --- 兩層波浪：底部 --- */}
+      <div className="footer-wave-container">
+        {/* 底層：深色 */}
+        <svg
+          className="wave wave1"
+          viewBox="0 0 600 200"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,64 C300,144 900,-48 1200,64 L1200,200 L0,200 Z"
+            fill="#ffe87d"
+          />
+        </svg>
+        {/* 上層：原本黃 */}
+        <svg
+          className="wave wave2"
+          viewBox="0 0 2400 200"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,80 C300,-16 900,176 1200,80 L1200,200 L0,200 Z"
+            fill="#fff1ac"
+          />
+        </svg>
       </div>
     </div>
   );

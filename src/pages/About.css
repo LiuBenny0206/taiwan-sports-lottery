@@ -1,245 +1,280 @@
-/* ==========================================================================
-   1. 全域 CSS 變數設定
-   定義字型、顏色、間距、圓角與陰影等基本屬性，方便全站統一調整主題樣式
-   ========================================================================== */
-   :root {
-    --font-family: 'Noto Sans TC', sans-serif;
-    --accent-color: #ffa709;        /* 強調色 (同時重複定義會覆蓋) */
-    --primary-color: #333;          /* 主要文字顏色 */
-    --secondary-color: #777;        /* 次要文字顏色 */
-    --hero-bg: #ffe0b2;             /* Hero 區塊背景色 */
-    --spacing-small: 20px;          /* 小間距 */
-    --spacing-medium: 40px;         /* 中間距 */
-    --spacing-large: 80px;          /* 大間距 */
-    --radius-base: 10px;            /* 基本圓角 */
-    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 陰影 */
-  }
-  
-  /* ==========================================================================
-     2. Body 與主頁面基本設定
-     ========================================================================== */
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: var(--font-family);
-    background: #fffce8;
-    color: var(--primary-color);
-  }
-  
-  /* 應用頁面主要容器 */
-  .about-page {
-    width: 100%;
-    overflow-x: hidden;
-  }
-  
-  /* ==========================================================================
-     3. Hero 區塊
-     用來顯示頁面頂部的吸引視覺效果與主要標題
-     ========================================================================== */
-  
-  /* Hero 區塊主容器 */
-  .hero-section {
-    position: relative;
-    background: radial-gradient(circle at 30% 30%, var(--bg-gradient-start), var(--bg-gradient-end));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    height: 40vh;
-    overflow: hidden; /* 控制超出部分是否顯示 */
-  }
-  
-  /* 裝飾：右上角的正方形 (使用 ::before 產生) */
+:root {
+  --font-family: 'Noto Sans TC', sans-serif;
+  --accent-color: #ffa709;
+  --primary-color: #333;
+  --secondary-color: #777;
+  --spacing-small: 20px;
+  --spacing-medium: 40px;
+  --spacing-large: 80px;
+  --radius-base: 10px;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-  
-  /* Hero 內容覆蓋區，確保文字與內容置於裝飾之上 */
-  .hero-overlay {
-    padding: var(--spacing-medium);
-    position: relative;
-    z-index: 1;
-  }
-  
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background: #fffce8;
+  color: var(--primary-color);
+}
+
+.about-page {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Hero */
+.hero-section {
+  position: relative;
+  background: linear-gradient(to bottom, #fff1ac, #fff1ac);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 20vh;
+  overflow: hidden;
+}
+.hero-overlay {
+  padding: var(--spacing-medium);
+  position: relative;
+  z-index: 1;
+}
+.hero-overlay h1 {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-small);
+}
+.hero-overlay p {
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+}
+
+/* Gallery */
+.gallery-section {
+  background: radial-gradient(circle at 30% 30%, #fffce8, #fffce8);
+  position: relative;
+  padding: var(--spacing-large) var(--spacing-small);
+  text-align: center;
+}
+.gallery-title {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-small);
+}
+.gallery-subtitle {
+  font-size: 1rem;
+  color: var(--secondary-color);
+  margin-bottom: var(--spacing-medium);
+}
+.scroll-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  padding: 2rem 1rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.gallery-card {
+  flex: 0 0 auto;
+  width: 300px;
+  height: 400px;
+  scroll-snap-align: center;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  background: white;
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 0.4s ease;
+}
+.gallery-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Triangles */
+.triangle {
+  position: absolute;
+  z-index: 0;
+  opacity: 0.5;
+}
+.triangle1 {
+  top: 10px; right: 10px;
+  border-left: 60px solid transparent;
+  border-right: 60px solid transparent;
+  border-bottom: 90px solid var(--accent-color);
+  transform: rotate(15deg);
+}
+.triangle2 {
+  bottom: 20px; left: 20px;
+  border-left: 45px solid transparent;
+  border-right: 45px solid transparent;
+  border-top: 75px solid var(--accent-color);
+  transform: rotate(-10deg);
+}
+
+/* Rectangle section */
+.rectangle-section {
+  position: relative;
+  width: 900px;
+  margin: var(--spacing-medium) auto;
+}
+.rectangle-section .rect-image img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: var(--radius-base);
+  box-shadow: var(--box-shadow);
+}
+.rectangle-section .white-box {
+  position: absolute;
+  bottom: 80px;
+  right: -290px;
+  background: #fff;
+  border-radius: var(--radius-base);
+  box-shadow: var(--box-shadow);
+  max-width: 400px;
+  padding: 1.5rem 2rem;
+  color: var(--secondary-color);
+}
+.rectangle-section .white-box h2 {
+  margin-bottom: 1rem;
+}
+.rectangle-section .white-box p {
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+/* 兩層波浪 */
+.footer-wave-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  margin-top: var(--spacing-medium);
+}
+.wave {
+  display: block;
+  width: 200%;
+  height: 200px;     /* 提高高度 */
+}
+.wave1 {
+  position: relative;
+  z-index: 1;
+}
+.wave2 {
+  position: absolute;
+  top: -40px;        /* 加深重疊量 */
+  left: 0;
+  z-index: 2;
+}
+/* ====== Breakpoint: up to 1440px ====== */
+@media (max-width: 1440px) {
   .hero-overlay h1 {
-    font-size: 3rem;
-    margin-bottom: var(--spacing-small);
-    color: var(--primary-color);
-  }
-  
-  .hero-overlay p {
-    font-size: 1.5rem;
-    color: var(--secondary-color);
-  }
-  
-  /* ==========================================================================
-     4. 圖片展示區 (Gallery)
-     用於展示圖片，搭配網格佈局與三角形裝飾元素
-     ========================================================================== */
-  
-  /* Gallery 主容器 */
-  .gallery-section {
-
-    position: relative; /* 使內部絕對定位元素參考此容器 */
-    padding: var(--spacing-large) var(--spacing-small);
-    text-align: center;
-  }
-  
-  /* Gallery 標題 */
-  .gallery-title {
-    font-size: 2rem;
-    margin-bottom: var(--spacing-small);
-    color: var(--primary-color);
-  }
-  
-  /* Gallery 副標題 */
-  .gallery-subtitle {
-    font-size: 1rem;
-    color: var(--secondary-color);
-    margin-bottom: var(--spacing-medium);
-  }
-  
-  /* Gallery 圖片網格：利用 CSS Grid 自動調整每列圖片數量 */
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-small);
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  /* Gallery 單張圖片 */
-  .gallery-photo {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    border-radius: var(--radius-base);
-    box-shadow: var(--box-shadow);
-    transition: transform 0.3s ease;
-  }
-  
-  /* 圖片懸停時放大效果 */
-  .gallery-photo:hover {
-    transform: scale(1.05);
-  }
-  
-  /* 三角形裝飾設定 */
-  .triangle {
-    position: absolute;
-    z-index: 0;
-    opacity: 0.5;
-  }
-  
-  /* 第一個三角形：右上角 */
-  .triangle1 {
-    top: 10px;
-    right: 10px;
-    width: 0;
-    height: 0;
-    border-left: 60px solid transparent;
-    border-right: 60px solid transparent;
-    border-bottom: 90px solid var(--accent-color);
-    transform: rotate(15deg); /* 旋轉 15 度 */
-  }
-  
-  /* 第二個三角形：左下角 */
-  .triangle2 {
-    bottom: 20px;
-    left: 20px;
-    width: 0;
-    height: 0;
-    border-left: 45px solid transparent;
-    border-right: 45px solid transparent;
-    border-top: 75px solid var(--accent-color);
-    transform: rotate(-10deg); /* 旋轉 -10 度 */
-  }
-  
-  /* 第三個三角形：中央稍偏上 */
-  .triangle3 {
-    top: 70%;
-    left: 80%;
-    transform: translate(-50%, -50%) rotate(30deg);
-    width: 0;
-    height: 0;
-    border-left: 400px solid transparent;
-    border-right: 450px solid transparent;
-    border-bottom: 800px solid var(--accent-color);
-    z-index: -1;
-  }
-  
-  /* ==========================================================================
-     5. Info 區塊
-     用於展示詳細資訊，搭配半圓形背景裝飾
-     ========================================================================== */
-  
-  /* Info 區塊主容器 */
-  .info-section {
-    background: radial-gradient(circle at 30% 30%, var(--bg-gradient-start), var(--bg-gradient-end));
-    position: relative;  /* 讓偽元素能絕對定位 */
-    background: #fffbe5;
-    padding: var(--spacing-large) var(--spacing-small);
-    overflow: hidden; /* 隱藏超出部分，若需要露出可移除此屬性 */
-  }
-  
-  /* Info 區塊背景裝飾：半圓形 */
-  .info-section::before {
-    content: "";
-    position: absolute;
-    width: 950px;       /* 裝飾寬度 */
-    height: 1000px;     /* 裝飾高度，保持正方形後做圓形 */
-    background: #ffd800;/* 裝飾色 */
-    border-radius: 50%; /* 生成圓形 */
-    left: 70px;       /* 左側偏移，形成半圓視覺 */
-    top: 70%;
-    transform: translateY(-50%);
-    z-index: 0;
-    opacity: 0.4;       /* 透明度調整 */
-    pointer-events: none;
-  }
-  
-  /* Info 區塊內容，包含文字與圖片 */
-  .info-content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    max-width: 1000px;
-    margin: 0 auto;
-    gap: var(--spacing-medium);
-    position: relative;  /* 使內容置於半圓裝飾之上 */
-    z-index: 1;
-  }
-  
-  /* 文字內容 */
-  .info-text {
-    flex: 1 1 400px;
-  }
-  
-  .info-text h2 {
     font-size: 2.5rem;
-    margin-bottom: var(--spacing-small);
-    text-align: left;
-    color: var(--primary-color);
   }
-  
-  .info-text p {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    text-align: left;
-    color: var(--secondary-color);
+  .hero-overlay p {
+    font-size: 1.25rem;
   }
-  
-  /* 圖片內容 */
-  .info-image {
-    flex: 1 1 400px;
+  .gallery-card {
+    width: 280px;
+    height: 380px;
   }
-  
-  .info-image img {
+  .rectangle-section {
+    width: 800px;
+  }
+}
+
+/* ====== Breakpoint: up to 1024px ====== */
+@media (max-width: 1024px) {
+  .hero-section {
+    height: 18vh;
+  }
+  .hero-overlay h1 {
+    font-size: 2.25rem;
+  }
+  .hero-overlay p {
+    font-size: 1.15rem;
+  }
+  .scroll-gallery {
+    gap: 2.5rem;
+  }
+  .gallery-card {
+    width: 240px;
+    height: 330px;
+  }
+  .rectangle-section {
+    width: 600px;
+  }
+}
+
+/* ====== Breakpoint: up to 768px ====== */
+@media (max-width: 768px) {
+  .hero-section {
+    height: 15vh;
+  }
+  .hero-overlay h1 {
+    font-size: 2rem;
+  }
+  .hero-overlay p {
+    font-size: 1rem;
+  }
+  .gallery-section {
+    padding: var(--spacing-medium) var(--spacing-small);
+  }
+  .scroll-gallery {
+    gap: 2rem;
+    padding: 1.5rem 0.5rem;
+  }
+  .gallery-card {
+    width: 200px;
+    height: 280px;
+  }
+  .rectangle-section {
+    width: 90%;
+  }
+  .rectangle-section .white-box {
+    position: static;
+    margin: var(--spacing-small) auto 0;
+    right: auto;
+    bottom: auto;
+  }
+}
+
+/* ====== Breakpoint: up to 425px ====== */
+@media (max-width: 425px) {
+  .hero-section {
+    height: 12vh;
+  }
+  .hero-overlay h1 {
+    font-size: 1.5rem;
+  }
+  .hero-overlay p {
+    font-size: 0.9rem;
+  }
+  .scroll-gallery {
+    gap: 1rem;
+    padding: 1rem 0.5rem;
+  }
+  .gallery-card {
+    width: 160px;
+    height: 220px;
+  }
+  .gallery-card img {
+    border-radius: 12px;
+  }
+  .rectangle-section {
     width: 100%;
-    border-radius: var(--radius-base);
-    box-shadow: var(--box-shadow);
-    transition: transform 0.3s ease;
+    margin: var(--spacing-small) 0;
   }
-  
-  /* 圖片懸停放大效果 */
-  .info-image img:hover {
-    transform: scale(1.05);
+  .rectangle-section .rect-image img {
+    height: auto;
   }
-  
+  .rectangle-section .white-box {
+    max-width: 100%;
+    padding: 1rem;
+  }
+  /* 調整文字行高避免換行亂掉 */
+  .white-box p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+}

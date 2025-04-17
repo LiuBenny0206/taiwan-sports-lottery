@@ -14,7 +14,15 @@
   backface-visibility: hidden;
   will-change: transform;
   transform: translateZ(0);
-  
+
+}
+
+.header-container.registration-theme {
+  background: linear-gradient(to bottom, #eaf5ff, #eaf5ff);
+}
+
+.header-container.about-theme {
+  background: #fff1ac;
 }
 
 /* LOGO */

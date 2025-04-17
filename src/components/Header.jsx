@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import leftFirstHeader from "../images/FirstLeftHeader.png";
 import "./Header.css";
 
@@ -12,6 +12,10 @@ const menuItems = [
 ];
 
 function Header() {
+  const location = useLocation();
+  const isRegistrationPage = location.pathname === "/registration";
+  const isAboutPage = location.pathname === "/about";
+
   const [isMenuVisible, setIsMenuVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -25,12 +29,8 @@ function Header() {
         setLastScrollY(currentScrollY);
       }
     };
-
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
   const toggleMobileMenu = () => {
@@ -40,7 +40,12 @@ function Header() {
   return (
     <>
       {/* Header 容器 */}
-      <div className={`header-container ${!isMenuVisible ? "hidden" : ""}`}>
+      <div
+        className={`header-container
+          ${!isMenuVisible ? "hidden" : ""}
+          ${isRegistrationPage ? "registration-theme" : ""}
+          ${isAboutPage ? "about-theme" : ""}`}
+      >
         <Link to="/" className="header-left-logo">
           <img src={leftFirstHeader} alt="Header Logo" />
         </Link>
@@ -75,7 +80,7 @@ function Header() {
         </button>
       </div>
 
-      {/* 桌面版菜單：使用 slide down 動畫 */}
+      {/* 桌面版菜單：slide down */}
       <div
         ref={menuRef}
         className="menu-container"
@@ -87,8 +92,8 @@ function Header() {
         }}
       >
         <ul className="menu-list">
-          {menuItems.map((item, index) => (
-            <li key={index}>
+          {menuItems.map((item, idx) => (
+            <li key={idx}>
               <Link to={item.path} className="menu-item">
                 {item.label}
               </Link>
@@ -103,8 +108,8 @@ function Header() {
           ×
         </button>
         <ul className="menu-list">
-          {menuItems.map((item, index) => (
-            <li key={index}>
+          {menuItems.map((item, idx) => (
+            <li key={idx}>
               <Link
                 to={item.path}
                 className="menu-item"
@@ -116,7 +121,6 @@ function Header() {
           ))}
         </ul>
 
-        {/* 手機版會員註冊與登入按鈕 */}
         <div className="mobile-menu-footer">
           <a
             href="https://channel.sportslottery.com.tw/zh-tw/register/step1?retailerid=93179171"

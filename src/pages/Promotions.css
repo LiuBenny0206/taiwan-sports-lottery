@@ -324,6 +324,27 @@
     line-height: 1.5;
   }
   
+  /* 機票價格表格樣式 */
+  .flight-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .flight-table th,
+  .flight-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+
+  .flight-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+
+
   /* ======================================================================
      響應式設計：調整不同解析度下的版面配置
      ====================================================================== */
