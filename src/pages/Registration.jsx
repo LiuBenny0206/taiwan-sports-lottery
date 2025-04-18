@@ -11,70 +11,72 @@ import step4 from "../images/storepic4.png";
 /**
  * RegistrationModern Component
  * ------------------------------
- * 此組件展示註冊流程的現代化教學，包含：
- * - 背景的不規則形狀裝飾
- * - 註冊步驟的卡片網格展示 (利用 Framer Motion 實現動畫效果)
- * - 點擊圖片後彈出的模態視窗 (顯示大圖)
+ * 此組件展示註冊流程的現代化教學，並可在「首次註冊」與「二轉三地會員」兩種教學間切換。
  */
 function RegistrationModern() {
-  // 定義註冊步驟數據：圖片、標題與描述
-  const steps = [
-    {
-      img: step1,
-      title: "Step 1",
-      description: "填寫基本資料",
-    },
-    {
-      img: step2,
-      title: "Step 2",
-      description: "手機簡訊驗證",
-    },
-    {
-      img: step3,
-      title: "Step 3",
-      description: "身分認證作業",
-    },
-    {
-      img: step4,
-      title: "Step 4",
-      description: "續填其它資料",
-    },
-  ];
-
-  // 使用 useState 管理目前被點擊的圖片，作為彈出模態視窗的依據
+  // 切換教學類型：first / upgrade
+  const [tutorialType, setTutorialType] = useState("first");
+  // 點擊後顯示大圖的 state
   const [selectedImage, setSelectedImage] = useState(null);
 
-  /**
-   * 處理點擊圖片事件
-   * @param {string} imgSrc - 被點擊圖片的來源路徑
-   */
+  // 首次註冊步驟
+  const firstTimeSteps = [
+    { img: step1, title: "Step 1", description: "填寫基本資料" },
+    { img: step2, title: "Step 2", description: "手機簡訊驗證" },
+    { img: step3, title: "Step 3", description: "身分認證作業" },
+    { img: step4, title: "Step 4", description: "續填其它資料" },
+  ];
+
+  // 二轉三地會員專屬步驟（範例）
+  const upgradeSteps = [
+    { img: step4, title: "Step A", description: "登入會員中心" },
+    { img: step3, title: "Step B", description: "選擇升等方案" },
+    { img: step2, title: "Step C", description: "填寫升等表單" },
+    { img: step1, title: "Step D", description: "完成繳費/驗證" },
+  ];
+
+  // 根據選擇顯示對應步驟
+  const steps = tutorialType === "first" ? firstTimeSteps : upgradeSteps;
+
   const handleImageClick = (imgSrc) => {
     setSelectedImage(imgSrc);
   };
-
-  /**
-   * 關閉模態視窗：重設 selectedImage 狀態
-   */
   const closeModal = () => {
     setSelectedImage(null);
   };
 
   return (
     <div className="modern-registration">
-      {/* 背景不規則形狀裝飾 */}
+      {/* 背景 blobs */}
       <div className="background-blobs">
         <div className="blob blob1"></div>
         <div className="blob blob2"></div>
         <div className="blob blob3"></div>
       </div>
 
-      {/* 頁面標題與描述 */}
+      {/* 教學切換按鈕 */}
+      <div className="tutorial-toggle">
+        <button
+          className={tutorialType === "first" ? "active" : ""}
+          onClick={() => setTutorialType("first")}
+        >
+          首次註冊教學
+        </button>
+        <button
+          className={tutorialType === "upgrade" ? "active" : ""}
+          onClick={() => setTutorialType("upgrade")}
+        >
+          二轉三會員教學
+        </button>
+      </div>
+
+      {/* 標題區 */}
       <header className="modern-header">
         <h1>註冊教學</h1>
         <p>跟著步驟，輕鬆完成註冊</p>
       </header>
 
-      {/* 註冊步驟卡片網格 */}
+      {/* 步驟卡片網格 */}
       <div className="steps-grid">
         {steps.map((step, index) => (
           <motion.div
@@ -84,8 +86,10 @@ function RegistrationModern() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, delay: index * 0.2 }}
           >
-            {/* 點擊圖片時觸發 handleImageClick 打開模態視窗 */}
-            <div className="card-image" onClick={() => handleImageClick(step.img)}>
+            <div
+              className="card-image"
+              onClick={() => handleImageClick(step.img)}
+            >
               <img src={step.img} alt={step.title} />
             </div>
             <div className="card-content">
@@ -96,7 +100,7 @@ function RegistrationModern() {
         ))}
       </div>
 
-      {/* 模態視窗：僅在 selectedImage 存在時顯示 */}
+      {/* 圖片放大模態視窗 */}
       {selectedImage && (
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
