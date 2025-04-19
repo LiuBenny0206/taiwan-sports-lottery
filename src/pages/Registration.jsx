@@ -3,10 +3,14 @@ import { motion } from "framer-motion";
 import "./Registration.css";
 
 // 載入各步驟所需的圖片資源
-import step1 from "../images/sample1.png";
-import step2 from "../images/sample2.png";
-import step3 from "../images/sample3.png";
-import step4 from "../images/storepic4.png";
+import step1 from "../images/rgistep1.png";
+import step2 from "../images/rgistep1-2.png";
+import step3 from "../images/registep1-3.png";
+import step4 from "../images/registep1-4.png";
+import step21 from "../images/registep2-1.png";
+import step22 from "../images/registep2-2.png";
+import step23 from "../images/registep2-3.png";
+import step24 from "../images/registep2-4.png";
 
 /**
  * RegistrationModern Component
@@ -29,10 +33,10 @@ function RegistrationModern() {
 
   // 二轉三地會員專屬步驟（範例）
   const upgradeSteps = [
-    { img: step4, title: "Step A", description: "登入會員中心" },
-    { img: step3, title: "Step B", description: "選擇升等方案" },
-    { img: step2, title: "Step C", description: "填寫升等表單" },
-    { img: step1, title: "Step D", description: "完成繳費/驗證" },
+    { img: step21, title: "Step A", description: "身分驗證" },
+    { img: step22, title: "Step B", description: "簡訊驗證" },
+    { img: step23, title: "Step C", description: "會員申請" },
+    { img: step24, title: "Step D", description: "申請完成" },
   ];
 
   // 根據選擇顯示對應步驟
@@ -103,7 +107,7 @@ function RegistrationModern() {
       {/* 圖片放大模態視窗 */}
       {selectedImage && (
         <div className="modal-overlay" onClick={closeModal}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+          <div className="regimodal-content" onClick={(e) => e.stopPropagation()}>
             <img src={selectedImage} alt="Enlarged" />
             <button className="modal-close" onClick={closeModal}>
               X
