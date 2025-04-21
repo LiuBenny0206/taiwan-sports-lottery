@@ -2,11 +2,15 @@ import React from "react";
 import { motion } from "framer-motion";
 import "./About.css";
 
-import storepic1 from "../images/storepic1.png";
+import storepic1 from "../images/storepic1.jpg";
 import storepic2 from "../images/storepic2.png";
-import storepic3 from "../images/storepic3.png";
-import storepic4 from "../images/storepic4.png";
-import storepic5 from "../images/storepic5.png";
+import storepic3 from "../images/storepic3.jpg";
+import storepic4 from "../images/storepic4.jpg";
+import storepic5 from "../images/storepic5.jpg";
+import storepic6 from "../images/stroepic6.png";
+import Certificate from "../images/Certificate.jpg"
+
+
 
 function About() {
   const galleryImages = [
@@ -72,9 +76,9 @@ function About() {
       <div className="rectangle-section">
         <div className="rect-image">
           <motion.img
-            src={storepic1}
+            src={storepic6}
             alt="活動照片"
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -500 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
           />
