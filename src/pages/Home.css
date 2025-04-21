@@ -79,7 +79,6 @@ section {
 .carousel-inner img {
   width: 100%;
   height: auto;
-  max-height: 60vh;
   object-fit: contain;
   border-radius: var(--radius-base);
 }
