@@ -8,7 +8,8 @@ import storepic3 from "../images/storepic3.jpg";
 import storepic4 from "../images/storepic4.jpg";
 import storepic5 from "../images/storepic5.jpg";
 import storepic6 from "../images/stroepic6.png";
-import Certificate from "../images/Certificate.jpg"
+import Certificate from "../images/Certificate.jpg";
+import storepic7 from "../images/storepic7.jpg";
 
 
 
@@ -76,7 +77,7 @@ function About() {
       <div className="rectangle-section">
         <div className="rect-image">
           <motion.img
-            src={storepic6}
+            src={storepic7}
             alt="活動照片"
             initial={{ opacity: 0, x: -500 }}
             animate={{ opacity: 1, x: 0 }}
