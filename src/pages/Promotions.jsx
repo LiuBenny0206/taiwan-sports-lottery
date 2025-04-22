@@ -35,12 +35,12 @@ const promotions = [
             <tr>
               <td>台北</td>
               <td>東京</td>
-              <td>266,667$</td>
+              <td>266,700$</td>
             </tr>
             <tr>
               <td>台北</td>
               <td>大阪</td>
-              <td>283,334$</td>
+              <td>284,000$</td>
             </tr>
             <tr>
               <td>台北</td>
