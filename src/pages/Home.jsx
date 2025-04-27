@@ -1,36 +1,71 @@
+// src/components/Home.js
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Home.css";
 import Sample1 from "../images/sample1.png";
 import Sample2 from "../images/sample2.png";
 import Sample3 from "../images/sample3.png";
 import SmallSample1 from "../images/smallsample1.png";
 import SmallSample2 from "../images/smallsample2.png";
-import SmallSample3 from "../images/smallsample3.png"; 
+import SmallSample3 from "../images/smallsample3.png";
 import Warning from "../images/warning.jpg";
 
 // Carousel Component
 function Carousel() {
+  const navigate = useNavigate();
+  const handleClick = () => navigate("/promotions");
+
   return (
     <div className="carousel">
-      <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
+      <div
+        id="carouselExampleInterval"
+        className="carousel slide"
+        data-bs-ride="carousel"
+      >
         <div className="carousel-inner">
-          <div className="carousel-item active" data-bs-interval="10000">
+          <div
+            className="carousel-item active"
+            data-bs-interval="10000"
+            onClick={handleClick}
+            style={{ cursor: "pointer" }}
+          >
             <img src={Sample1} className="d-block" alt="Slide 1" />
           </div>
-          <div className="carousel-item" data-bs-interval="10000">
+          <div
+            className="carousel-item"
+            data-bs-interval="10000"
+            onClick={handleClick}
+            style={{ cursor: "pointer" }}
+          >
             <img src={Sample2} className="d-block" alt="Slide 2" />
           </div>
-          <div className="carousel-item" data-bs-interval="10000">
+          <div
+            className="carousel-item"
+            data-bs-interval="10000"
+            onClick={handleClick}
+            style={{ cursor: "pointer" }}
+          >
             <img src={Sample3} className="d-block" alt="Slide 3" />
           </div>
         </div>
-        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+        <button
+          className="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleInterval"
+          data-bs-slide="prev"
+        >
+          <span className="carousel-control-prev-icon" aria-hidden="true" />
           <span className="visually-hidden">Previous</span>
         </button>
-        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+        <button
+          className="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleInterval"
+          data-bs-slide="next"
+        >
+          <span className="carousel-control-next-icon" aria-hidden="true" />
           <span className="visually-hidden">Next</span>
         </button>
       </div>
@@ -63,7 +98,9 @@ function PinkBox() {
           cite="https://www.facebook.com/profile.php?id=100063820583160"
           className="fb-xfbml-parse-ignore"
         >
-          <a href="https://www.facebook.com/profile.php?id=100063820583160">Facebook 粉絲專頁</a>
+          <a href="https://www.facebook.com/profile.php?id=100063820583160">
+            Facebook 粉絲專頁
+          </a>
         </blockquote>
       </div>
     </div>
@@ -74,10 +111,16 @@ function PinkBox() {
 function TwoColumnButtons() {
   return (
     <div className="two-column-buttons">
-      <a href="https://channel.sportslottery.com.tw/zh-tw/register/step1?retailerid=93179171" className="column-button">
+      <a
+        href="https://channel.sportslottery.com.tw/zh-tw/register/step1?retailerid=93179171"
+        className="column-button"
+      >
         申請成為會員
       </a>
-      <a href="https://transfer.sportslottery.com.tw/zh-tw/transfer/step1?thirdrid=93179171" className="column-button">
+      <a
+        href="https://transfer.sportslottery.com.tw/zh-tw/transfer/step1?thirdrid=93179171"
+        className="column-button"
+      >
         二轉三屆會員
       </a>
     </div>
@@ -88,18 +131,36 @@ function TwoColumnButtons() {
 function SmallImages() {
   return (
     <div className="small-images">
-      <div className="small-image">
-        <img src={SmallSample1} alt="Sample 1" />
-      </div>
-      <div className="small-image">
-        <img src={SmallSample2} alt="Sample 2" />
-      </div>
-      <div className="small-image">
-        <img src={SmallSample3} alt="Sample 3" />
-      </div>
+      {/* 第一張：外部註冊頁面 */}
+      <a
+        href="https://channel.sportslottery.com.tw/zh-tw/register/step1?retailerid=93179171"
+        className="small-image"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ cursor: "pointer" }}
+      >
+        <img src={SmallSample1} alt="申請成為會員" />
+      </a>
+
+      {/* 第二張：Facebook 粉絲頁 */}
+      <a
+        href="https://www.facebook.com/profile.php?id=61571410902468&ref=embed_page"
+        className="small-image"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ cursor: "pointer" }}
+      >
+        <img src={SmallSample2} alt="Facebook 粉絲專頁" />
+      </a>
+
+      {/* 第三張：內部 Promotions 頁面 */}
+      <Link className="small-image" style={{ cursor: "pointer" }}>
+        <img src={SmallSample3} alt="查看促銷活動" />
+      </Link>
     </div>
   );
 }
+
 
 // GoogleMap Component
 function GoogleMap() {

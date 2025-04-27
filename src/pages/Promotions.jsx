@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import "./Promotions.css";
 
@@ -20,7 +20,7 @@ const promotions = [
       <>
         現在只要在台灣運彩下注滿指定金額，即可免費獲得日本「單程機票」！<br />
         暢遊東京、大阪、沖繩，體驗櫻花、美食與獨特文化。<br />
-        ❗機票價格以淡季平日計算，實際票價視當時訂位情況調整<br /><br />
+        ❗機票價格以萬豪彩券行為主<br /><br />
       
         <strong>📍 參考機票價格（單程）</strong><br />
         <table className="flight-table">
@@ -35,28 +35,25 @@ const promotions = [
             <tr>
               <td>台北</td>
               <td>東京</td>
-              <td>266,700$</td>
+              <td>525,000$</td>
             </tr>
             <tr>
               <td>台北</td>
               <td>大阪</td>
-              <td>284,000$</td>
+              <td>440,500$</td>
             </tr>
             <tr>
               <td>台北</td>
               <td>沖繩</td>
-              <td>250,000$</td>
+              <td>478,000$</td>
             </tr>
           </tbody>
         </table>
-        <br />
-        📌 注意事項：<br />
-          ‣ 機票不含稅金與燃油附加費，需自行負擔<br />
-          ‣ 可選擇航線與出發時間（旺季須補差價）<br />
       </>
     ),
     image: promoImage1,
     link: "https://youtu.be/6F7jRD2rOLw",
+    isVisible: true,  // 先顯示
   },
   {
     title: "豪氣加入，下注拿黃金紅包",
@@ -73,6 +70,7 @@ const promotions = [
     ),
     image: promoImage2,
     link: "https://youtu.be/6F7jRD2rOLw",
+    isVisible: true, // 先下架
   },
   {
     title: "輕鬆下注，送600$全聯禮券",
@@ -89,6 +87,7 @@ const promotions = [
     ),
     image: promoImage3,
     link: "https://youtu.be/6F7jRD2rOLw",
+    isVisible: false,  // 先顯示
   },
 ];
 
@@ -108,28 +107,39 @@ function Modal({ isOpen, onClose, title, details, image }) {
 }
 
 function Promotions() {
+  // 只保留 isVisible = true 的活動
+  const visiblePromotions = promotions.filter(p => p.isVisible);
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState("down");
   const [modalOpen, setModalOpen] = useState(false);
 
+  // 當可顯示的活動數量變動時，確保 index 合法
+  useEffect(() => {
+    if (currentIndex >= visiblePromotions.length) {
+      setCurrentIndex(0);
+    }
+  }, [visiblePromotions.length, currentIndex]);
+
   const handlePrev = () => {
     setDirection("up");
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? promotions.length - 1 : prevIndex - 1
+    setCurrentIndex((prev) =>
+      prev === 0 ? visiblePromotions.length - 1 : prev - 1
     );
   };
 
   const handleNext = () => {
     setDirection("down");
-    setCurrentIndex((prevIndex) =>
-      prevIndex === promotions.length - 1 ? 0 : prevIndex + 1
+    setCurrentIndex((prev) =>
+      prev === visiblePromotions.length - 1 ? 0 : prev + 1
     );
   };
 
   const handleOpenModal = () => setModalOpen(true);
   const handleCloseModal = () => setModalOpen(false);
 
-  const { title, description, details, image } = promotions[currentIndex];
+  const { title, description, details, image } =
+    visiblePromotions[currentIndex];
 
   return (
     <div className="promotions-container">
@@ -165,16 +175,18 @@ function Promotions() {
 
       <div className="promotions-nav">
         <button className="nav-button" onClick={handlePrev}>▲</button>
-        <p className="nav-indicator">{currentIndex + 1}/{promotions.length}</p>
+        <p className="nav-indicator">
+          {currentIndex + 1}/{visiblePromotions.length}
+        </p>
         <button className="nav-button" onClick={handleNext}>▼</button>
       </div>
 
-      <Modal 
-        isOpen={modalOpen} 
-        onClose={handleCloseModal} 
-        title={title} 
-        details={details} 
-        image={image} 
+      <Modal
+        isOpen={modalOpen}
+        onClose={handleCloseModal}
+        title={title}
+        details={details}
+        image={image}
       />
     </div>
   );
