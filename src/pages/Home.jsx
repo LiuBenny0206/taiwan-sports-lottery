@@ -31,7 +31,12 @@ function Carousel() {
             onClick={handleClick}
             style={{ cursor: "pointer" }}
           >
-            <img src={Sample1} className="d-block" alt="Slide 1" />
+            <img
+              src={Sample1}
+              className="d-block"
+              alt="Slide 1"
+              isVisible={true}
+            />
           </div>
           <div
             className="carousel-item"
@@ -39,7 +44,12 @@ function Carousel() {
             onClick={handleClick}
             style={{ cursor: "pointer" }}
           >
-            <img src={Sample2} className="d-block" alt="Slide 2" />
+            <img
+              src={Sample2}
+              className="d-block"
+              alt="Slide 2"
+              isVisible={true}
+            />
           </div>
           <div
             className="carousel-item"
@@ -47,7 +57,26 @@ function Carousel() {
             onClick={handleClick}
             style={{ cursor: "pointer" }}
           >
-            <img src={Sample3} className="d-block" alt="Slide 3" />
+            <img
+              src={Sample1}
+              className="d-block"
+              alt="Slide 3"
+              onClick={handleClick}
+              style={{ cursor: "pointer", display: "none" }}
+            />
+          </div>
+          <div
+            className="carousel-item"
+            data-bs-interval="10000"
+            onClick={handleClick}
+            style={{ cursor: "pointer" }}
+          >
+            <img
+              src={Sample2}
+              className="d-block"
+              alt="Slide 2"
+              isVisible={true}
+            />
           </div>
         </div>
         <button
