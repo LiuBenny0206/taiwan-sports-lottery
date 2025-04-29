@@ -22,7 +22,7 @@ const promotions = [
         暢遊東京、大阪、沖繩，體驗櫻花、美食與獨特文化。<br />
         ❗機票價格以萬豪彩券行為主<br /><br />
       
-        <strong>📍 參考機票價格（單程）</strong><br />
+        <strong>📍 機票價格（單程）</strong><br />
         <table className="flight-table">
           <thead>
             <tr>
