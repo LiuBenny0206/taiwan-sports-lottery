@@ -1,18 +1,34 @@
 /* ===================================================================
-   Global Settings
+   Global
 =================================================================== */
+
 :root {
-  --font-family: "Noto Sans TC", serif;
-  --primary-color: #333;
-  --secondary-color: #777;
-  --accent-color: #fdae5a;
-  --hero-bg: linear-gradient(135deg, #ffecd2, #fad797);
-  --spacing-small: 20px;
-  --spacing-medium: 40px;
-  --spacing-large: 80px;
-  --radius-base: 10px;
-  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --font-family: "Noto Sans TC", sans-serif;
+
+  --text-main: #202020;
+  --text-secondary: #666666;
+
+  --facebook-blue: #1877f2;
+  --facebook-dark: #075ebf;
+
+  --member-blue-1: #2563eb;
+  --member-blue-2: #174ea6;
+
+  --member-orange-1: #f59e0b;
+  --member-orange-2: #f97316;
+
+  --hover-red-1: #ef4444;
+  --hover-red-2: #dc2626;
+
+  --card-radius: 18px;
+
+  --shadow-soft:
+    0 8px 28px rgba(67, 57, 18, 0.08);
+
+  --shadow-hover:
+    0 15px 34px rgba(67, 57, 18, 0.14);
 }
+
 
 * {
   margin: 0;
@@ -20,409 +36,1810 @@
   box-sizing: border-box;
 }
 
+
 body {
   font-family: var(--font-family);
-  color: var(--primary-color);
-  background: #fffce8;
+  color: var(--text-main);
+
+  background: #fff8b2;
 }
 
-/* 主容器 */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* ===================================================================
+   Home Container
+=================================================================== */
+
 .home-container {
+  width: 100%;
+  min-height: 100vh;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
-  gap: 1.5rem; /* 區塊間隔 */
-  background: linear-gradient(180deg, #fcf8cc 0, #ffeb83);
-  width: 100%;
+
+  gap: 22px;
+
+  padding:
+    18px 20px 30px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fffbd7 0%,
+      #fff5a8 50%,
+      #ffe982 100%
+    );
+
   overflow-x: hidden;
 }
 
-/* ===================================================================
-   Section 通用樣式（原本區域通用樣式已拆分）
-   =================================================================== */
-/* 若需要每個區塊共用的白底卡片樣式可額外定義 */
-
-/* 區域通用樣式 */
-
-
-section {
-  width: 100%;
-  max-width: 1350px; /* 限制最大寬度 */
-  margin: 0 auto;
-  padding: 1.5rem; /* 減少 padding */
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  background: white;
-}
-
 
 /* ===================================================================
-   Top Section
-   =================================================================== */
-.top-section {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--spacing-small);
+   一般 Section
+=================================================================== */
+
+.home-section {
   width: 100%;
   max-width: 1350px;
+
   margin: 0 auto;
+
+  background:
+    rgba(255, 255, 255, 0.97);
+
+  border:
+    1px solid
+    rgba(238, 228, 191, 0.85);
+
+  border-radius:
+    var(--card-radius);
+
+  box-shadow:
+    var(--shadow-soft);
 }
 
-/* Carousel 區塊 */
-.carousel-section {
-  flex: 2;
-  border-radius: var(--radius-base);
-  overflow: hidden;
-}
 
-.carousel-inner img {
+/* ===================================================================
+   HERO
+=================================================================== */
+
+.hero-section {
   width: 100%;
-  height: auto;
-  object-fit: contain;
-  border-radius: var(--radius-base);
-}
+  max-width: 1350px;
 
-/* 粉紅色區域 (包含粉紅盒與兩欄按鈕) */
-.pink-section {
-  width: 100%;
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  height: 80vh;
 
-/* 粉紅盒子 */
-.pink-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(to top, #fa3838, #298eec);
-  border-radius: var(--radius-base);
-  padding: var(--spacing-medium);
-  color: white;
-  font-size: 1.2rem;
-  font-family: "Jersey 15", serif;
-  text-align: center;
+  min-height: 620px;
+  max-height: 850px;
+
   margin: 0 auto;
-  width: 100%;
-  max-width: 400px;
-}
 
-/* Facebook 粉絲專頁 */
-.fb-page {
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-  box-shadow: var(--box-shadow);
-  border-radius: 8px;
-  overflow: hidden;
-}
+  padding: 0;
 
-/* 兩欄按鈕 */
-.two-column-buttons {
-  width: 100%;
-  max-width: 400px;
   display: flex;
-  flex-direction: column;
-  gap: var(--spacing-small);
-  margin-top: 2rem;
-  font-weight: 900;
-}
+  align-items: stretch;
 
-.column-button {
-  flex: 1;
-  padding: 0.8rem;
-  font-size: 1rem;
-  font-weight: 900;
-  background: linear-gradient(to bottom, #f7d179, #fdae5a);
+  gap: 20px;
+
+  background: transparent;
+
   border: none;
-  border-radius: var(--radius-base);
-  cursor: pointer;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+  border-radius: 0;
+
+  box-shadow: none;
 }
 
-.column-button:hover {
-  background: linear-gradient(135deg, #ffe692, #ffc919);
-  transform: translateY(-2px);
-}
-
-.column-button:active {
-  transform: translateY(1px);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.12);
-}
-
-.column-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(255, 138, 0, 0.5);
-}
 
 /* ===================================================================
-   Bottom Section (小圖片 - 單行排列)
-   =================================================================== */
-.bottom-section {
-  background: linear-gradient(180deg, #ffffff, #ffffff);
-  gap: 2rem;
-  width: 100%;
-  max-width: 1350px;
-  margin: 0 auto;
-  padding: var(--spacing-medium);
-}
+   HERO 左側
+=================================================================== */
 
-.small-images {
-  display: flex;
-  gap: 2rem;
-  width: 100%;
-  justify-content: center;
-}
+.hero-carousel-wrapper {
+  flex: 1;
 
-.small-image {
-  flex: 1 1 100%;
-  max-width: calc(33.33% - 1rem);
-  border-radius: var(--radius-base);
+  min-width: 0;
+
+  height: 100%;
+
   overflow: hidden;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.1);
 }
 
-.small-image img {
+
+.hero-carousel,
+.hero-carousel .carousel,
+.hero-carousel .carousel-inner,
+.hero-carousel .carousel-item {
   width: 100%;
-  height: auto;
-  object-fit: cover;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
 }
 
-.small-image img:hover {
-  transform: scale(1.05);
+
+.hero-carousel .carousel-inner {
+  overflow: hidden;
+
+  border-radius: 18px;
 }
+
+
+.hero-carousel .carousel-item {
+  cursor: pointer;
+}
+
+
+.hero-carousel .carousel-item img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  border-radius: 18px;
+
+  transition:
+    transform 0.45s ease;
+}
+
+
+.hero-carousel .carousel-item:hover img {
+  transform:
+    scale(1.012);
+}
+
 
 /* ===================================================================
-   Extended Section (Google 地圖)
-   =================================================================== */
-.extended-section {
-  width: 100%;
-  max-width: 1350px;
-  margin: 0 auto;
-  padding: var(--spacing-medium);
-  background: #ffffff;
-  text-align: center;
-  border-radius: var(--radius-base);
-  box-shadow: var(--box-shadow);
+   Carousel Controls
+=================================================================== */
+
+.hero-carousel .carousel-control-prev,
+.hero-carousel .carousel-control-next {
+  width: 8%;
 }
 
-.extended-section h2 {
-  font-size: 1.5rem;
-  margin-bottom: var(--spacing-small);
-  font-weight: 900;
-  color: var(--primary-color);
+
+.hero-carousel .carousel-control-prev-icon,
+.hero-carousel .carousel-control-next-icon {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  background-color:
+    rgba(0, 0, 0, 0.25);
+
+  background-size: 45%;
+
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
 }
+
+
+.hero-carousel .carousel-control-prev:hover
+.carousel-control-prev-icon,
+.hero-carousel .carousel-control-next:hover
+.carousel-control-next-icon {
+  background-color:
+    rgba(0, 0, 0, 0.45);
+
+  transform:
+    scale(1.08);
+}
+
+
+/* ===================================================================
+   HERO 右側
+=================================================================== */
+
+.hero-side {
+  width: 390px;
+  min-width: 390px;
+
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+
+/* ===================================================================
+   Facebook Card
+=================================================================== */
+
+.facebook-card {
+  width: 100%;
+
+  flex: 1;
+
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border:
+    1px solid #dce8f8;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 12px 35px
+    rgba(20, 83, 170, 0.16);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.facebook-card:hover {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 16px 40px
+    rgba(20, 83, 170, 0.2);
+}
+
+
+/* ===================================================================
+   Facebook Header
+=================================================================== */
+
+.facebook-card-top {
+  padding:
+    12px 12px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+
+  flex-shrink: 0;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #3597f5 0%,
+      #1877f2 48%,
+      #0758ba 100%
+    );
+
+}
+
+
+.facebook-brand-row {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 17px;
+
+  position: relative;
+
+  z-index: 3;
+}
+
+
+.facebook-logo-circle {
+  width: 68px;
+  height: 68px;
+
+  min-width: 68px;
+
+  padding-top: 9px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: white;
+
+  color:
+    var(--facebook-blue);
+
+  font-family:
+    Arial,
+    sans-serif;
+
+  font-size: 50px;
+
+  font-weight: 900;
+
+  line-height: 1;
+
+  box-shadow:
+    0 7px 20px
+    rgba(0, 0, 0, 0.16);
+}
+
+
+.facebook-brand-text {
+  min-width: 0;
+
+  text-align: left;
+}
+
+
+.facebook-brand-text > span {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color:
+    rgba(255, 255, 255, 0.87);
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.3px;
+}
+
+
+.facebook-brand-text h2 {
+  margin: 0;
+
+  color: white;
+
+  font-size: 28px;
+
+  line-height: 1.2;
+
+  font-weight: 900;
+
+  white-space: nowrap;
+}
+
+
+.facebook-brand-text p {
+  margin:
+    5px 0 0;
+
+  color:
+    rgba(255, 255, 255, 0.94);
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+
+/* ===================================================================
+   Facebook Decoration
+=================================================================== */
+
+.facebook-decoration {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+.facebook-decoration-one {
+  width: 220px;
+  height: 220px;
+
+  top: -130px;
+  right: -60px;
+
+  background:
+    rgba(255, 255, 255, 0.11);
+}
+
+
+.facebook-decoration-two {
+  width: 160px;
+  height: 160px;
+
+  bottom: -110px;
+  left: -55px;
+
+  background:
+    rgba(255, 255, 255, 0.07);
+}
+
+
+/* ===================================================================
+   Facebook Body
+=================================================================== */
+
+.facebook-card-body {
+  flex: 1;
+
+  min-height: 0;
+
+  padding:
+    20px 20px 18px;
+
+  display: flex;
+  flex-direction: column;
+
+  text-align: left;
+}
+
+
+.facebook-title-block {
+  margin-bottom: 13px;
+
+  flex-shrink: 0;
+}
+
+
+.facebook-follow-label {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #a47d0d;
+
+  font-size: 10px;
+
+  font-weight: 900;
+
+  letter-spacing: 2px;
+}
+
+
+.facebook-card-body h3 {
+  margin:
+    0 0 6px;
+
+  color: #1f2937;
+
+  font-size: 22px;
+
+  line-height: 1.25;
+
+  font-weight: 900;
+}
+
+
+.facebook-description {
+  margin: 0;
+
+  color: #5f6570;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  line-height: 1.55;
+}
+
+
+/* ===================================================================
+   Facebook Feature List
+=================================================================== */
+
+.facebook-feature-list {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  margin-bottom: 13px;
+}
+
+
+.facebook-feature-item {
+  width: 100%;
+
+  min-height: 54px;
+
+  padding:
+    7px 10px;
+
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+
+  gap: 11px;
+
+  text-align: left;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f8fbff,
+      #eef5ff
+    );
+
+  border:
+    1px solid #e0ebfa;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.facebook-feature-item:hover {
+  transform:
+    translateX(4px);
+
+  background:
+    #fff8db;
+
+  border-color:
+    #f4d65a;
+
+  box-shadow:
+    0 5px 14px
+    rgba(163, 126, 13, 0.08);
+}
+
+
+.facebook-feature-number {
+  width: 39px;
+  height: 39px;
+
+  min-width: 39px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #1877f2,
+      #0c60c9
+    );
+
+  color: white;
+
+  font-size: 11px;
+
+  font-weight: 900;
+
+  box-shadow:
+    0 4px 10px
+    rgba(24, 119, 242, 0.18);
+}
+
+
+.facebook-feature-item > div {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+}
+
+
+.facebook-feature-item strong {
+  color: #252525;
+
+  font-size: 15px;
+
+  line-height: 1.25;
+
+  font-weight: 900;
+}
+
+
+.facebook-feature-item small {
+  display: block;
+
+  margin-top: 2px;
+
+  color: #747b86;
+
+  font-size: 11px;
+
+  line-height: 1.2;
+
+  font-weight: 500;
+}
+
+
+/* ===================================================================
+   Facebook Main Button
+=================================================================== */
+
+.facebook-main-button {
+  width: 100%;
+
+  min-height: 52px;
+
+  margin-top: auto;
+
+  flex-shrink: 0;
+
+  padding:
+    9px 48px
+    9px 15px;
+
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #1877f2,
+      #0865d8
+    );
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 900;
+
+  box-shadow:
+    0 7px 18px
+    rgba(24, 119, 242, 0.22);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.facebook-main-button:hover {
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #15a1ff,
+      #1799f0
+    );
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 10px 24px
+    rgba(145, 242, 255, 0.28);
+}
+
+
+.facebook-small-logo {
+  width: 28px;
+  height: 28px;
+
+  min-width: 28px;
+
+  padding-top: 4px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: white;
+
+  color:
+    var(--facebook-blue);
+
+  font-family:
+    Arial,
+    sans-serif;
+
+  font-size: 21px;
+
+  font-weight: 900;
+}
+
+
+.facebook-main-button:hover
+.facebook-small-logo {
+  color:
+    #006eff;
+}
+
+
+.button-arrow {
+  position: absolute;
+
+  right: 16px;
+
+  font-size: 21px;
+
+  transition:
+    transform 0.2s ease;
+}
+
+
+.facebook-main-button:hover
+.button-arrow {
+  transform:
+    translateX(4px);
+}
+
+
+/* ===================================================================
+   Member Actions
+   ★ 兩顆改成左右排列
+=================================================================== */
+
+.member-actions {
+  width: 100%;
+
+  flex-shrink: 0;
+
+  display: grid;
+
+  gap: 10px;
+}
+
+
+/* ===================================================================
+   Member Buttons
+=================================================================== */
+
+.member-button {
+  width: 100%;
+
+  min-height: 78px;
+
+  padding:
+    11px 34px
+    11px 12px;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  border-radius: 13px;
+
+  border: none;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 7px 18px
+    rgba(0, 0, 0, 0.12);
+
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    background 0.25s ease;
+}
+
+
+/* 申請會員：橘色 */
+
+.member-button-primary {
+  background:
+    linear-gradient(
+      135deg,
+      var(--member-orange-1),
+      var(--member-orange-2)
+    );
+
+  color: white;
+}
+
+
+/* 二轉三屆：橘色 */
+
+.member-button-secondary {
+  background:
+    linear-gradient(
+      135deg,
+      var(--member-orange-1),
+      var(--member-orange-2)
+    );
+
+  color: white;
+}
+
+
+/* Hover 統一紅色 */
+
+.member-button:hover {
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--hover-red-1),
+      var(--hover-red-2)
+    );
+
+  transform:
+    translateY(-4px);
+
+  box-shadow:
+    0 12px 25px
+    rgba(220, 38, 38, 0.3);
+}
+
+
+.member-button:active {
+  transform:
+    translateY(-1px);
+}
+
+
+.member-button-label {
+  margin-bottom: 3px;
+
+  color:
+    rgba(255, 255, 255, 0.78);
+
+  font-size: 9px;
+
+  font-weight: 900;
+
+  letter-spacing: 1.2px;
+}
+
+
+.member-button strong {
+  color: white;
+
+  font-size: 25px;
+
+  line-height: 1.25;
+
+  font-weight: 900;
+
+  white-space: nowrap;
+}
+
+
+.member-arrow {
+  position: absolute;
+
+  right: 11px;
+
+  top: 50%;
+
+  transform:
+    translateY(-50%);
+
+  color: white;
+
+  font-size: 20px;
+
+  transition:
+    transform 0.2s ease;
+}
+
+
+.member-button:hover
+.member-arrow {
+  transform:
+    translate(3px, -50%);
+}
+
+
+/* ===================================================================
+   一般 Home Section
+=================================================================== */
+
+.home-section {
+  padding: 30px;
+}
+
+
+/* ===================================================================
+   Section Heading
+=================================================================== */
+
+.section-heading {
+  margin-bottom: 22px;
+
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+
+.section-eyebrow {
+  display: block;
+
+  color: #9a7710;
+
+  font-size: 11px;
+
+  font-weight: 900;
+
+  letter-spacing: 2px;
+}
+
+
+.section-heading h2 {
+  margin:
+    4px 0 0;
+
+  color: #252525;
+
+  font-size: 27px;
+
+  font-weight: 900;
+}
+
+
+.section-heading > p {
+  margin: 0;
+
+  color: #888;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+
+/* ===================================================================
+   Quick Services
+=================================================================== */
+
+.quick-services {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 18px;
+}
+
+
+.service-card {
+  width: 100%;
+
+  display: block;
+
+  overflow: hidden;
+
+  background: transparent;
+
+  border: none;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 6px 18px
+    rgba(0, 0, 0, 0.08);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.service-card img {
+  width: 100%;
+
+  height: auto;
+
+  display: block;
+
+  border-radius: 14px;
+
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+
+.service-card:hover {
+  color: inherit;
+
+  transform:
+    translateY(-5px);
+
+  box-shadow:
+    0 12px 28px
+    rgba(0, 0, 0, 0.15);
+}
+
+
+.service-card:hover img {
+  transform:
+    scale(1.025);
+
+  filter:
+    brightness(1.04);
+}
+
+
+/* ===================================================================
+   Location
+=================================================================== */
+
+.location-section {
+  padding: 25px;
+}
+
+
+.location-layout {
+  width: 100%;
+
+  min-height: 410px;
+
+  display: grid;
+
+  grid-template-columns:
+    350px 1fr;
+
+  gap: 22px;
+}
+
+
+/* ===================================================================
+   Store Info
+=================================================================== */
+
+.store-info {
+  padding:
+    28px 24px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  text-align: left;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      150deg,
+      #fffdf5,
+      #fff7cd
+    );
+
+  border:
+    1px solid #f2e7a9;
+}
+
+
+.store-info h2 {
+  margin:
+    5px 0 9px;
+
+  color: #272727;
+
+  font-size: 29px;
+
+  font-weight: 900;
+}
+
+
+.store-description {
+  color:
+    var(--text-secondary);
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  line-height: 1.7;
+}
+
+
+.store-info-list {
+  margin-top: 22px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+
+.store-info-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding:
+    12px 11px;
+
+  border-radius: 9px;
+
+  background:
+    rgba(255, 255, 255, 0.78);
+}
+
+
+.store-info-number {
+  width: 38px;
+  height: 38px;
+
+  min-width: 38px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background:
+    #ffe26f;
+
+  color:
+    #735b00;
+
+  font-size: 11px;
+
+  font-weight: 900;
+}
+
+
+.store-info-row > div {
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+.store-info-row small {
+  color:
+    #9d853e;
+
+
+  font-weight: 900;
+
+  letter-spacing: 1.2px;
+}
+
+
+.store-info-row strong,
+.store-info-row a {
+  margin-top: 2px;
+
+  color: #333;
+
+
+  font-weight: 900;
+}
+
+
+.store-info-row a:hover {
+  color:
+    #c68900;
+}
+
+
+/* ===================================================================
+   Map Button
+=================================================================== */
+
+.map-navigation-button {
+  min-height: 48px;
+
+  margin-top: auto;
+
+  padding:
+    10px 15px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  border-radius: 9px;
+
+  background:
+    #252525;
+
+  color: white;
+
+  font-size: 14px;
+
+  font-weight: 900;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.map-navigation-button:hover {
+  color: white;
+
+  background:
+    #000;
+
+  transform:
+    translateY(-2px);
+}
+
+
+.map-navigation-button span {
+  font-size: 20px;
+}
+
+
+/* ===================================================================
+   Google Map
+=================================================================== */
+
+.google-map {
+  width: 100%;
+
+  min-height: 410px;
+
+  overflow: hidden;
+
+  border-radius: 14px;
+
+  border:
+    1px solid #ececec;
+}
+
 
 .google-map iframe {
   width: 100%;
-  height: 400px;
+  height: 100%;
+
+  min-height: 410px;
+
+  display: block;
+
   border: 0;
 }
 
 
-
 /* ===================================================================
-   Warning Section (警告區塊)
-   =================================================================== */
-.warning-section {
-  width: 100%;
-  max-width: 1350px;
-  margin: 0 auto;
-  padding: var(--spacing-medium);
-  background: #fff4e6;
-  text-align: center;
-  border-radius: var(--radius-base);
-  box-shadow: var(--box-shadow);
+   Responsible
+=================================================================== */
+
+.responsible-section {
+  padding:
+    28px 40px 32px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fffdf8,
+      #fff6e9
+    );
 }
+
+
+.responsible-heading {
+  margin-bottom: 18px;
+
+  text-align: center;
+}
+
+
+.responsible-heading h2 {
+  margin:
+    5px 0 0;
+
+  color: #292929;
+
+  font-size: 25px;
+
+  font-weight: 900;
+}
+
 
 .warning-content {
   width: 100%;
+
   display: flex;
+
   justify-content: center;
-  align-items: center;
 }
+
 
 .warning-img {
-  width: 90%;
-  max-width: 100%;
+  width: 88%;
+
+  max-width: 1100px;
+
   height: auto;
-  border-radius: var(--radius-base);
-  box-shadow: var(--box-shadow);
-  transition: transform 0.3s ease;
+
+  display: block;
+
+  border-radius: 11px;
+
+  box-shadow:
+    0 8px 22px
+    rgba(120, 39, 12, 0.1);
 }
 
-.warning-img:hover {
-  transform: scale(1.05);
-}
 
 /* ===================================================================
-   Media Queries - 響應式調整
-==================================================================== */
-@media (max-width: 1024px) {
-  .pink-box {
-    height: 245px;
+   1100px
+=================================================================== */
+
+@media (max-width: 1100px) {
+
+  .hero-section {
+    height: 75vh;
+
+    min-height: 610px;
   }
-  .two-column-buttons {
-    margin-top: 1rem;
+
+
+  .hero-side {
+    width: 350px;
+
+    min-width: 350px;
   }
+
+
+  .facebook-card-top {
+    min-height: 140px;
+
+    padding:
+      21px 20px;
+  }
+
+
+  .facebook-logo-circle {
+    width: 61px;
+    height: 61px;
+
+    min-width: 61px;
+
+    font-size: 45px;
+  }
+
+
+  .facebook-brand-text h2 {
+    font-size: 25px;
+  }
+
+
+  .facebook-card-body {
+    padding:
+      17px 17px 16px;
+  }
+
+
+  .facebook-card-body h3 {
+    font-size: 20px;
+  }
+
+
+  .facebook-description {
+    font-size: 13px;
+  }
+
+
+  .facebook-feature-item {
+    min-height: 50px;
+  }
+
+
+  .facebook-feature-item strong {
+    font-size: 13px;
+  }
+
+
+  .facebook-feature-item small {
+    font-size: 10px;
+  }
+
+
+  .facebook-main-button {
+    min-height: 48px;
+
+    font-size: 13px;
+  }
+
+
+  .member-button strong {
+    font-size: 15px;
+  }
+
+
+  .location-layout {
+    grid-template-columns:
+      320px 1fr;
+  }
+
 }
 
-@media (max-width: 768px) {
-  .top-section {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-  }
 
-  .carousel-section,
-  .pink-box {
-    width: 100%;
-  }
+/* ===================================================================
+   850px
+=================================================================== */
 
-  .carousel-inner img {
-    margin-top: 10px;
-    border-radius: var(--radius-base);
-  }
+@media (max-width: 850px) {
 
-  .pink-section {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    max-width: none;
-  }
-
-  .pink-box {
-    padding: 1rem;
-    font-size: 1rem;
+  .hero-section {
     height: auto;
-    margin-bottom: 1rem;
-  }
 
-  .two-column-buttons {
-    width: 100%;
-    max-width: 400px;
-    height: 150px;
-    display: flex;
-    justify-content: space-between;
+    min-height: 0;
+
+    max-height: none;
+
     flex-direction: column;
-    gap: 1rem;
-    font-weight: 900;
-    margin-left: 10px;
-    margin-right: 10px;
   }
 
-  .column-button {
-    padding: 1.5rem;
-  }
 
-  .fb-page {
+  .hero-carousel-wrapper {
     width: 100%;
-    height: 300px;
-    max-width: 100%;
-    margin: 0;
-    box-shadow: var(--box-shadow);
-    border-radius: 8px;
-    overflow: hidden;
+
+    height: auto;
   }
 
-  .bottom-section {
-    flex-direction: column;
-    gap: 1rem;
+
+  .hero-carousel,
+  .hero-carousel .carousel,
+  .hero-carousel .carousel-inner,
+  .hero-carousel .carousel-item {
+    height: auto;
   }
 
-  .small-image {
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
 
-  .small-image img {
-    border-radius: var(--radius-base);
-  }
+  .hero-carousel
+  .carousel-item img {
+    height: auto;
 
-  .extended-section {
-    padding: 1.5rem;
-    text-align: center;
-  }
-
-  .extended-section h2 {
-    font-size: 1.2rem;
-  }
-
-  .extended-section p {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .top-section {
-    gap: 1rem;
-  }
-
-  .carousel-inner img {
     object-fit: contain;
   }
 
-  .pink-box {
-    padding: 0.5rem;
-    font-size: 1rem;
-    text-align: center;
-    margin-bottom: 0.5rem;
-  }
 
-  .pink-section {
+  .hero-side {
     width: 100%;
+
+    min-width: 0;
+
+    height: auto;
+
     display: flex;
+
     flex-direction: column;
-    max-width: none;
   }
 
-  .two-column-buttons {
+
+  .facebook-card {
+    min-height: 570px;
+  }
+
+
+  .member-actions {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+
+  .member-button {
+    min-height: 72px;
+  }
+
+
+  .quick-services {
+    gap: 12px;
+  }
+
+
+  .location-layout {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .store-info {
+    min-height: auto;
+  }
+
+
+  .map-navigation-button {
+    margin-top: 20px;
+  }
+
+
+  .google-map,
+  .google-map iframe {
+    min-height: 370px;
+  }
+
+}
+
+
+/* ===================================================================
+   650px
+=================================================================== */
+
+@media (max-width: 650px) {
+
+  .home-container {
+    padding:
+      10px 10px 22px;
+
+    gap: 14px;
+  }
+
+
+  .hero-section {
+    gap: 13px;
+  }
+
+
+  .home-section {
+    border-radius: 14px;
+  }
+
+
+  .facebook-card {
+    min-height: auto;
+  }
+
+
+  .facebook-card-top {
+    min-height: 145px;
+
+    padding:
+      22px 19px;
+  }
+
+
+  .facebook-logo-circle {
+    width: 60px;
+    height: 60px;
+
+    min-width: 60px;
+
+    font-size: 44px;
+  }
+
+
+  .facebook-brand-text h2 {
+    font-size: 24px;
+  }
+
+
+  .facebook-card-body {
+    padding:
+      20px 17px;
+  }
+
+
+  .facebook-card-body h3 {
+    font-size: 21px;
+  }
+
+
+  .facebook-description {
+    font-size: 14px;
+  }
+
+
+  .facebook-feature-item {
+    min-height: 58px;
+  }
+
+
+  .facebook-feature-item strong {
+    font-size: 15px;
+  }
+
+
+  .facebook-feature-item small {
+    font-size: 12px;
+  }
+
+
+  .facebook-main-button {
+    min-height: 54px;
+
+    font-size: 14px;
+  }
+
+
+  .member-actions {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+
+  .member-button {
+    min-height: 68px;
+  }
+
+
+  .member-button strong {
+    font-size: 15px;
+  }
+
+
+  .home-section {
+    padding:
+      20px 15px;
+  }
+
+
+  .section-heading {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 4px;
+  }
+
+
+  .quick-services {
+    grid-template-columns:
+      1fr;
+
+    gap: 14px;
+  }
+
+
+  .location-section {
+    padding: 14px;
+  }
+
+
+  .store-info {
+    padding:
+      22px 18px;
+  }
+
+
+  .google-map,
+  .google-map iframe {
+    min-height: 320px;
+  }
+
+
+  .responsible-section {
+    padding:
+      22px 14px;
+  }
+
+
+  .warning-img {
     width: 100%;
-    max-width: 400px;
-    height: 150px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    gap: 1rem;
-    font-weight: 900;
-    margin-left: 10px;
-    margin-right: 10px;
   }
 
-  .fb-page {
-    max-width: 100%;
-    height: 300px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* ===================================================================
+   430px
+=================================================================== */
+
+@media (max-width: 430px) {
+
+  .facebook-brand-row {
+    gap: 13px;
   }
 
-  .small-images {
-    flex-direction: column;
-    gap: 1rem;
+
+  .facebook-logo-circle {
+    width: 55px;
+    height: 55px;
+
+    min-width: 55px;
+
+    font-size: 40px;
   }
 
-  .small-image {
-    flex: 1 1 100%;
+
+  .facebook-brand-text > span {
+    font-size: 9px;
   }
 
-  .small-image img {
-    border-radius: 8px;
+
+  .facebook-brand-text h2 {
+    font-size: 21px;
   }
 
-  .extended-section {
-    padding: 1rem;
-    text-align: center;
+
+  .facebook-brand-text p {
+    font-size: 11px;
   }
 
-  .extended-section h2 {
-    font-size: 1rem;
+
+  .facebook-card-body h3 {
+    font-size: 20px;
   }
 
-  .extended-section p {
-    font-size: 0.8rem;
+
+  .facebook-description {
+    font-size: 13px;
   }
+
+
+  .facebook-feature-item strong {
+    font-size: 14px;
+  }
+
+
+  .facebook-feature-item small {
+    font-size: 11px;
+  }
+
+
+  .facebook-main-button {
+    font-size: 13px;
+  }
+
+
+  /* 手機太窄時會員按鈕改回上下 */
+
+  .member-actions {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .member-button strong {
+    font-size: 17px;
+  }
+
+
+  .store-info-row strong,
+  .store-info-row a {
+    font-size: 13px;
+  }
+
+
+  .responsible-heading h2 {
+    font-size: 22px;
+  }
+
 }
