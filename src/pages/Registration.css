@@ -1,248 +1,842 @@
+/* ===================================================================
+   Registration Global
+=================================================================== */
+
 :root {
-  --font-family: 'Poppins', sans-serif;
+  --font-family: "Noto Sans TC", "Poppins", sans-serif;
+
   --primary-color: #2f2f2f;
   --secondary-color: #666666;
-  --accent-color: #845ec2;
-  --bg-gradient-start: #fff7d1;
-  --bg-gradient-end: #ffe0ac;
+
+  --accent-color: #68a8ff;
+
+  --bg-gradient-start: #dbeafe;
+  --bg-gradient-end: #bfdbfe;
+
   --card-bg: #ffffff;
-  --card-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+
+  --card-shadow:
+    0 8px 22px rgba(30, 64, 175, 0.1);
+
   --transition-duration: 0.3s;
 }
+
+
+* {
+  box-sizing: border-box;
+}
+
 
 body {
   margin: 0;
   padding: 0;
+
   font-family: var(--font-family);
+
   background-color: #fffce8;
 }
 
+
+/* ===================================================================
+   Main
+=================================================================== */
+
 .modern-registration {
   position: relative;
-  min-height: 118vh;
-  background: radial-gradient(circle at 30% 30%, #c6ddfd, #c4ddfc);
-  padding: 3rem 2rem;
+
+  width: 100%;
+
+  min-height: 100vh;
+
+  padding:
+    45px 24px 70px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      #d8eaff,
+      #c4ddfc
+    );
+
   overflow: hidden;
 }
 
+
+/* ===================================================================
+   Background
+=================================================================== */
+
 .background-blobs {
   position: absolute;
+
   top: 0;
   left: 0;
+
   width: 100%;
   height: 100%;
+
   pointer-events: none;
+
   z-index: 0;
 }
 
+
 .blob {
   position: absolute;
-  opacity: 0.5;
+
+  opacity: 0.42;
 }
+
 
 .blob1 {
   width: 350px;
   height: 350px;
+
   background: #fff;
-  border-radius: 50% 40% 65% 35% / 45% 60% 40% 55%;
+
+  border-radius:
+    50% 40% 65% 35% /
+    45% 60% 40% 55%;
+
   top: -100px;
   right: -150px;
 }
 
+
 .blob2 {
   width: 450px;
   height: 450px;
+
   background: #fff;
-  border-radius: 55% 45% 30% 70% / 60% 30% 70% 40%;
+
+  border-radius:
+    55% 45% 30% 70% /
+    60% 30% 70% 40%;
+
   bottom: -50px;
   left: 15%;
 }
 
+
 .blob3 {
   width: 600px;
   height: 600px;
+
   background: #fff;
-  border-radius: 40% 60% 50% 50% / 60% 40% 60% 40%;
+
+  border-radius:
+    40% 60% 50% 50% /
+    60% 40% 60% 40%;
+
   top: 40%;
   left: -150px;
 }
 
+
 .modern-registration::before {
   content: "";
+
   position: absolute;
+
   top: -80px;
   right: -80px;
+
   width: 200px;
   height: 200px;
-  background: #fff;
+
+  background: rgba(255, 255, 255, 0.7);
+
   border-radius: 50%;
+
   z-index: 0;
 }
 
-.modern-registration::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 150px;
-  background-size: cover;
-  z-index: 0;
-}
 
-/* 教學切換按鈕容器 */
+/* ===================================================================
+   Tutorial Toggle
+=================================================================== */
+
 .tutorial-toggle {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  z-index: 1;
-}
-
-/* 共通按鈕樣式 */
-.tutorial-toggle button {
-  padding: 0.5rem 1.2rem;
-  border: 1px solid #68a8ff;
-  border-radius: 9999px;
-  background: #fff;
-  color: #68a8ff;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background var(--transition-duration), color var(--transition-duration);
-}
-
-/* 當前選中 */
-.tutorial-toggle button.active {
-  background: #68a8ff;
-  color: #fff;
-}
-
-.regimodal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 1200px;
-  width: 90%;
-  text-align: center;
   position: relative;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+  z-index: 2;
+
+  display: flex;
+
+  gap: 12px;
+
+  margin-bottom: 30px;
 }
 
+
+.tutorial-toggle button {
+  padding:
+    10px 20px;
+
+  border:
+    2px solid #68a8ff;
+
+  border-radius: 999px;
+
+  background: #ffffff;
+
+  color: #3488f5;
+
+  font-size: 15px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 4px 12px rgba(36, 116, 220, 0.08);
+
+  transition:
+    background var(--transition-duration),
+    color var(--transition-duration),
+    transform var(--transition-duration),
+    box-shadow var(--transition-duration);
+}
+
+
+.tutorial-toggle button:hover {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 7px 16px rgba(36, 116, 220, 0.16);
+}
+
+
+.tutorial-toggle button.active {
+  background:
+    linear-gradient(
+      135deg,
+      #68a8ff,
+      #378cf8
+    );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 7px 17px rgba(37, 118, 225, 0.23);
+}
+
+
+/* ===================================================================
+   Header
+=================================================================== */
 
 .modern-header {
-  text-align: center;
-  margin-bottom: 3rem;
-  color: var(--primary-color);
+  position: relative;
+
   z-index: 1;
+
+  margin-bottom: 38px;
+
+  text-align: center;
+
+  color: var(--primary-color);
 }
+
 
 .modern-header h1 {
-  font-size: 3rem;
   margin: 0;
-  font-weight: 800;
-  letter-spacing: 1.5px;
+
+  font-size: 48px;
+
+  font-weight: 900;
+
+  letter-spacing: 2px;
 }
+
 
 .modern-header p {
-  font-size: 1.2rem;
-  color: var(--secondary-color);
-  margin-top: 1rem;
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+
+  margin:
+    12px auto 0;
+
+  color: var(--secondary-color);
+
+  font-size: 19px;
+
+  font-weight: 700;
+
+  line-height: 1.6;
 }
+
+
+/* ===================================================================
+   Steps Grid
+=================================================================== */
 
 .steps-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
-  gap: 2rem;
+  position: relative;
+
+  z-index: 1;
+
   width: 100%;
   max-width: 1200px;
+
   margin: 0 auto;
-  position: relative;
-  z-index: 1;
+
+  display: grid;
+
+  /* 桌機兩欄 */
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 28px;
 }
+
+
+/* ===================================================================
+   Step Card
+=================================================================== */
 
 .step-card {
-  background: var(--card-bg);
-  border-radius: 16px;
-  box-shadow: var(--card-shadow);
+  width: 100%;
+
+  min-width: 0;
+
   overflow: hidden;
+
   display: flex;
   flex-direction: column;
-  transition: transform var(--transition-duration) ease,
-              box-shadow var(--transition-duration) ease;
+
+  background:
+    var(--card-bg);
+
+  border:
+    1px solid rgba(206, 218, 237, 0.75);
+
+  border-radius: 18px;
+
+  box-shadow:
+    var(--card-shadow);
+
+  transition:
+    transform var(--transition-duration) ease,
+    box-shadow var(--transition-duration) ease;
 }
 
+
 .step-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  transform:
+    translateY(-5px);
+
+  box-shadow:
+    0 14px 28px rgba(30, 64, 175, 0.14);
 }
+
+
+/* ===================================================================
+   Card Image
+=================================================================== */
 
 .card-image {
   width: 100%;
-  height: 400px;
+
+  /* 不再固定 400px */
+  height: auto;
+
   overflow: hidden;
+
+  background: #f8fafc;
+
+  cursor: zoom-in;
 }
+
 
 .card-image img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
+
+  /* 最重要：保持圖片原比例 */
+  height: auto;
+
+  display: block;
+
+  object-fit: contain;
+
+  transition:
+    transform 0.35s ease;
 }
 
-.step-card:hover .card-image img {
-  transform: scale(1.05);
+
+.step-card:hover
+.card-image img {
+  transform:
+    scale(1.015);
 }
+
+
+/* ===================================================================
+   Card Content
+=================================================================== */
 
 .card-content {
-  padding: 1.5rem;
+  padding:
+    20px 20px 22px;
+
   text-align: center;
+
+  border-top:
+    1px solid #eef2f7;
 }
+
 
 .card-content h2 {
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  color: var(--primary-color);
+  margin:
+    0 0 5px;
+
+  color:
+    var(--primary-color);
+
+  font-size: 25px;
+
+  font-weight: 900;
 }
 
+
 .card-content p {
-  font-size: 1rem;
-  color: var(--secondary-color);
-  line-height: 1.6;
-  margin-bottom: 0;
+  margin: 0;
+
+  color:
+    var(--secondary-color);
+
+  font-size: 17px;
+
+  font-weight: 700;
+
+  line-height: 1.5;
 }
+
+
+/* ===================================================================
+   Modal
+=================================================================== */
 
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
+
+  inset: 0;
+
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+
+  padding: 20px;
+
   display: flex;
+
   justify-content: center;
   align-items: center;
+
+  background:
+    rgba(0, 0, 0, 0.78);
+
+  backdrop-filter:
+    blur(4px);
+
   z-index: 9999;
 }
 
-.modal-content {
+
+.regimodal-content {
   position: relative;
+
+  width: 90%;
+  max-width: 1200px;
+
+  max-height: 92vh;
+
+  padding: 16px;
+
+  overflow: auto;
+
+  text-align: center;
+
+  background: white;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, 0.35);
 }
 
+
+.regimodal-content img {
+  width: 100%;
+
+  height: auto;
+
+  max-height:
+    calc(92vh - 32px);
+
+  display: block;
+
+  object-fit: contain;
+
+  border-radius: 8px;
+}
+
+
 .modal-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #e76100;
+  position: sticky;
+
+  top: 8px;
+
+  float: right;
+
+  margin:
+    0 0 -45px 0;
+
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   border: none;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
+
+  border-radius: 50%;
+
+  background:
+    #ef4444;
+
+  color: white;
+
+  font-size: 17px;
+
+  font-weight: 900;
+
   cursor: pointer;
-  font-size: 1rem;
+
+  box-shadow:
+    0 5px 14px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ===================================================================
+   Tablet
+=================================================================== */
+
+@media (max-width: 1000px) {
+
+  .modern-registration {
+    padding:
+      38px 20px 60px;
+  }
+
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+
+    max-width: 760px;
+  }
+
+
+  .modern-header h1 {
+    font-size: 42px;
+  }
+
+}
+
+
+/* ===================================================================
+   Mobile
+=================================================================== */
+
+@media (max-width: 650px) {
+
+  /* ---------------------------------------------------------------
+     整體
+  --------------------------------------------------------------- */
+
+  .modern-registration {
+    min-height: 100vh;
+
+    padding:
+      22px 10px 35px;
+
+    overflow-x: hidden;
+
+    background:
+      linear-gradient(
+        180deg,
+        #dbeafe 0%,
+        #c8defc 100%
+      );
+  }
+
+
+  /* 手機背景裝飾減少 */
+  .blob1 {
+    width: 180px;
+    height: 180px;
+
+    top: -80px;
+    right: -90px;
+  }
+
+
+  .blob2 {
+    width: 220px;
+    height: 220px;
+
+    bottom: 5%;
+    left: -100px;
+  }
+
+
+  .blob3 {
+    display: none;
+  }
+
+
+  /* ---------------------------------------------------------------
+     Toggle
+  --------------------------------------------------------------- */
+
+  .tutorial-toggle {
+    width: 100%;
+
+    margin-bottom: 22px;
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 8px;
+  }
+
+
+  .tutorial-toggle button {
+    width: 100%;
+
+    min-height: 45px;
+
+    padding:
+      8px 6px;
+
+    font-size: 14px;
+
+    border-radius: 12px;
+  }
+
+
+  /* ---------------------------------------------------------------
+     標題
+  --------------------------------------------------------------- */
+
+  .modern-header {
+    width: 100%;
+
+    margin-bottom: 24px;
+
+    padding:
+      10px 4px;
+  }
+
+
+  .modern-header h1 {
+    font-size: 36px;
+
+    line-height: 1.2;
+
+    letter-spacing: 1px;
+  }
+
+
+  .modern-header p {
+    margin-top: 8px;
+
+    font-size: 16px;
+
+    line-height: 1.5;
+  }
+
+
+  /* ---------------------------------------------------------------
+     Step Grid
+     ★ 關鍵：手機一定是 1fr
+  --------------------------------------------------------------- */
+
+  .steps-grid {
+    width: 100%;
+
+    max-width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    gap: 16px;
+  }
+
+
+  /* ---------------------------------------------------------------
+     Cards
+  --------------------------------------------------------------- */
+
+  .step-card {
+    width: 100%;
+
+    min-width: 0;
+
+    border-radius: 15px;
+  }
+
+
+  .step-card:hover {
+    transform: none;
+  }
+
+
+  /* ---------------------------------------------------------------
+     圖片
+     ★ 不再固定高度、不裁切
+  --------------------------------------------------------------- */
+
+  .card-image {
+    width: 100%;
+
+    height: auto;
+
+    overflow: hidden;
+  }
+
+
+  .card-image img {
+    width: 100%;
+
+    height: auto;
+
+    max-width: 100%;
+
+    display: block;
+
+    object-fit: contain;
+  }
+
+
+  .step-card:hover
+  .card-image img {
+    transform: none;
+  }
+
+
+  /* ---------------------------------------------------------------
+     Step 文字
+  --------------------------------------------------------------- */
+
+  .card-content {
+    padding:
+      16px 14px 18px;
+  }
+
+
+  .card-content h2 {
+    margin-bottom: 4px;
+
+    font-size: 22px;
+  }
+
+
+  .card-content p {
+    font-size: 16px;
+  }
+
+
+  /* ---------------------------------------------------------------
+     Modal
+  --------------------------------------------------------------- */
+
+  .modal-overlay {
+    padding: 10px;
+  }
+
+
+  .regimodal-content {
+    width: 100%;
+
+    max-width: 100%;
+
+    max-height: 92vh;
+
+    padding: 10px;
+
+    border-radius: 12px;
+  }
+
+
+  .regimodal-content img {
+    width: 100%;
+
+    height: auto;
+
+    max-height:
+      calc(92vh - 20px);
+
+    object-fit: contain;
+  }
+
+
+  .modal-close {
+    width: 38px;
+    height: 38px;
+
+    font-size: 15px;
+  }
+
+}
+
+
+/* ===================================================================
+   Small Mobile
+=================================================================== */
+
+@media (max-width: 400px) {
+
+  .modern-registration {
+    padding:
+      18px 8px 30px;
+  }
+
+
+  .tutorial-toggle button {
+    font-size: 12px;
+  }
+
+
+  .modern-header h1 {
+    font-size: 32px;
+  }
+
+
+  .modern-header p {
+    font-size: 15px;
+  }
+
+
+  .card-content h2 {
+    font-size: 21px;
+  }
+
+
+  .card-content p {
+    font-size: 15px;
+  }
+
 }

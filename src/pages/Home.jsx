@@ -450,13 +450,17 @@ function StoreInfo() {
   return (
     <div className="store-info">
 
+      <span className="section-eyebrow">
+        VISIT US
+      </span>
+
       <h2>
         歡迎來店
       </h2>
 
       <p className="store-description">
-        最新活動、會員服務或運彩資訊，
-        歡迎來店。
+        想了解最新活動、會員服務或運彩資訊，
+        歡迎直接來店詢問。
       </p>
 
 
@@ -530,8 +534,20 @@ function StoreInfo() {
       </div>
 
 
-      
+      <a
+        href={GOOGLE_MAP_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="map-navigation-button"
+      >
 
+        Google Maps 導航
+
+        <span>
+          →
+        </span>
+
+      </a>
 
     </div>
   );
@@ -549,9 +565,23 @@ export default function Home() {
       {/* Hero */}
       <section className="hero-section">
 
-        <div className="hero-carousel-wrapper">
+        {/* 桌機版輪播 */}
+        <div className="hero-carousel-wrapper desktop-hero-carousel">
           <Carousel />
         </div>
+
+
+        {/* 手機版主視覺：直接顯示主圖，避免輪播在手機被裁切 */}
+        <Link
+          to="/promotions"
+          className="mobile-hero-banner"
+          aria-label="查看最新促銷活動"
+        >
+          <img
+            src={Sample1}
+            alt="最新促銷活動"
+          />
+        </Link>
 
 
         <aside className="hero-side">
@@ -568,7 +598,23 @@ export default function Home() {
       {/* 快速服務 */}
       <section className="home-section quick-service-section">
 
- 
+        <div className="section-heading">
+
+          <div>
+
+            <span className="section-eyebrow">
+              QUICK ACCESS
+            </span>
+
+            <h2>
+              快速服務
+            </h2>
+
+          </div>
+
+        </div>
+
+
         <QuickServices />
 
       </section>
