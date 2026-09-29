@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import "./Promotions.css";
 
-// 引入促銷活動所需圖片
 import promoImage1 from "../images/sample1.png";
 import promoImage2 from "../images/sample2.png";
 import promoImage3 from "../images/sample3.png";
@@ -10,139 +9,383 @@ import promoImage3 from "../images/sample3.png";
 const promotions = [
   {
     title: "下注滿額，免費飛日本",
+
     description: (
       <>
-        ✨活動期間限定，立即點擊瞭解詳細規則！<br />
-        ✨別錯過機會，讓運氣帶你飛向日本！
+        ✈️ 累積下注滿 40 萬起，日本單程機票免費送
+        <br />
+        沖繩｜大阪｜東京，達指定門檻自由選
       </>
     ),
+
     details: (
-      <>
-        現在只要在台灣運彩下注滿指定金額，即可免費獲得日本「單程機票」！<br />
-        暢遊東京、大阪、沖繩，體驗櫻花、美食與獨特文化。<br />
-        ❗機票價格以萬豪彩券行為主<br /><br />
-      
-        <strong>📍 機票價格（單程）</strong><br />
-        <table className="flight-table">
-          <thead>
-            <tr>
-              <th>出發地</th>
-              <th>目的地</th>
-              <th>下注滿  (NT$)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>台北</td>
-              <td>東京</td>
-              <td>525,000$</td>
-            </tr>
-            <tr>
-              <td>台北</td>
-              <td>大阪</td>
-              <td>440,500$</td>
-            </tr>
-            <tr>
-              <td>台北</td>
-              <td>沖繩</td>
-              <td>478,000$</td>
-            </tr>
-          </tbody>
-        </table>
-      </>
+      <div className="japan-promo">
+
+        {/* 簡潔標題 */}
+        <div className="japan-header">
+          <p>
+            滿指定累積下注額，即可獲得
+            <strong> 日本單程機票乙張</strong>
+          </p>
+        </div>
+
+        {/* 三個門檻 */}
+        <div className="flight-options">
+
+          <div className="flight-option featured">
+            <span className="option-badge">輕鬆達標</span>
+
+            <div className="option-amount">
+              <strong>40</strong>
+              <span>萬</span>
+            </div>
+
+            <div className="option-label">
+              累積下注
+            </div>
+
+            <div className="option-route">
+              ✈ 沖繩
+            </div>
+          </div>
+
+          <div className="flight-option">
+            <span className="option-badge gray">
+              兩地任選
+            </span>
+
+            <div className="option-amount">
+              <strong>45</strong>
+              <span>萬</span>
+            </div>
+
+            <div className="option-label">
+              累積下注
+            </div>
+
+            <div className="option-route">
+              ✈ 大阪
+              <span>｜</span>
+              沖繩
+            </div>
+          </div>
+
+          <div className="flight-option premium">
+            <span className="option-badge gold">
+              三地任選
+            </span>
+
+            <div className="option-amount">
+              <strong>55</strong>
+              <span>萬</span>
+            </div>
+
+            <div className="option-label">
+              累積下注
+            </div>
+
+            <div className="option-route">
+              ✈ 東京
+              <span>｜</span>
+              大阪
+              <span>｜</span>
+              沖繩
+            </div>
+          </div>
+
+        </div>
+
+        {/* 一句話說明 */}
+        <div className="choice-summary">
+          <strong>達越高門檻，可選航點越多</strong>
+          <span>
+            達標後，可於該門檻符合資格的航點中任選一地。
+          </span>
+        </div>
+
+        {/* 重要規則 */}
+        <div className="quick-rules">
+          <h4>活動說明</h4>
+
+          <ul>
+            <li>
+              機票以
+              <strong> 桃園國際機場出發 </strong>
+              之日本單程機票為主。
+            </li>
+
+            <li>
+              限
+              <strong> 平日、指定航空、指定基本票種</strong>。
+            </li>
+
+            <li>
+              指定其他日期、航班、托運行李或選位，
+              超出活動補助額度之差額由會員自行負擔。
+            </li>
+
+            <li>
+              機票不得折現、轉售、轉讓，
+              不同航點票價差額不另行退還。
+            </li>
+          </ul>
+
+          {/* 完整規則收合 */}
+          <details className="full-rules">
+            <summary>
+              查看完整活動規則
+            </summary>
+
+            <div className="full-rules-content">
+              <p>
+                1. 本活動為日本單程機票贈送活動，
+                限符合活動資格之會員參加。
+              </p>
+
+              <p>
+                2. 達指定累積下注額後，
+                可於符合資格之航點中任選其一。
+              </p>
+
+              <p>
+                3. 機票以桃園國際機場出發之
+                日本單程機票為主。
+              </p>
+
+              <p>
+                4. 機票限平日、指定航空及指定基本票種，
+                實際開票內容依活動辦法與店家安排為準。
+              </p>
+
+              <p>
+                5. 若會員指定其他日期、熱門時段、
+                不同航班，或加購托運行李、選位等服務，
+                超出活動補助額度之差額由會員自行負擔。
+              </p>
+
+              <p>
+                6. 機票不得折現、不得轉售、
+                不得轉讓，且不同航點之票價差額
+                不另行退還。
+              </p>
+
+              <p>
+                7. 詳細活動規則與資格認定，
+                依萬豪彩券行公告與說明為準。
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
     ),
+
     image: promoImage1,
-    link: "https://youtu.be/6F7jRD2rOLw",
-    isVisible: true,  // 先顯示
+    isVisible: true,
   },
+
   {
     title: "豪氣加入，下注拿黃金紅包",
+
     description: (
       <>
-        🧧數量有限，立即加入領取專屬黃金好禮！
+        🧧 數量有限，立即加入領取專屬黃金好禮！
       </>
     ),
+
     details: (
-      <>
-        即日起申請加入萬豪運彩會員，並首次成功下注不限金額，即刻獲得純金黃金紅包，限量30名！<br />
-        🧨好運財神到，黃金福氣送給你，新會員專屬福利，錯過再等一年！
-      </>
+      <div className="simple-promo-details">
+        <p>
+          即日起申請加入萬豪運彩會員，
+          並首次成功下注不限金額，
+          即刻獲得純金黃金紅包，
+          <strong>限量 30 名！</strong>
+        </p>
+
+        <div className="simple-highlight">
+          🧨 新會員專屬福利，數量有限，送完為止
+        </div>
+      </div>
     ),
+
     image: promoImage2,
-    link: "https://youtu.be/6F7jRD2rOLw",
-    isVisible: true, // 先下架
+    isVisible: true,
   },
+
   {
-    title: "輕鬆下注，送600$全聯禮券",
+    title: "輕鬆下注，送600元全聯禮券",
+
     description: (
       <>
-        🔷立即完成步驟領取屬於你的全聯禮券！
+        🎁 完成指定步驟，即可免費獲得全聯禮券！
       </>
     ),
+
     details: (
-      <>
-        只要完成簡單四步驟，立即加入台灣運彩會員，並成功下注滿3次，即可免費獲得價值600元的全聯禮券卡！<br />
-        💎日常購物更划算，輕鬆享受好禮不間斷。
-      </>
+      <div className="simple-promo-details">
+        <p>
+          加入台灣運彩會員，
+          並成功下注滿 3 次，
+          即可免費獲得
+          <strong>價值 600 元全聯禮券</strong>。
+        </p>
+
+        <div className="simple-highlight">
+          💎 日常購物更划算，好禮輕鬆帶回家
+        </div>
+      </div>
     ),
+
     image: promoImage3,
-    link: "https://youtu.be/6F7jRD2rOLw",
-    isVisible: false,  // 先顯示
+    isVisible: true,
   },
 ];
 
-function Modal({ isOpen, onClose, title, details, image }) {
+function Modal({
+  isOpen,
+  onClose,
+  title,
+  details,
+  image,
+}) {
+  useEffect(() => {
+    if (!isOpen) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    document.addEventListener(
+      "keydown",
+      handleKeyDown
+    );
+
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener(
+        "keydown",
+        handleKeyDown
+      );
+
+      document.body.style.overflow = "";
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose}>×</button>
-        <img src={image} alt={title} className="modal-image" />
-        <h2 className="modal-title">{title}</h2>
-        <div className="modal-details">{details}</div>
+    <div
+      className="modal-overlay"
+      onClick={onClose}
+    >
+      <div
+        className="modal-content"
+        onClick={(event) =>
+          event.stopPropagation()
+        }
+        role="dialog"
+        aria-modal="true"
+        aria-label={title}
+      >
+        <button
+          className="modal-close"
+          onClick={onClose}
+          aria-label="關閉活動視窗"
+        >
+          ×
+        </button>
+
+
+
+        <h2 className="modal-title">
+          {title}
+        </h2>
+
+        <div className="modal-details">
+          {details}
+        </div>
       </div>
     </div>
   );
 }
 
 function Promotions() {
-  // 只保留 isVisible = true 的活動
-  const visiblePromotions = promotions.filter(p => p.isVisible);
+  const visiblePromotions =
+    promotions.filter(
+      (promotion) =>
+        promotion.isVisible
+    );
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState("down");
-  const [modalOpen, setModalOpen] = useState(false);
+  const [
+    currentIndex,
+    setCurrentIndex,
+  ] = useState(0);
 
-  // 當可顯示的活動數量變動時，確保 index 合法
+  const [
+    direction,
+    setDirection,
+  ] = useState("down");
+
+  const [
+    modalOpen,
+    setModalOpen,
+  ] = useState(false);
+
   useEffect(() => {
-    if (currentIndex >= visiblePromotions.length) {
+    if (
+      currentIndex >=
+      visiblePromotions.length
+    ) {
       setCurrentIndex(0);
     }
-  }, [visiblePromotions.length, currentIndex]);
+  }, [
+    visiblePromotions.length,
+    currentIndex,
+  ]);
+
+  if (
+    visiblePromotions.length === 0
+  ) {
+    return null;
+  }
 
   const handlePrev = () => {
     setDirection("up");
-    setCurrentIndex((prev) =>
-      prev === 0 ? visiblePromotions.length - 1 : prev - 1
+
+    setCurrentIndex((previous) =>
+      previous === 0
+        ? visiblePromotions.length - 1
+        : previous - 1
     );
+
+    setModalOpen(false);
   };
 
   const handleNext = () => {
     setDirection("down");
-    setCurrentIndex((prev) =>
-      prev === visiblePromotions.length - 1 ? 0 : prev + 1
+
+    setCurrentIndex((previous) =>
+      previous ===
+      visiblePromotions.length - 1
+        ? 0
+        : previous + 1
     );
+
+    setModalOpen(false);
   };
 
-  const handleOpenModal = () => setModalOpen(true);
-  const handleCloseModal = () => setModalOpen(false);
-
-  const { title, description, details, image } =
-    visiblePromotions[currentIndex];
+  const {
+    title,
+    description,
+    details,
+    image,
+  } = visiblePromotions[currentIndex];
 
   return (
-    <div className="promotions-container">
+    <section className="promotions-container">
+
       <div className="additional-stars">
         <span className="star-1">★</span>
         <span className="star-2">★</span>
@@ -158,37 +401,83 @@ function Promotions() {
             classNames={`slide-${direction}`}
           >
             <div className="promo-card">
+
               <div className="promo-text">
-                <h1 className="promo-title">{title}</h1>
-                <p className="promo-description">{description}</p>
-                <button className="promo-button" onClick={handleOpenModal}>
-                  查看更多
+                <span className="promo-eyebrow">
+                  萬豪會員限定活動
+                </span>
+
+                <h1 className="promo-title">
+                  {title}
+                </h1>
+
+                <div className="promo-description">
+                  {description}
+                </div>
+
+                <button
+                  className="promo-button"
+                  onClick={() =>
+                    setModalOpen(true)
+                  }
+                >
+                  查看活動詳情
+                  <span>→</span>
                 </button>
               </div>
+
               <div className="promo-image-wrapper">
-                <img src={image} alt={title} className="promo-image" />
+                <img
+                  src={image}
+                  alt={title}
+                  className="promo-image"
+                />
               </div>
+
             </div>
           </CSSTransition>
         </TransitionGroup>
       </div>
 
-      <div className="promotions-nav">
-        <button className="nav-button" onClick={handlePrev}>▲</button>
-        <p className="nav-indicator">
-          {currentIndex + 1}/{visiblePromotions.length}
-        </p>
-        <button className="nav-button" onClick={handleNext}>▼</button>
-      </div>
+      {visiblePromotions.length > 1 && (
+        <div className="promotions-nav">
+
+          <button
+            className="nav-button"
+            onClick={handlePrev}
+          >
+            ▲
+          </button>
+
+          <p className="nav-indicator">
+            <strong>
+              {currentIndex + 1}
+            </strong>
+            <span>
+              /{visiblePromotions.length}
+            </span>
+          </p>
+
+          <button
+            className="nav-button"
+            onClick={handleNext}
+          >
+            ▼
+          </button>
+
+        </div>
+      )}
 
       <Modal
         isOpen={modalOpen}
-        onClose={handleCloseModal}
+        onClose={() =>
+          setModalOpen(false)
+        }
         title={title}
         details={details}
         image={image}
       />
-    </div>
+    </section>
   );
 }
 

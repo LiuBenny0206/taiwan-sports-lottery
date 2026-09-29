@@ -175,7 +175,7 @@ function FacebookCard() {
             </span>
 
             <h2>
-              樂穎彩券行
+              富鑫彩券行
             </h2>
 
             <p>
@@ -200,7 +200,7 @@ function FacebookCard() {
         <div className="facebook-title-block">
 
           <h3>
-            關注樂穎彩券行
+            關注富鑫彩券行
           </h3>
 
 
@@ -262,7 +262,7 @@ function FacebookCard() {
             <div>
 
               <strong>
-                樂穎門市公告
+                富鑫門市公告
               </strong>
 
               <small>
@@ -425,7 +425,7 @@ function GoogleMap() {
     <div className="google-map">
 
       <iframe
-        title="樂穎彩券行位置"
+        title="富鑫彩券行位置"
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.167955096296!2d120.7004771!3d24.1658418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346917e4cb56b453%3A0x5e9d44239426e393!2z5a-M5q-U5aSa5p2x5YWJ5bqX!5e0!3m2!1szh-TW!2stw!4v1738571339417!5m2!1szh-TW!2stw"
         width="100%"
         height="100%"

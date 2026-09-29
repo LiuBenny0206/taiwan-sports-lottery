@@ -1,141 +1,299 @@
 import React, { useState } from "react";
 import "./ChangeRetailer.css";
 
-/**
- * ChangeRetailer Component
- * --------------------------
- * 此組件提供一個標籤頁 (Tab) 介面，使用者可透過切換標籤來查看不同的變更資訊。
- *
- * 狀態：
- * - activeTab: 目前啟用的標籤 ID，用於決定顯示哪一頁內容。
- *
- * 資料來源：
- * - tabs: 定義所有標籤的 id 與顯示標籤名稱。
- * - tabContent: 依據標籤 id 對應的內容，包括標題、文字與連結。
- */
 function ChangeRetailer() {
-  // 管理目前活動的標籤，預設為 "intro"
-  const [activeTab, setActiveTab] = useState("intro");
+  const [activeTab, setActiveTab] = useState("retailer");
 
-  // 標籤選單資料：每個物件包含標籤的 id 與顯示文字
   const tabs = [
-    { id: "intro", label: "變更經銷商" },
-    { id: "public", label: "變更電話" },
-    { id: "concept", label: "變更信箱" },
-    { id: "csr", label: "變更姓名" },
+    {
+      id: "retailer",
+      label: "變更經銷商",
+    },
+    {
+      id: "phone",
+      label: "變更電話",
+    },
+    {
+      id: "email",
+      label: "變更信箱",
+    },
+    {
+      id: "name",
+      label: "變更姓名",
+    },
   ];
 
-  // 每個標籤對應的內容，根據 activeTab 來顯示
   const tabContent = {
-    intro: (
-      <div className="content-card">
-        <h2 className="section-title">變更經銷商方法</h2>
-        <p className="content-text">
-          提醒您：如有設定服務的運動彩券經銷商，須於六個月期滿後才可變更服務的經銷商
-        </p>
-        <ul className="content-list">
-          <li>
-            1. 請至會員變更資料申請網頁
-            <a
-              href="https://modify.sportslottery.com.tw/zh-tw/Update/step1"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="content-link"
-            >
-              （點選申請）
-            </a>
-            。
-          </li>
-          <li>2. 輸入會員代碼及完成手機簡訊驗證。</li>
-          <li>
-            3. 點選變更項目：「推薦您入會之經銷商證號」或「第三人使用個人資料同意事項」，完成後即變更。
-          </li>
-        </ul>
-      </div>
-    ),
-    public: (
-      <div className="content-card">
-        <h2 className="section-title">變更行動電話門號</h2>
-        <ul className="content-list">
-          <li>
-            請於左側選單下載列印「台灣運動彩券線上通路會員入會暨資料異動申請書」並勾選「資料異動」。
-          </li>
-          <li>填寫紅框內相關資料並親筆簽名，請務必本人親簽。</li>
-          <li>
-            掃描/拍照以傳真：02-27151941，或 E-MAIL：
-            <a href="mailto:service@sportslottery.com.tw" className="content-link">
-              service@sportslottery.com.tw
-            </a>
-            ，或郵寄到本公司客服中心，我們將於收到您的申請資料後，盡快與您聯絡。
-          </li>
-        </ul>
-      </div>
-    ),
-    concept: (
-      <div className="content-card">
-        <h2 className="section-title">變更電子郵件信箱</h2>
-        <ul className="content-list">
-          <li>
-            請於左側選單下載列印「台灣運動彩券線上通路會員入會暨資料異動申請書」並勾選「資料異動」。
-          </li>
-          <li>填寫紅框內相關資料並親筆簽名，請務必本人親簽。</li>
-          <li>
-            掃描/拍照以傳真：02-27151941，或 E-MAIL：
-            <a href="mailto:service@sportslottery.com.tw" className="content-link">
-              service@sportslottery.com.tw
-            </a>
-            ，或郵寄到本公司客服中心，收件後約 7 個營業日完成。
-          </li>
-        </ul>
-      </div>
-    ),
-    csr: (
-      <div className="content-card">
-        <h2 className="section-title">變更姓名</h2>
-        <ul className="content-list">
-          <li>
-            請於左側選單下載列印「台灣運動彩券線上通路會員入會暨資料異動申請書」並勾選「資料異動」。
-          </li>
-          <li>
-            填寫紅框內相關資料並親筆簽名（更改後的「正確姓名」），請務必本人親簽。
-          </li>
-          <li>黏貼身分證正/反面影本或附上戶籍謄本（須有記事欄位）。</li>
-          <li>
-            掃描/拍照以傳真：02-27151941，或 E-MAIL：
-            <a href="mailto:service@sportslottery.com.tw" className="content-link">
-              service@sportslottery.com.tw
-            </a>
-            ，或郵寄到本公司客服中心，我們將於收到您的申請資料後，盡快與您聯絡。
-          </li>
-        </ul>
-      </div>
-    ),
+    retailer: {
+      title: "變更經銷商",
+      subtitle: "推薦經銷商資料異動",
+      notice:
+        "如有設定服務的運動彩券經銷商，須於六個月期滿後，才可變更服務經銷商。",
+      steps: [
+        <>
+          前往台灣運彩會員變更資料申請網頁
+          <a
+            href="https://modify.sportslottery.com.tw/zh-tw/Update/step1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="change-link"
+          >
+            前往申請
+          </a>
+        </>,
+        <>輸入會員代碼，並完成手機簡訊驗證。</>,
+        <>
+          點選變更項目
+          <strong>
+            「推薦您入會之經銷商證號」
+          </strong>
+          或
+          <strong>
+            「第三人使用個人資料同意事項」
+          </strong>
+          ，依頁面指示完成變更。
+        </>,
+      ],
+    },
+
+    phone: {
+      title: "變更行動電話門號",
+      subtitle: "會員聯絡資料異動",
+      steps: [
+        <>
+          下載並列印
+          <strong>
+            「台灣運動彩券線上通路會員入會暨資料異動申請書」
+          </strong>
+          ，並勾選「資料異動」。
+        </>,
+        <>
+          填寫相關資料並親筆簽名，
+          <strong>申請人須本人親簽。</strong>
+        </>,
+        <>
+          將申請書掃描或拍照後，可選擇以下任一方式送件：
+          <div className="contact-box">
+            <div>
+              <span>傳真</span>
+              <strong>02-27151941</strong>
+            </div>
+
+            <div>
+              <span>E-mail</span>
+              <a
+                href="mailto:service@sportslottery.com.tw"
+                className="change-link inline"
+              >
+                service@sportslottery.com.tw
+              </a>
+            </div>
+          </div>
+          台灣運彩收到申請資料後，將盡快與您聯絡。
+        </>,
+      ],
+    },
+
+    email: {
+      title: "變更電子郵件信箱",
+      subtitle: "會員聯絡資料異動",
+      steps: [
+        <>
+          下載並列印
+          <strong>
+            「台灣運動彩券線上通路會員入會暨資料異動申請書」
+          </strong>
+          ，並勾選「資料異動」。
+        </>,
+        <>
+          填寫相關資料並親筆簽名，
+          <strong>申請人須本人親簽。</strong>
+        </>,
+        <>
+          將申請書掃描或拍照後，可選擇以下任一方式送件：
+          <div className="contact-box">
+            <div>
+              <span>傳真</span>
+              <strong>02-27151941</strong>
+            </div>
+
+            <div>
+              <span>E-mail</span>
+              <a
+                href="mailto:service@sportslottery.com.tw"
+                className="change-link inline"
+              >
+                service@sportslottery.com.tw
+              </a>
+            </div>
+          </div>
+          收到申請資料後，約
+          <strong> 7 個營業日 </strong>
+          完成。
+        </>,
+      ],
+    },
+
+    name: {
+      title: "變更姓名",
+      subtitle: "會員身分資料異動",
+      steps: [
+        <>
+          下載並列印
+          <strong>
+            「台灣運動彩券線上通路會員入會暨資料異動申請書」
+          </strong>
+          ，並勾選「資料異動」。
+        </>,
+        <>
+          填寫相關資料及變更後的正確姓名，
+          並由
+          <strong>本人親筆簽名。</strong>
+        </>,
+        <>
+          黏貼身分證正、反面影本，
+          或附上
+          <strong>含記事欄位之戶籍謄本。</strong>
+        </>,
+        <>
+          將完整申請資料以傳真、E-mail
+          或郵寄方式送至台灣運彩客服中心。
+          <div className="contact-box">
+            <div>
+              <span>傳真</span>
+              <strong>02-27151941</strong>
+            </div>
+
+            <div>
+              <span>E-mail</span>
+              <a
+                href="mailto:service@sportslottery.com.tw"
+                className="change-link inline"
+              >
+                service@sportslottery.com.tw
+              </a>
+            </div>
+          </div>
+        </>,
+      ],
+    },
   };
 
+  const currentContent =
+    tabContent[activeTab];
+
   return (
-    <div className="change-container">
-      {/* 頁面標題區 */}
-      <div className="header">
-        <h1 className="main-title">變更經銷商</h1>
-        <div className="subtitle">Change Retailer</div>
-      </div>
+    <section className="change-container">
 
-      {/* 標籤選單區 */}
-      <div className="nav-tabs">
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            className={`tab-button ${activeTab === tab.id ? "active" : ""}`}
-            onClick={() => setActiveTab(tab.id)}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
+      <div className="change-inner">
 
-      {/* 根據 activeTab 渲染對應內容 */}
-      <div className="content-section">{tabContent[activeTab]}</div>
-    </div>
+        {/* 頁面標題 */}
+        <header className="change-header">
+          <span className="change-eyebrow">
+            MEMBER SERVICE
+          </span>
+
+          <h1>會員資料變更</h1>
+
+          <p>
+            選擇您需要異動的項目，
+            依步驟完成申請即可。
+          </p>
+        </header>
+
+        {/* Tabs */}
+        <div
+          className="change-tabs"
+          role="tablist"
+          aria-label="會員資料變更項目"
+        >
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              type="button"
+              role="tab"
+              aria-selected={
+                activeTab === tab.id
+              }
+              className={`change-tab ${
+                activeTab === tab.id
+                  ? "active"
+                  : ""
+              }`}
+              onClick={() =>
+                setActiveTab(tab.id)
+              }
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {/* 內容 */}
+        <div className="change-content-card">
+
+          <div className="change-content-header">
+            <div>
+              <span className="change-content-label">
+                申請項目
+              </span>
+
+              <h2>
+                {currentContent.title}
+              </h2>
+
+              <p>
+                {currentContent.subtitle}
+              </p>
+            </div>
+          </div>
+
+          {/* 提醒 */}
+          {currentContent.notice && (
+            <div className="change-notice">
+              <div className="notice-icon">
+                !
+              </div>
+
+              <div>
+                <strong>申請前提醒</strong>
+                <p>
+                  {currentContent.notice}
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* 步驟 */}
+          <div className="change-steps">
+            <h3>申請步驟</h3>
+
+            <ol>
+              {currentContent.steps.map(
+                (step, index) => (
+                  <li key={index}>
+                    <div className="step-number">
+                      {index + 1}
+                    </div>
+
+                    <div className="step-content">
+                      {step}
+                    </div>
+                  </li>
+                )
+              )}
+            </ol>
+          </div>
+
+        </div>
+
+        <div className="change-footer-note">
+          實際申請流程及資格，
+          依台灣運彩官方公告為準。
+        </div>
+
+      </div>
+    </section>
   );
 }
 

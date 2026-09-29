@@ -19,27 +19,27 @@ function About() {
   const galleryImages = [
     {
       src: storepic1,
-      alt: "樂穎彩券行店內擺設",
+      alt: "富鑫彩券行店內擺設",
       label: "店內特色",
     },
     {
       src: storepic2,
-      alt: "樂穎彩券行櫃台",
+      alt: "富鑫彩券行櫃台",
       label: "服務櫃台",
     },
     {
       src: storepic3,
-      alt: "樂穎彩券行店面",
+      alt: "富鑫彩券行店面",
       label: "門市外觀",
     },
     {
       src: storepic4,
-      alt: "樂穎彩券行店內環境",
+      alt: "富鑫彩券行店內環境",
       label: "舒適空間",
     },
     {
       src: storepic5,
-      alt: "樂穎彩券行投注區",
+      alt: "富鑫彩券行投注區",
       label: "投注服務",
     },
   ];
@@ -404,7 +404,7 @@ function About() {
           </h2>
 
           <p>
-            樂穎彩券行，陪你一起享受賽事與生活中的每一份期待。
+            富鑫彩券行，陪你一起享受賽事與生活中的每一份期待。
           </p>
 
         </motion.div>

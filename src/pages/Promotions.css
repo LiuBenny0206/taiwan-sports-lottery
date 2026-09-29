@@ -1,396 +1,1093 @@
-/* ======================================================================
-   促銷容器 (promotions-container)
-   ====================================================================== */
-   .promotions-container {
-    position: relative;
-    background: linear-gradient(to right, #f2f2f2, #ffeda9); /* 淡灰到淡黃色漸層背景 */
-    padding: 60px 20px;
-    text-align: center;
-    font-family: "Noto Sans TC", serif;
-    overflow: hidden; /* 防止裝飾元素溢出 */
-    min-height: 80vh; /* 設定最小高度，避免內容被裁剪 */
+* {
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   主區域
+   ========================================================= */
+
+.promotions-container {
+  position: relative;
+  min-height: 80vh;
+
+  padding: 60px 20px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      110deg,
+      #f6f6f6 0%,
+      #fff8db 50%,
+      #ffeda9 100%
+    );
+
+  text-align: center;
+
+  font-family:
+    "Noto Sans TC",
+    "Microsoft JhengHei",
+    sans-serif;
+}
+
+.promotions-container::before {
+  content: "";
+
+  position: absolute;
+
+  top: 20%;
+  left: 8%;
+
+  width: 650px;
+  height: 1150px;
+
+  background:
+    rgba(255, 232, 135, 0.38);
+
+  border-radius: 50%;
+
+  transform:
+    translate(-50%, -50%)
+    scale(2, 1);
+
+  z-index: 1;
+}
+
+/* =========================================================
+   星星
+   ========================================================= */
+
+.additional-stars {
+  position: absolute;
+  inset: 0;
+
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+.additional-stars span {
+  position: absolute;
+
+  color:
+    rgba(255, 255, 255, 0.9);
+
+  animation:
+    twinkle
+    4s
+    infinite
+    ease-in-out;
+}
+
+.star-1 {
+  top: 50%;
+  left: 90%;
+  font-size: 2.8rem;
+}
+
+.star-2 {
+  top: 50%;
+  left: 3%;
+  font-size: 3rem;
+}
+
+.star-3 {
+  top: 25%;
+  left: 60%;
+  font-size: 2.5rem;
+}
+
+.star-4 {
+  top: 85%;
+  left: 10%;
+  font-size: 3.5rem;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
   }
-  
-  /* 背景裝飾的偽元素，產生半圓效果 */
-  .promotions-container::before {
-    content: "";
-    position: absolute;
-    top: 20%;
-    left: 10%;
-    width: 600px;
-    height: 1200px;
-    background-color: #ffefa9; /* 淺膚色半圓 */
-    border-radius: 50%; /* 生成圓形 */
-    z-index: 1; /* 置於內容層之下 */
-    transform: translate(-50%, -50%) scale(2, 1); /* 調整位置與比例，產生半圓效果 */
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
   }
-  
-  /* ======================================================================
-     額外裝飾：背景星星
-     ====================================================================== */
-  .promotions-container .additional-stars {
-    z-index: 10; /* 保證星星位於其他背景元素之上 */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* 遮罩層不影響使用者操作 */
-  }
-  
-  .promotions-container .additional-stars span {
-    position: absolute;
-    color: #fff;
-    font-size: 2.5rem;
-    animation: twinkle 4s infinite ease-in-out; /* 星星閃爍動畫 */
-  }
-  
-  /* 依序設定各顆星星的位置與大小 */
-  .promotions-container .additional-stars .star-1 {
-    top: 50%;
-    left: 90%;
-    font-size: 2.8rem;
-  }
-  
-  .promotions-container .additional-stars .star-2 {
-    top: 50%;
-    left: 3%;
-    font-size: 3rem;
-  }
-  
-  .promotions-container .additional-stars .star-3 {
-    top: 25%; /* 離頂部距離 */
-    left: 60%; /* 離左側距離 */
-    font-size: 2.5rem;
-    animation: twinkle 4.5s infinite ease-in-out; /* 動畫時間稍微延長 */
-  }
-  
-  .promotions-container .additional-stars .star-4 {
-    top: 85%; /* 離頂部距離 */
-    left: 10%; /* 離左側距離 */
-    font-size: 3.5rem;
-    animation: twinkle 5s infinite ease-in-out;
-  }
-  
-  /* 星星閃爍動畫定義 */
-  @keyframes twinkle {
-    0%, 100% {
-      opacity: 0.8;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 1;
-      transform: scale(1.2);
-    }
-  }
-  
-  /* ======================================================================
-     促銷內容區域
-     ====================================================================== */
-  .promotions-content {
-    position: relative;
-    overflow: hidden; /* 隱藏超出容器的內容 */
-    height: 500px; /* 固定高度，依照設計需求調整 */
-    transition: height 0.3s ease; /* 高度變化過渡效果 */
-  }
-  
-  /* 促銷卡片 (promo-card) 基本樣式 */
+}
+
+/* =========================================================
+   活動首頁卡片
+   ========================================================= */
+
+.promotions-content {
+  position: relative;
+
+  z-index: 5;
+
+  max-width: 1250px;
+  height: 500px;
+
+  margin: 0 auto;
+
+  overflow: hidden;
+}
+
+.promo-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.promo-card {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 70px;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 0 20px;
+}
+
+.promo-text {
+  flex: 0 1 470px;
+
+  max-width: 470px;
+
+  text-align: left;
+}
+
+.promo-eyebrow {
+  display: inline-block;
+
+  margin-bottom: 14px;
+
+  padding:
+    6px
+    12px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 153, 0, 0.12);
+
+  color: #d97700;
+
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.promo-title {
+  margin:
+    0
+    0
+    20px;
+
+  color: #181818;
+
+  font-size: 2.8rem;
+  font-weight: 900;
+
+  line-height: 1.2;
+
+  letter-spacing: -1px;
+}
+
+.promo-description {
+  margin-bottom: 30px;
+
+  color: #4c4c4c;
+
+  font-size: 1.08rem;
+  line-height: 1.9;
+}
+
+.promo-button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  padding:
+    12px
+    22px;
+
+  border:
+    2px solid
+    #ff8c00;
+
+  border-radius: 9px;
+
+  background: transparent;
+
+  color: #ef8200;
+
+  font-size: 1rem;
+  font-weight: 900;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.promo-button:hover {
+  background: #ff8c00;
+
+  color: #fff;
+
+  transform:
+    translateY(-2px);
+}
+
+.promo-button:hover span {
+  transform:
+    translateX(3px);
+}
+
+/* =========================================================
+   圖片
+   ========================================================= */
+
+.promo-image-wrapper {
+  flex: 0 1 600px;
+
+  width: 600px;
+  height: 430px;
+
+  overflow: hidden;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 16px 40px
+    rgba(0, 0, 0, 0.13);
+}
+
+.promo-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+/* =========================================================
+   切換動畫
+   ========================================================= */
+
+.slide-up-enter {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.slide-up-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+
+  transition: 0.5s ease;
+}
+
+.slide-up-exit-active {
+  transform: translateY(-100%);
+  opacity: 0;
+
+  transition: 0.5s ease;
+}
+
+.slide-down-enter {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.slide-down-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+
+  transition: 0.5s ease;
+}
+
+.slide-down-exit-active {
+  transform: translateY(100%);
+  opacity: 0;
+
+  transition: 0.5s ease;
+}
+
+/* =========================================================
+   導航
+   ========================================================= */
+
+.promotions-nav {
+  position: relative;
+
+  z-index: 10;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-top: 20px;
+}
+
+.nav-button {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #00764e;
+
+  color: white;
+
+  cursor: pointer;
+}
+
+.nav-indicator {
+  display: flex;
+
+  gap: 3px;
+
+  margin: 0;
+
+  color: #00764e;
+}
+
+/* =========================================================
+   Modal
+   ========================================================= */
+
+.modal-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 25px;
+
+  background:
+    rgba(0, 0, 0, 0.62);
+
+  backdrop-filter:
+    blur(4px);
+
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+
+  width: 100%;
+  max-width: 900px;
+  max-height: 92vh;
+
+  padding:
+    28px
+    28px
+    32px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  border-radius: 18px;
+
+  background: #fff;
+
+  box-shadow:
+    0 20px 60px
+    rgba(0, 0, 0, 0.3);
+}
+
+/* =========================================================
+   X 關閉按鈕
+   ========================================================= */
+
+.modal-content > .modal-close {
+  appearance: none !important;
+
+  position: absolute !important;
+
+  top: 18px !important;
+  right: 18px !important;
+
+  width: 42px !important;
+  height: 42px !important;
+
+  min-width: 42px !important;
+  min-height: 42px !important;
+
+  max-width: 42px !important;
+  max-height: 42px !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  display: flex !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+
+  border: none !important;
+
+  border-radius: 50% !important;
+
+  background:
+    #ef4444 !important;
+
+  color: #fff !important;
+
+  font-size: 26px !important;
+  line-height: 1 !important;
+
+  cursor: pointer;
+
+  z-index: 100;
+
+  box-shadow:
+    0 4px 12px
+    rgba(0, 0, 0, 0.2);
+}
+
+.modal-content > .modal-close:hover {
+  background:
+    #dc2626 !important;
+
+  transform:
+    scale(1.07);
+}
+
+/* =========================================================
+   Modal 圖片
+   ========================================================= */
+
+.modal-image-wrapper {
+  width: 100%;
+
+  max-height: 380px;
+
+  overflow: hidden;
+
+  border-radius: 13px;
+}
+
+.modal-image {
+  display: block;
+
+  width: 100%;
+
+  max-height: 380px;
+
+  object-fit: cover;
+}
+
+.modal-title {
+  margin:
+    20px
+    55px
+    16px;
+
+  color: #1c1c1c;
+
+  font-size: 2rem;
+
+  font-weight: 900;
+
+  text-align: center;
+}
+
+.modal-details {
+  color: #555;
+
+  font-size: 1rem;
+
+  line-height: 1.7;
+}
+
+/* =========================================================
+   日本機票極簡區
+   ========================================================= */
+
+.japan-promo {
+  width: 100%;
+}
+
+.japan-header {
+  margin-bottom: 26px;
+
+  text-align: center;
+}
+
+.japan-header h3 {
+  margin:
+    0
+    0
+    8px;
+
+  color: #222;
+
+  font-size: 1.45rem;
+  font-weight: 900;
+}
+
+.japan-header p {
+  margin: 0;
+
+  color: #777;
+
+  font-size: 0.92rem;
+}
+
+.japan-header strong {
+  color: #ef8200;
+}
+
+/* =========================================================
+   三張極簡卡片
+   ========================================================= */
+
+.flight-options {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+
+  gap: 16px;
+
+  margin-bottom: 22px;
+}
+
+.flight-option {
+  position: relative;
+
+  padding:
+    28px
+    20px
+    24px;
+
+  border:
+    1px solid
+    #e7e7e7;
+
+  border-radius: 16px;
+
+  background: #fff;
+
+  text-align: center;
+
+  box-shadow:
+    0 6px 20px
+    rgba(0, 0, 0, 0.06);
+}
+
+.flight-option.featured {
+  border:
+    2px solid
+    #ff9800;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fff8e8,
+      #fff
+    );
+}
+
+.flight-option.premium {
+  border-color: #dfc16d;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fff9e9,
+      #fff
+    );
+}
+
+.option-badge {
+  position: absolute;
+
+  top: -11px;
+  left: 50%;
+
+  transform:
+    translateX(-50%);
+
+  padding:
+    5px
+    12px;
+
+  border-radius: 999px;
+
+  background: #ff9200;
+
+  color: white;
+
+  font-size: 0.72rem;
+  font-weight: 900;
+
+  white-space: nowrap;
+}
+
+.option-badge.gray {
+  background: #666;
+}
+
+.option-badge.gold {
+  background: #c99d2f;
+}
+
+/* 40 / 45 / 55 */
+.option-amount {
+  display: flex;
+
+  align-items: baseline;
+  justify-content: center;
+
+  gap: 4px;
+
+  margin-top: 8px;
+}
+
+.option-amount strong {
+  color: #191919;
+
+  font-size: 3.2rem;
+  font-weight: 900;
+
+  line-height: 1;
+}
+
+.option-amount span {
+  color: #333;
+
+  font-size: 1.1rem;
+  font-weight: 900;
+}
+
+.option-label {
+  margin:
+    8px
+    0
+    22px;
+
+  color: #999;
+
+  font-size: 0.78rem;
+}
+
+.option-route {
+  padding-top: 17px;
+
+  border-top:
+    1px solid
+    #eee;
+
+  color: #ef8200;
+
+  font-size: 1.08rem;
+  font-weight: 900;
+}
+
+.option-route span {
+  margin:
+    0
+    3px;
+
+  color: #bbb;
+
+  font-weight: 400;
+}
+
+/* =========================================================
+   一句話提示
+   ========================================================= */
+
+.choice-summary {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-bottom: 22px;
+
+  padding:
+    14px
+    18px;
+
+  border:
+    1px solid
+    #ffe0a1;
+
+  border-radius: 12px;
+
+  background: #fff9ed;
+
+  text-align: center;
+}
+
+.choice-summary strong {
+  color: #333;
+
+  font-size: 0.9rem;
+}
+
+.choice-summary span {
+  color: #777;
+
+  font-size: 0.82rem;
+}
+
+/* =========================================================
+   精簡活動說明
+   ========================================================= */
+
+.quick-rules {
+  padding:
+    20px
+    22px;
+
+  border:
+    1px solid
+    #ededed;
+
+  border-radius: 14px;
+
+  background: #fafafa;
+
+  text-align: left;
+}
+
+.quick-rules h4 {
+  margin:
+    0
+    0
+    14px;
+
+  color: #222;
+
+  font-size: 1rem;
+}
+
+.quick-rules ul {
+  margin: 0;
+
+  padding-left: 20px;
+}
+
+.quick-rules li {
+  margin-bottom: 8px;
+
+  color: #555;
+
+  font-size: 0.86rem;
+
+  line-height: 1.65;
+}
+
+.quick-rules strong {
+  color: #333;
+}
+
+/* =========================================================
+   完整規則收合
+   ========================================================= */
+
+.full-rules {
+  margin-top: 16px;
+
+  border-top:
+    1px solid
+    #e6e6e6;
+
+  padding-top: 14px;
+}
+
+.full-rules summary {
+  color: #e78200;
+
+  font-size: 0.86rem;
+  font-weight: 900;
+
+  cursor: pointer;
+}
+
+.full-rules-content {
+  margin-top: 14px;
+
+  padding:
+    14px
+    16px;
+
+  border-radius: 10px;
+
+  background: #fff;
+}
+
+.full-rules-content p {
+  margin:
+    0
+    0
+    9px;
+
+  color: #666;
+
+  font-size: 0.82rem;
+
+  line-height: 1.7;
+}
+
+.full-rules-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   其他活動
+   ========================================================= */
+
+.simple-promo-details {
+  padding: 10px;
+
+  line-height: 1.8;
+
+  text-align: left;
+}
+
+.simple-promo-details strong {
+  color: #222;
+}
+
+.simple-highlight {
+  margin-top: 16px;
+
+  padding:
+    14px
+    16px;
+
+  border-radius: 10px;
+
+  background: #fff5df;
+
+  color: #d97800;
+
+  font-weight: 900;
+}
+
+/* =========================================================
+   平板
+   ========================================================= */
+
+@media (max-width: 900px) {
   .promo-card {
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    position: relative;
+    gap: 35px;
+  }
+
+  .promo-title {
+    font-size: 2.3rem;
+  }
+
+  .promo-image-wrapper {
+    width: 52%;
+  }
+}
+
+/* =========================================================
+   手機
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .promotions-container {
+    padding:
+      35px
+      15px
+      45px;
+  }
+
+  .promotions-content {
+    height: auto;
+    overflow: visible;
+  }
+
+  .promo-wrapper {
+    height: auto;
+  }
+
+  .promo-card {
+    flex-direction:
+      column-reverse;
+
+    gap: 25px;
+
+    height: auto;
+
+    padding: 0;
+  }
+
+  .promo-text {
+    width: 100%;
+    max-width: 100%;
+
+    text-align: center;
+  }
+
+  .promo-title {
+    font-size: 2rem;
+  }
+
+  .promo-description {
+    font-size: 0.96rem;
+  }
+
+  .promo-image-wrapper {
     width: 100%;
     height: auto;
-    padding: 0 20px;
-    flex-direction: row;
   }
-  
-  /* 卡片內的文字區塊 */
-  .promo-text {
-    max-width: 500px;
-    text-align: left;
-    margin-right: 70px;
-    word-break: break-word; /* 避免文字超出容器 */
-  }
-  
-  /* 卡片標題 */
-  .promo-title {
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: #000;
-    margin-bottom: 20px;
-  }
-  
-  /* 卡片描述 */
-  .promo-description {
-    font-size: 1.2rem;
-    color: #555;
-    margin-bottom: 30px;
-    line-height: 1.6;
-  }
-  
-  /* 卡片按鈕樣式 */
-  .promo-button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: 900;
-    color: #ff8000;
-    background-color: transparent;
-    border: 2px solid #ff8000;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .promo-button:hover {
-    background-color: #ff8000;
-    color: #fff;
-  }
-  
-  /* 確保按鈕內部連結繼承按鈕樣式 */
-  .promo-button a {
-    color: inherit;
-    text-decoration: none;
-  }
-  
-  /* 圖片容器：調整圖片尺寸與邊界 */
-  .promo-image-wrapper {
-    position: relative;
-    display: inline-block;
-    width: 600px; /* 根據設計增大圖片寬度 */
-    height: 450px; /* 根據設計增大圖片高度 */
-    margin-bottom: 15px;
-    overflow: hidden;
-  }
-  
-  /* 圖片樣式：保持圖片比例並填滿容器 */
+
   .promo-image {
-    position: relative;
-    display: block;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 15px;
+    height: auto;
+
+    object-fit: contain;
   }
-  
-  /* ======================================================================
-     上下切換動畫效果
-     ====================================================================== */
-  /* 從下方進入，上方離場 */
-  .slide-up-enter {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  .slide-up-enter-active {
-    transform: translateY(0);
-    opacity: 1;
-    transition: transform 0.5s ease, opacity 0.5s ease;
-  }
-  .slide-up-exit {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  .slide-up-exit-active {
-    transform: translateY(-100%);
-    opacity: 0;
-    transition: transform 0.5s ease, opacity 0.5s ease;
-  }
-  
-  /* 從上方進入，下方離場 */
-  .slide-down-enter {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  .slide-down-enter-active {
-    transform: translateY(0);
-    opacity: 1;
-    transition: transform 0.5s ease, opacity 0.5s ease;
-  }
-  .slide-down-exit {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  .slide-down-exit-active {
-    transform: translateY(100%);
-    opacity: 0;
-    transition: transform 0.5s ease, opacity 0.5s ease;
-  }
-  
-  /* ======================================================================
-     下方導航區域
-     ====================================================================== */
-  .promotions-nav {
-    position: relative;
-    z-index: 100;
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-  }
-  
-  /* 導航按鈕：圓形設計與懸停效果 */
-  .nav-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    background-color: #00764e; /* 深綠色背景 */
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 按鈕陰影 */
-  }
-  
-  .nav-button:hover {
-    background-color: #005f3f; /* 懸停時變深 */
-    transform: scale(1.1); /* 懸停時放大 */
-  }
-  
-  /* 導航指示：顯示當前頁數 */
-  .nav-indicator {
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #00764e;
-    margin: 0 8px;
-  }
-  
-  /* ======================================================================
-     模態視窗樣式
-     ====================================================================== */
-  /* 模態視窗背景遮罩 */
+
   .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+    align-items: flex-start;
+
+    padding: 12px;
+
+    overflow-y: auto;
   }
-  
-  /* 模態視窗內容區 */
+
   .modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 800px;
-    width: 90%;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    max-height: none;
+
+    margin:
+      15px
+      0;
+
+    padding:
+      24px
+      16px
+      24px;
   }
-  
-  /* 模態視窗關閉按鈕 */
-  .modal-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
+
+  .modal-content > .modal-close {
+    top: 12px !important;
+    right: 12px !important;
+
+    width: 40px !important;
+    height: 40px !important;
+
+    min-width: 40px !important;
+    min-height: 40px !important;
+
+    max-width: 40px !important;
+    max-height: 40px !important;
   }
-  
-  /* 模態視窗圖片 */
-  .modal-image {
-    width: 100%;
-    border-radius: 8px;
-    margin-bottom: 10px;
-  }
-  
-  /* 模態視窗標題 */
+
   .modal-title {
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin-bottom: 10px;
+    margin:
+      16px
+      45px
+      14px;
+
+    font-size: 1.55rem;
   }
-  
-  /* 模態視窗詳細內容 */
-  .modal-details {
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.5;
+
+  .modal-image-wrapper,
+  .modal-image {
+    max-height: none;
   }
-  
-  /* 機票價格表格樣式 */
-  .flight-table {
+
+  .flight-options {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+  }
+
+  .flight-option {
+    padding:
+      25px
+      18px
+      20px;
+  }
+
+  .option-amount strong {
+    font-size: 2.8rem;
+  }
+
+  .choice-summary {
+    flex-direction: column;
+
+    gap: 3px;
+  }
+}
+
+/* =========================================================
+   小手機
+   ========================================================= */
+
+@media (max-width: 425px) {
+  .promo-title {
+    font-size: 1.7rem;
+  }
+
+  .promo-button {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-    font-size: 0.95rem;
+
+    max-width: 260px;
   }
 
-  .flight-table th,
-  .flight-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
+  .modal-content {
+    padding:
+      22px
+      12px
+      20px;
   }
 
-  .flight-table th {
-    background-color: #f4f4f4;
-    font-weight: bold;
+  .modal-content > .modal-close {
+    top: 9px !important;
+    right: 9px !important;
+
+    width: 38px !important;
+    height: 38px !important;
+
+    min-width: 38px !important;
+    min-height: 38px !important;
+
+    max-width: 38px !important;
+    max-height: 38px !important;
   }
 
+  .japan-header h3 {
+    font-size: 1.25rem;
+  }
 
-  /* ======================================================================
-     響應式設計：調整不同解析度下的版面配置
-     ====================================================================== */
-  @media (max-width: 768px) {
-    .promo-card {
-      flex-direction: column-reverse;
-      align-items: center;
-    }
-    .promotions-content {
-      overflow: visible;
-    }
-    .promo-text {
-      text-align: center;
-      margin: 10px 0;
-    }
-    .promotions-nav {
-      margin-top: 250px;
-    }
-    .promo-title {
-      font-size: 2rem;
-    }
-    .promo-description {
-      font-size: 1rem;
-      line-height: 1.4;
-    }
-    .promo-button {
-      margin-top: 10px;
-      font-size: 1rem;
-      padding: 10px 20px;
-    }
-    .promo-image-wrapper {
-      width: 100%;
-      height: auto;
-    }
+  .quick-rules {
+    padding:
+      18px
+      15px;
   }
-  
-  @media (max-width: 425px) {
-    .promo-card {
-      padding: 0;
-    }
-    .promo-image {
-      width: 800px;
-      height: 300px;
-    }
-    .promotions-nav {
-      margin-top: 50px;
-    }
-  }
-  
+}
