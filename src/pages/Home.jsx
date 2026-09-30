@@ -21,7 +21,7 @@ import Warning from "../images/warning.jpg";
 // ======================================================
 
 const FACEBOOK_PAGE_URL =
-  "https://www.facebook.com/leyinglottery";
+  "https://www.facebook.com/profile.php?id=61571410902468";
 
 const REGISTER_URL =
   "https://channel.sportslottery.com.tw/zh-tw/register/step1?retailerid=93179171";
