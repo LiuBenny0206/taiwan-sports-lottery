@@ -7,6 +7,7 @@ import Promotions from "../pages/Promotions";
 import Registration from "../pages/Registration";
 import ChangeRetailer from "../pages/ChangeRetailer";
 import About from "../pages/About";
+import Member from "../pages/Member";
 import './App.css';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Route path="/registration" element={<Registration />} />
             <Route path="/change-retailer" element={<ChangeRetailer />} />
             <Route path="/about" element={<About />} />
+            <Route path="/member" element={<Member />} />
           </Routes>
         </main>
         <Footer />
