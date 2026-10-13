@@ -1,0 +1,101 @@
+/* LIFF 會員頁專屬樣式；不更動既有官網頁面 */
+.whm-page, .whm-page * { box-sizing: border-box; }
+.whm-page {
+  --whm-red: #981b2b;
+  --whm-red-dark: #751326;
+  --whm-gold: #eac57d;
+  --whm-ink: #27252a;
+  --whm-muted: #76717b;
+  --whm-line: #e9e3df;
+  width: 100%;
+  min-height: 100vh;
+  background: #f8f6f3;
+  color: var(--whm-ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  font-size: 15px;
+}
+.whm-shell { width: min(100%, 640px); margin: 0 auto; padding: 0 18px 32px; }
+.whm-header { display: flex; align-items: center; justify-content: space-between; padding: 22px 0 18px; }
+.whm-brand { display: flex; align-items: center; gap: 10px; }
+.whm-brand-mark {
+  display: inline-grid; place-items: center; height: 44px; width: 44px;
+  border-radius: 13px; color: #fff; font-size: 24px; font-weight: 800;
+  background: linear-gradient(145deg, #b73746, #78152a);
+}
+.whm-brand div { display: flex; flex-direction: column; gap: 2px; }
+.whm-brand strong { font-size: 16px; letter-spacing: .05em; }
+.whm-brand span:not(.whm-brand-mark) { font-size: 9px; color: var(--whm-muted); letter-spacing: .13em; }
+.whm-test-chip { background: #f9e7dc; color: #9c4725; font-size: 11px; font-weight: 700; border-radius: 40px; padding: 7px 10px; white-space: nowrap; }
+.whm-alert { display: flex; gap: 10px; align-items: flex-start; background: #fff1e9; border: 1px solid #f1c8b5; border-radius: 12px; padding: 12px 13px; color: #8a4228; }
+.whm-alert svg { flex: none; margin-top: 2px; }
+.whm-alert p { margin: 0; font-size: 12px; line-height: 1.65; }
+.whm-intro { padding: 28px 1px 20px; }
+.whm-eyebrow { margin: 0 0 7px; color: var(--whm-red); font-size: 10px; font-weight: 800; letter-spacing: .15em; }
+.whm-intro h1 { margin: 0 0 8px; font-size: 27px; line-height: 1.3; font-weight: 800; }
+.whm-intro > p:last-child { margin: 0; color: var(--whm-muted); font-size: 13px; line-height: 1.65; }
+.whm-profile { display: flex; align-items: center; gap: 13px; background: #fff; border: 1px solid var(--whm-line); border-radius: 16px; padding: 15px; }
+.whm-avatar { width: 45px; height: 45px; border-radius: 50%; display: grid; place-items: center; background: #f8e8e8; color: var(--whm-red); font-size: 21px; }
+.whm-profile-text { min-width: 0; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+.whm-profile-text strong { font-size: 14px; }
+.whm-profile-text span { font-size: 12px; color: var(--whm-muted); }
+.whm-profile-shield { color: #b5a8a4; font-size: 18px; }
+.whm-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin: 21px 0 17px; background: #eeeae6; border-radius: 13px; padding: 5px; }
+.whm-tab { display: flex; align-items: center; justify-content: center; gap: 6px; border: 0; padding: 12px 5px; border-radius: 10px; background: transparent; color: #706a70; font-weight: 700; font-size: 12px; cursor: pointer; }
+.whm-tab.is-active { background: #fff; color: var(--whm-red); box-shadow: 0 2px 7px rgba(50,20,20,.07); }
+.whm-tab:focus-visible { outline: 2px solid var(--whm-red); outline-offset: 2px; }
+.whm-panel { display: flex; flex-direction: column; gap: 15px; }
+.whm-balance-card { border-radius: 20px; overflow: hidden; background: linear-gradient(135deg, #a22239 0%, #741326 95%); color: #fff; padding: 25px 23px 22px; box-shadow: 0 10px 24px rgba(125,18,41,.15); }
+.whm-balance-top { display: flex; justify-content: space-between; align-items: center; gap: 15px; font-size: 13px; opacity: .95; }
+.whm-demo-tag { background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.2); padding: 4px 9px; border-radius: 20px; font-size: 10px; }
+.whm-balance-value { font-size: 48px; font-weight: 800; letter-spacing: -.035em; font-variant-numeric: tabular-nums; padding-top: 9px; line-height: 1.25; }
+.whm-balance-value span { font-size: 16px; font-weight: 600; letter-spacing: 0; }
+.whm-balance-card > p { font-size: 12px; line-height: 1.65; color: #f4dadd; margin: 12px 0 17px; }
+.whm-primary-action { width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; padding: 13px; border: none; border-radius: 12px; background: #f5e6c7; color: #815a43; font-size: 13px; font-weight: 750; cursor: not-allowed; opacity: .85; }
+.whm-stats { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+.whm-stat { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; background: #fff; border: 1px solid var(--whm-line); border-radius: 15px; padding: 17px; }
+.whm-stat svg { color: var(--whm-red); }
+.whm-stat span { font-size: 12px; color: var(--whm-muted); }
+.whm-stat strong { font-size: 24px; line-height: 1; font-variant-numeric: tabular-nums; }
+.whm-stat small { font-size: 12px; font-weight: 500; color: var(--whm-muted); }
+.whm-info-card { background: #fff; border: 1px solid var(--whm-line); border-radius: 16px; padding: 19px; }
+.whm-info-card h2 { margin: 0 0 13px; display: flex; gap: 8px; align-items: center; font-size: 14px; font-weight: 750; }
+.whm-info-card h2 svg { color: var(--whm-red); }
+.whm-info-card p { margin: 0 0 9px; font-size: 12px; color: var(--whm-muted); line-height: 1.8; }
+.whm-info-card p:last-child { margin-bottom: 0; }
+.whm-section-heading { display: flex; justify-content: space-between; align-items: center; padding: 4px 2px; }
+.whm-section-heading h2 { font-size: 17px; margin: 0; font-weight: 750; }
+.whm-section-heading span { font-size: 11px; color: var(--whm-muted); }
+.whm-voucher-card { display: flex; gap: 14px; background: #fff; border: 1px solid var(--whm-line); border-radius: 16px; padding: 20px; }
+.whm-voucher-icon { display: grid; place-items: center; flex: 0 0 48px; width: 48px; height: 48px; background: #faeae2; color: var(--whm-red); border-radius: 13px; font-size: 22px; }
+.whm-voucher-label { display: block; color: var(--whm-red); font-size: 11px; font-weight: 750; margin-bottom: 6px; }
+.whm-voucher-card h3 { font-size: 22px; margin: 0 0 8px; font-weight: 800; }
+.whm-voucher-card p { font-size: 12px; line-height: 1.7; color: var(--whm-muted); margin: 0 0 10px; }
+.whm-voucher-status { display: inline-block; padding: 5px 8px; background: #f3f0ed; border-radius: 8px; color: #6f6765; font-size: 11px; }
+.whm-history-list { background: #fff; border: 1px solid var(--whm-line); border-radius: 16px; overflow: hidden; }
+.whm-history-item { display: flex; align-items: center; gap: 12px; padding: 16px; border-bottom: 1px solid #f0edeb; }
+.whm-history-item:last-child { border-bottom: none; }
+.whm-history-icon { flex: 0 0 38px; width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; font-size: 16px; }
+.whm-history-icon.plus { background: #eaf7ec; color: #347c4c; }
+.whm-history-icon.minus { background: #f8ede9; color: #b76a4b; }
+.whm-history-details { display: flex; flex-direction: column; flex: 1; gap: 5px; min-width: 0; }
+.whm-history-details strong { font-size: 12px; line-height: 1.4; font-weight: 700; }
+.whm-history-details span { font-size: 11px; color: var(--whm-muted); }
+.whm-history-amount { flex: none; font-size: 12px; font-variant-numeric: tabular-nums; }
+.whm-history-amount.plus { color: #327a48; }
+.whm-history-amount.minus { color: var(--whm-red); }
+.whm-history-note { color: var(--whm-muted); font-size: 12px; line-height: 1.7; margin: 0; }
+.whm-security-note { display: flex; justify-content: center; gap: 7px; align-items: center; margin-top: 25px; font-size: 11px; color: #8a8388; line-height: 1.7; }
+.whm-security-note svg { flex: none; }
+.whm-footer { margin: 18px 0 0 !important; padding: 8px 0 !important; text-align: center; font-size: 11px; color: #8b858a; background: transparent !important; }
+@media (max-width: 420px) {
+  .whm-shell { padding: 0 14px 24px; }
+  .whm-intro h1 { font-size: 25px; }
+  .whm-tab { gap: 4px; font-size: 11px; }
+  .whm-balance-card { padding: 23px 19px; }
+  .whm-balance-value { font-size: 42px; }
+  .whm-stat { padding: 14px; }
+  .whm-stat strong { font-size: 21px; }
+  .whm-history-item { padding: 14px 11px; gap: 9px; }
+  .whm-history-details strong { font-size: 11px; }
+  .whm-history-amount { font-size: 11px; }
+}
