@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/member",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/member/:path*",
+      "destination": "/index.html"
+    }
+  ]
+}
